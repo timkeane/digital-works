@@ -67,22 +67,27 @@
           </div>
           <div id="map" class="tab-pane fade show active" role="tabpanel" aria-labelledby="map-tab" aria-hidden="true">
             <div id="map-container" aria-hidden="true">
-              <select id="map-type" class="form-select focus-ring">
-                <option value="location" selected>Number of People Trained by Location</option>
-                <option value="state">Number of People Trained by State</option>
-              </select>
+              <h2 class="map-type">
+                <label for="map-type">Number of People Trained by</label>
+                <select id="map-type" class="form-select focus-ring">
+                  <option value="location" selected>Location</option>
+                  <option value="state">State</option>
+                </select>
+              </h2>
             </div>
           </div>
           <div id="locations" class="tab-pane fade" role="tabpanel" aria-labelledby="location-tab">
             <h2 class="screen-reader-only" data-i18n="tab.locations.name"></h2>
           </div>
           <div id="chart" class="tab-pane fade" role="tabpanel" aria-labelledby="chart-tab">
-            <h2 class="screen-reader-only" data-i18n="tab.chart.name"></h2>
-            <select id="chart-type" class="form-select focus-ring">
-              <option value="state">Number of People Trained by State</option>
-              <option value="type">Number of People Trained by Project Type</option>
-              <option value="year">Number of People Trained by Year</option>
-            </select>
+            <h2 class="chart-type">
+                <label for="chart-type">Number of People Trained by</label>
+              <select id="chart-type" class="form-select focus-ring">
+                <option value="state">State</option>
+                <option value="type">Project Type</option>
+                <option value="year">Year</option>
+              </select>
+            </h2>
             <canvas></canvas>
           </div>
         </div>
