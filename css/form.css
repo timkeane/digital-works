@@ -1,0 +1,25 @@
+input[type="checkbox"],
+input[type="radio"] {
+  border-color: var(--cPrimary);
+}
+
+.form-check-input:disabled {
+  opacity: 1;
+}
+
+.form-check-input:focus {
+  box-shadow: 0 0 0 3px var(--cPrimary);
+  background-color: var(--cSecondary);
+}
+
+.form-check-input:checked:focus {
+  background-image: var(--checkFocus);
+}
+
+.form-check-input[type="radio"] {
+  border-radius: 0.25em;
+}
+
+.form-check-input:checked[type="radio"] {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3l6-6'/%3e%3c/svg%3e");
+}

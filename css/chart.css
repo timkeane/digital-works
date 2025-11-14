@@ -1,0 +1,12 @@
+#chart {
+  padding: 0 2em;
+}
+#chart-type {
+  display: block;
+  margin: auto;
+  width: 400px;
+  max-width: calc(100% - 4em);
+  font-weight: bold;
+  text-align: center;
+  margin-top: 1em;
+}

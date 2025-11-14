@@ -1,0 +1,142 @@
+@import url("./html.css");
+@import url("./banner.css");
+@import url("./map.css");
+@import url("./feature.css");
+@import url("./popup.css");
+@import url("./list.css");
+@import url("./form.css");
+@import url("./locate.css");
+@import url("./challenge.css");
+@import url("./legend.css");
+@import url("./dialog.css");
+@import url("./chart.css");
+
+/* @media (max-width: 971px) {
+
+  .banner .dropdown {
+    position: fixed;
+    inset-block-end: 15px;
+    inset-inline-end: 15px;
+  }
+
+  #layers p.message {
+    margin: 1em 0 -0.5em 0;
+  }
+
+  #submission {
+    margin-top: 1em;
+  }
+
+}
+
+@media only screen and (max-width: 575px) {
+
+  .banner h1 {
+    font-size: 5svw;
+  }
+
+}
+
+@media only screen and (min-width: 972px) {
+
+  #map-tab {
+    display: none;
+  }
+
+  .col-sm-8 {
+    display: block;
+    padding: 0;
+  }
+
+  a.help {
+    margin-right: 0;
+  }
+
+  #challenge {
+    padding-top: 3px;
+  }
+
+}
+
+@media only screen and (max-width: 971.9px) {
+
+  .col-sm-8 {
+    display: none;
+  }
+
+}
+
+@media only screen and (max-width: 445px) {
+
+  .nav.nav-tabs {
+    gap: 1rem;
+    padding-block: 0.5rem;
+  }
+
+  .nav-item {
+    display: grid;
+    grid-template: auto/1fr;
+    flex: 1 1 calc(50% - 0.5rem);
+  }
+
+  .nav-link {
+    box-shadow: currentcolor 0px 0px 0px 1px;
+    border-radius: 0.25rem;
+  }
+
+  .nav-link.active {
+    box-shadow: none;
+  }
+
+}
+
+@media (min-width: 992px) {
+
+  .col-sm form {
+    margin-block: 0 12px;
+  }
+
+}
+
+@media (max-width: 470px) {
+
+  .feature-html > * {
+    flex: 0 0 100%;
+  }
+
+}
+
+@keyframes stretch {
+  0% {
+    transform: scale(0.75);
+  }
+  100% {
+    transform: scale(1.5);
+  }
+}
+
+@media only screen and (max-width: 720px) and (min-width: 620px) {
+
+  #translate {
+    margin-top: 50px;
+  }
+
+}
+
+@media only screen and (max-width: 1088px) and (min-width: 972px) {
+
+  .feature-html .distance {
+    margin-top: 1.25em;
+  }
+
+}
+
+@media (max-width: 470px) {
+
+  .ol-attribution ul {
+    height: 45px;
+    max-width: calc(100% - 5em);
+    margin-top: -14px;
+  }
+
+} */

@@ -1,0 +1,59 @@
+#location-list {
+  container: locationListContainer/inline-size;
+}
+
+#location-list,
+#challenge-list {
+  padding-inline: 0;
+}
+
+p.message {
+  margin: 0;
+}
+
+#location-list li {
+  border-radius: 0;
+}
+
+#location-list li:first-of-type {
+  border-top: none;
+}
+
+li .feature-html {
+  overflow: hidden;
+}
+
+li .feature-html.has-providers {
+  overflow-x: auto;
+}
+
+li.list-group-item {
+  border-block-color: var(--cSecondary);
+}
+li.list-group-item.challenge {
+  border-block-color: var(--cPrimary);
+}
+
+.list-group-item {
+  background: var(--cOnPrimary);
+}
+
+.list-group-item.challenge {
+  background: var(--popupActiveBg);
+}
+
+.list-group-item.challenge button.challenge::after {
+  background-size: 0px 0.875em, 0.875em 2px !important;
+}
+
+#locations li.filtered {
+  display: none;
+}
+
+.list-group-item {
+  padding: 0;
+}
+
+.list-group-item.highlight {
+  box-shadow: inset 0 0 0 .5em var(--cSecondary);
+}

@@ -1,0 +1,107 @@
+body.intro #modal {
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 10px 10px;
+}
+
+.modal-backdrop {
+  backdrop-filter: blur(3px);
+  background-color: rgba(0, 0, 0, 0.375);
+  opacity: 1 !important;
+}
+
+.modal-header {
+  align-items: center;
+}
+
+.modal-header > :is(h1, h2, h3, h4, h5, h6) {
+  margin-block: 0;
+}
+
+#dialog .modal-footer {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  gap: 0.5em 1em;
+}
+
+#dialog .modal-footer .start {
+  flex-grow: 9999;
+}
+
+#dialog .modal-footer .start {
+  flex-grow: 1;
+}
+
+#dialog .btn-primary:focus {
+  box-shadow: 0 0 0 3px var(--cPrimary);
+}
+
+#dialog .btn-secondary:focus,
+#dialog .btn-close:focus {
+  box-shadow: 0 0 0 3px var(--cSecondary);
+}
+
+#dialog a:focus {
+  color: var(--cPrimary);
+  background-color: var(--cSecondary);
+  border-radius: 3px;
+  box-shadow: 0 0 0 3px var(--cSecondary);
+}
+
+#dialog input {
+  width: 1.5em;
+  height: 1.5em;
+  margin-top: 0;
+}
+
+#dialog .btn-close {
+  margin-inline-start: 0;
+  margin-inline-end: -8px;
+}
+
+div.guide,
+div.intro {
+  position: fixed;
+  display: block;
+  left: 0.75em;
+  right: 0.75em;
+  margin: 0;
+}
+
+div.intro {
+  top: 4em;
+  bottom: 1.5em;
+}
+
+div.guide {
+  top: 1em;
+  bottom: 1em;
+}
+
+div.guide .modal-content,
+div.intro .modal-content {
+  width: 100%;
+  height: 100%;
+}
+
+div.guide .modal-body,
+div.intro .modal-body {
+  overflow-y: auto;
+}
+
+div.provider .modal-body table {
+  width: 100%;
+  height: 100%;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+  background-color: transparent;
+}
+
+div.provider .modal-body {
+  overflow: auto;
+  padding: 0;
+}
+
+div.provider .modal-body.loading {
+  overflow: hidden;
+}

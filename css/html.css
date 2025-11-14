@@ -1,0 +1,171 @@
+html, body {
+  position: fixed;
+  inset: 0px;
+}
+
+::-webkit-scrollbar {
+  border: 1px solid var(--scrollbarBorder);
+  inline-size: 12px;
+  block-size: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbarBg);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  border-radius: 3px;
+}
+
+h2, h3, h4, h5, h6 {
+  font-size: 16px;
+  display: inline;
+}
+
+.screen-reader-only {
+  position: absolute;
+  inset-inline-start: -1000px;
+}
+
+body.loading {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 228px 65px;
+}
+
+body.loading #banner,
+body.loading #container,
+body.loading #legend {
+  display: none;
+}
+
+*.focus-ring:focus {
+  box-shadow: none;
+}
+
+#translate.focus-ring:focus {
+  box-shadow: 0 0 0 2px var(--cPrimary), 0 0 0 5px var(--cSecondary);
+}
+
+#translate {
+  display: none;
+}
+
+a.dropdown-item:focus,
+a.dropdown-item:focus-visible {
+  outline-width: 0;
+  background-color: var(--cSecondary);
+  color: var(--cPrimary);
+}
+
+a.dropdown-item:hover {
+  background-color: var(--scrollbarBg);
+  color: var(--cPrimary);
+}
+
+.nav-link.focus-ring:focus {
+  box-shadow: none;
+  color: var(--cOnSecondary);
+  background-color: var(--cSecondary);
+}
+
+.nav-link.focus-ring.active:focus {
+  box-shadow: none;
+  color: var(--cOnPrimary);
+  background-color: var(--cPrimary);
+}
+
+#tab-col {
+  padding: 0;
+}
+
+#tab-col.map-active #locate {
+  margin: 24px 12px;
+}
+
+.nav.nav-tabs {
+  border-block-end: none;
+}
+
+.nav-link:hover {
+  color: var(--cOnPrimary);
+}
+
+.nav-item button {
+  padding: 0.5em 0.75em;
+}
+
+.nav.flex-sm-column {
+  flex-direction: unset !important;
+}
+
+body.intro .modal-backdrop {
+  backdrop-filter: none;
+  background: none;
+}
+
+.col-sm {
+  block-size: calc(100svh - 115px);
+}
+
+.col-sm-4 {
+  padding-block: 1.5rem;
+}
+
+.col-sm form {
+  margin-block: 14px;
+}
+
+.col-sm-12 {
+  background: var(--cPrimary);
+}
+
+.col-sm-12, .col-sm-12 button {
+  color: var(--cOnPrimary);
+  padding-block-start: 0.5em;
+}
+
+#challenge-tab.new {
+  font-weight: bold;
+  position: relative;
+}
+
+#challenge-tab.new::before {
+  content: "!";
+  block-size: 1.5em;
+  inline-size: 1.5em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--cPrimary);
+  background: var(--newChallenge);
+  border-radius: 100%;
+  margin-inline: 0px 0.375em;
+}
+
+#tab-content {
+  overflow-y: auto;
+}
+
+#tab-content.map-active {
+  overflow-y: hidden;
+}
+
+.tab-pane a:where(:not([class*="btn"])) {
+  color: var(--cPrimary);
+  font-weight: 700;
+  text-decoration: solid underline currentColor;
+}
+
+.btn.btn-primary {
+  border-color: var(--cSecondary);
+  font-weight: 500;
+  background: var(--cSecondary);
+  color: var(--cPrimary);
+}
+
+.btn.btn-secondary {
+  border-color: var(--cPrimary);
+  color: var(--cOnPrimary);
+  background: var(--cPrimary);
+}
