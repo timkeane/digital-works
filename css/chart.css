@@ -15,4 +15,5 @@ h2.chart-type * {
   font-weight: bold;
   text-align: center;
   width: auto;
+  color: var(--cPrimary);
 }

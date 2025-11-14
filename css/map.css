@@ -263,4 +263,5 @@ h2.map-type * {
   font-weight: bold;
   text-align: center;
   width: auto;
+  color: var(--cPrimary);
 }
