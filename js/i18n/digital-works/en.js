@@ -7,7 +7,7 @@ export const translation = {
   "tab.layers.name": "Layers",
   "tab.layers.msg": "<p class=\"message\">Search for a location or zoom in on the map to enable layers and filters.</p>",
   "tab.location.msg": "<p class=\"message\">Search for a location to display a list of Primary Service Locations and Secondary Service Locations.</p>",
-  "tab.locations.name": "Training Locations",
+  "tab.locations.name": "Locations",
   "list.alert.showing": "Showing",
   "list.alert.sites": "Broadband Sites in the vicinity of",
   "tab.chart.name": "Charts",
