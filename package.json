@@ -1,6 +1,6 @@
 {
-  "name": "cn-training",
-  "version": "1.0.4",
+  "name": "digital-works",
+  "version": "1.0.5",
   "type": "module",
   "scripts": {
     "start": "vite --host",

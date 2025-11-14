@@ -1,7 +1,7 @@
 export const translation = {
   "app.title": "Digital Works",
-  "app.type": "Selection",
-  "app.desc": "Digital Works",
+  "app.type": "Connected Nation Digital Works",
+  "app.desc": "Connected Nation Digital Works",
   "banner.cn.alt": "Connected Nation",
   "tab.map.name": "Map",
   "tab.layers.name": "Layers",
