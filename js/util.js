@@ -160,8 +160,10 @@ export function setData(event) {
   const states = {};
   data.forEach(training => {
     if (training[prop]) {
+      let number = training['Number of People Trained'];
+      number = number?.trim() ? parseInt(number) : 0;
       states[training[prop]] = states[training[prop]] || 0;
-      states[training[prop]] = states[training[prop]] + (training['Number of People Trained'] * 1);
+      states[training[prop]] = states[training[prop]] + number;
     }
   });
   storage.trainingByState = states;
@@ -172,6 +174,5 @@ export function getData() {
 }
 
 export function getTrainingByState() {
-  window.storage=storage;
   return storage.trainingByState;
 }

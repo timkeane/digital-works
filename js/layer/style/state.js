@@ -13,24 +13,19 @@ const colors = [
  ' #045a8d'
 ];
 
-
-
 export default function(feature, resolution) {
   const buckets = ss.equalIntervalBreaks(Object.values(getTrainingByState()), 5);
-  const count = getTrainingByState()[feature.getId()];
+  const count = getTrainingByState()[feature.getId()] || 0;
 
-  let bucket;
-  for (let b = 0; b < 5; b =b + 1) {
-    if (count <= buckets[b]) {
-      bucket = b;
-      break;
-    };
+  
+  let bucket = 0;
+  while (bucket < 5) {
+    if (count <= buckets[bucket]) break;
+    bucket = bucket + 1;
   }
 
-  let color = colors[bucket] || 'transparent';
-  
   return new Style({
     stroke: new Stroke({width: 1, color: '#3399CC'}),
-    fill: new Fill({color})
+    fill: new Fill({color: colors[bucket]})
   });
 }
