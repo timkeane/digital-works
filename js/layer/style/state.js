@@ -16,7 +16,6 @@ const colors = [
 export default function(feature, resolution) {
   const buckets = ss.equalIntervalBreaks(Object.values(getTrainingByState()), 5);
   const count = getTrainingByState()[feature.getId()] || 0;
-
   
   let bucket = 0;
   while (bucket < 5) {

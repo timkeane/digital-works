@@ -49,7 +49,7 @@ function tabContentHeight(event) {
   if ($(window).width() > threeTabBreakPoint) {
     $('#map-container').css('height', `${height + locateHeight + extra}px`);
   } else {
-    $('#tab-content').css('height', `${$('#tab-content').height() + 90 - 210}px`);
+    $('#tab-content').css('height', `${$('#tab-content').height() + 90}px`);
     $('#map-container').css('height', `${height + extra - hackSomeMore - 134}px`);
   }
 }
