@@ -9,6 +9,8 @@ const svg = {
   primary: '<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48"><circle fill="" stroke="#000" stroke-width="3" cx="24" cy="24" r="19"/><circle fill="#008450" stroke="#fff" stroke-width="3" cx="24" cy="24" r="16"/><path fill="#fff" transform="translate(12, 12)" d="M0 7.244c3.071-3.24 7.314-5.244 12-5.244 4.687 0 8.929 2.004 12 5.244l-2.039 2.15c-2.549-2.688-6.071-4.352-9.961-4.352s-7.412 1.664-9.961 4.352l-2.039-2.15zm5.72 6.034c1.607-1.696 3.827-2.744 6.28-2.744s4.673 1.048 6.28 2.744l2.093-2.208c-2.143-2.261-5.103-3.659-8.373-3.659s-6.23 1.398-8.373 3.659l2.093 2.208zm3.658 3.859c.671-.708 1.598-1.145 2.622-1.145 1.023 0 1.951.437 2.622 1.145l2.057-2.17c-1.197-1.263-2.851-2.044-4.678-2.044s-3.481.782-4.678 2.044l2.055 2.17zm2.622 1.017c-1.062 0-1.923.861-1.923 1.923s.861 1.923 1.923 1.923 1.923-.861 1.923-1.923-.861-1.923-1.923-1.923z"/></svg>',
 };
 
+const numberFormat = new Intl.NumberFormat(getCurrentLanguage(), {maximumFractionDigits: 1});
+
 export function getSelectedFeature() {
   return storage.selectedFeature;
 }
@@ -112,47 +114,8 @@ export function getTranslate() {
   return storage.translate;
 }
 
-export function getSpeed(props) {
-  const lng = getCurrentLanguage();
-  const up = new Intl.NumberFormat(lng).format(props['max_up']);
-  const down = new Intl.NumberFormat(lng).format(props['max_down']);
-  if (down === '0' || up === '0') {
-    return '<span data-i18n="feature.value.unknown"/>';
-  }
-  return $('<div></div>')
-    .append(`<span>${down}</span>`)
-    .append(`<span class="division-sym">/</span>`)
-    .append(`<span>${up}</span>`).localize().html();
-}
-
-export const columns = [
-  {first: true},
-  {prop: 'locationid', name: 'table.column.lid', csv: 'Location ID'},
-  {prop: 'type', name: 'table.column.type', csv: 'Location Type'},
-  {prop: 'streetaddress', name: 'table.column.addr', csv: 'Street Address'},
-  {prop: 'city', name: 'table.column.city', csv: 'CITY'},
-  {prop: 'zipcode', name: 'table.column.zip', csv: 'Zip Code'},
-  {prop: 'county', name: 'table.column.county', csv: 'County'},
-  {csv: 'Broadband Provider Internal Bidding ID (Optional)'},
-  {csv: 'Group ID (Assigned by the bidder, if applicable)'},
-  {csv: 'Provider Funding Match'},
-  {csv: 'Proposed Bid/Grant Funding (may not exceed $25,000 per line extension.) '},
-  {csv: 'Total Project Funding'},
-  {csv: 'Technology'},
-  {csv: 'Fiber Miles'},
-  {csv: 'Maximum Download Speed to Location at Completion'},
-  {csv: 'Maximum Upload Speed to Location at Completion'},
-  {csv: 'Explanation of Need (Optional)'}
-];
-
-export function getFeaturesInView() {
-  const map = getMap();
-  const view = map.getView();
-  const trainingLayer = getTrainingLayer();
-  const trainingSource = trainingLayer.getSource();
-  const extent = view.calculateExtent(map.getSize());
-  const trainingFeatures = trainingLayer.getVisible() ? trainingSource.getFeaturesInExtent(extent) : [];
-  return trainingFeatures;
+export function formatNumber(number) {
+  return numberFormat.format(number);
 }
 
 export function setData(event) {

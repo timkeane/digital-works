@@ -44,32 +44,22 @@ function showPager(features, htmlFeatures) {
 }
 
 function pageFeatures(event) {
-  // const popup = $('#popup').removeClass('challenge');
-  // const content = $('#popup-content');
-  // const pager = $('#popup-pager');
-  // const button = $(event.target);
-  // const features = pager.data('features');
-  // const htmlFeatures = pager.data('htmlFeatures');
-  // const at = pager.find('.at');
-  // const index = at.html() - 1;
-  // const incriment = parseInt(button.data('incriment'));
-  // $('#popup-standby').append(content.find('.feature-html'));
-  // if (index + incriment < htmlFeatures.length && index + incriment > 0) {
-  //   const feature = features[index + incriment];
-  //   const challenge = isChallenge(feature);
-  //   at.html(index + incriment + 1);
-  //   popup.attr('data-fid', feature.getId())
-  //     .addClass(challenge ? 'challenge' : '');
-  //   content.append(htmlFeatures[index + incriment]);
-  // } else {
-  //   const feature = features[0];
-  //   const challenge = isChallenge(feature);
-  //   at.html(1);
-  //   popup.attr('data-fid', feature.getId())
-  //     .addClass(challenge ? 'challenge' : '');
-  //   content.html(htmlFeatures[0]);
-  // }
-  // panPopup();
+  const content = $('#popup-content');
+  const pager = $('#popup-pager');
+  const button = $(event.currentTarget);
+  const htmlFeatures = pager.data('htmlFeatures');
+  const at = pager.find('.at');
+  const index = at.html() - 1;
+  const incriment = parseInt(button.attr('data-incriment'));
+  $('#popup-standby').append(content.find('.feature-html'));
+  if (index + incriment < htmlFeatures.length && index + incriment > 0) {
+    at.html(index + incriment + 1);
+    content.append(htmlFeatures[index + incriment]);
+  } else {
+    at.html(1);
+    content.html(htmlFeatures[0]);
+  }
+  panPopup();
 }
 
 function showPopup(map, coordinate, features, htmlFeatures) {

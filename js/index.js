@@ -12,6 +12,7 @@ import createControlPanel from './control/control-panel';
 import createHelp from './control/help';
 import {createLayerControl} from './control/layer';
 import {createChart} from './control/chart';
+import createZoomFull from './control/ZoomFull';
 
 function removeRotate(map) {
   const controls = map.getControls().getArray();
@@ -42,9 +43,10 @@ function load(restore) {
       createLists(layout, restore);
       createControlPanel();
       createLayerControl();
-
+      createZoomFull(map);
       map.once('postrender', () => {
         $(window).trigger('resize');
+        $('button#zoom-full').trigger('click');
         $('#search').trigger('focus');
         createChart();
         $('body').removeClass('loading');

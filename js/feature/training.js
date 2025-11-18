@@ -1,4 +1,5 @@
 import $ from 'jquery';
+import { formatNumber } from '../util';
 
 const displayProps = [
   'Organization',
@@ -22,9 +23,7 @@ function i18nAddress(session) {
 function appendDistance(html, feature) {
   const meters = feature.get('distance');
   if (meters !== undefined) {
-    const format = new Intl.NumberFormat('en-US', {maximumFractionDigits: 1});
-
-    const miles = format.format(meters / 1609.34);
+    const miles = formatNumber(meters / 1609.34);
     html.append(`<div class="distance">${miles} mi</div>`);
   }
 }
