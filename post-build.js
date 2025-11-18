@@ -9,11 +9,11 @@ const sleep = delay => new Promise(resolve => setTimeout(resolve, delay));
 
 const json = JSON.parse(fs.readFileSync('./package.json', 'utf8'));
 
-// replace({
-//   files: `./dist/assets/${process.env.VITE_APP_PATH}/*.webmanifest`,
-//   from: new RegExp(process.env.LOCAL_URL, 'g'),
-//   to: process.env.VITE_APP_URL
-// });
+replace({
+  files: './dist/assets/*.webmanifest',
+  from: new RegExp(process.env.LOCAL_URL, 'g'),
+  to: process.env.VITE_APP_URL
+});
 
 await sleep(500);
 
