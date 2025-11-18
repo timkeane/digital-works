@@ -64,57 +64,39 @@
         <form id="time-frame">
           <strong>View by time:</strong>
           <div class="btn-group-toggle" data-toggle="buttons">
-            <label class="btn btn-primary active">
-              <input type="radio" name="options" value="past" autocomplete="off" checked>
-              Previous activities
-            </label>
-            <label class="btn btn-primary">
-              <input type="radio" name="options"  value="future" autocomplete="off">
-              Future sessions
-            </label>
+            <label class="btn btn-primary active" for="past-radio">Previous activities</label>
+            <input id="past-radio" type="radio" name="options" value="past" autocomplete="off" checked>
+            <label class="btn btn-primary" for="future-radio">Future sessions</label>
+            <input id="future-radio" type="radio" name="options"  value="future" autocomplete="off">
           </div>
         </form>
         <form id="view-type">
           <strong>View activity as:</strong>
           <div class="btn-group-toggle" data-toggle="buttons">
-            <label class="btn btn-primary active">
-              <input type="radio" name="options" value="map" autocomplete="off" checked>
-              Map
-            </label>
-            <label class="btn btn-primary">
-              <input type="radio" name="options" value="chart" autocomplete="off">
-              Chart
-            </label>
+            <label class="btn btn-primary active" for="map-radio">Map</label>
+            <input id="map-radio" type="radio" name="options" value="map" autocomplete="off" checked>
+            <label class="btn btn-primary" for="chart-radio">Chart</label>
+            <input id="chart-radio" type="radio" name="options" value="chart" autocomplete="off">
           </div>
         </form>
         <form id="map-type">
           <strong>Map activity by:</strong>
           <div class="btn-group-toggle" data-toggle="buttons">
-            <label class="btn btn-primary active">
-              <input type="radio" name="options" value="location" autocomplete="off" checked>
-              Location
-            </label>
-            <label class="btn btn-primary">
-              <input type="radio" name="options" value="state" autocomplete="off">
-              State
-            </label>
+            <label class="btn btn-primary active" for="location-radio">Location</label>
+            <input id="location-radio" type="radio" name="options" value="location" autocomplete="off" checked>
+            <label class="btn btn-primary" for="map-state-radio">State</label>
+            <input id="map-state-radio" type="radio" name="options" value="state" autocomplete="off">
           </div>
         </form>
         <form id="chart-type">
          <strong>Chart activity by:</strong>
           <div class="btn-group-toggle" data-toggle="buttons">
-            <label class="btn btn-primary active">
-              <input type="radio" name="options" value="state" autocomplete="off" checked>
-              State
-            </label>
-            <label class="btn btn-primary">
-              <input type="radio" name="options" value="year" autocomplete="off">
-              Year
-            </label>
-            <label class="btn btn-primary">
-              <input type="radio" name="options" value="type" autocomplete="off">
-              Training type
-            </label>
+            <label class="btn btn-primary active" for="chart-state-raido">State</label>
+            <input id="chart-state-raido" type="radio" name="options" value="state" autocomplete="off" checked>
+            <label class="btn btn-primary" for="year-radio">Year</label>
+            <input id="year-radio" type="radio" name="options" value="year" autocomplete="off">
+            <label class="btn btn-primary" for="type-radio">Training type</label>
+            <input id="type-radio" type="radio" name="options" value="type" autocomplete="off">
           </div>
         </form>
       </div>
@@ -122,7 +104,9 @@
         <div id="tab-content" class="tab-content">
           <div id="map" class="tab-pane fade show active" role="tabpanel">
             <div id="map-container" aria-hidden="true">
-              <button id="zoom-full" class="btn" title="Zoom to full extent"></button>
+              <div class="zoom-full ol-unselectable ol-control">
+                <button id="zoom-full" class="btn" title="Zoom to full extent"></button>
+              </div>
             </div>
           </div>
           <div id="locations" class="tab-pane fade" role="tabpanel" aria-labelledby="location-tab" aria-hidden="true">

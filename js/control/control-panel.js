@@ -4,22 +4,21 @@ import { renderChart } from './chart';
 
 function setTime(event) {
   const target = $(event.target);
-  $('#time-frame input').parent().removeClass('active');
-  target.parent().addClass('active');
+  $('#time-frame label').removeClass('active');
+  $(`label[for=${target.attr('id')}]`).addClass('active');
 
 }
 
 function setView(event) {
   const target = $(event.target);
-  $('#view-type input').parent().removeClass('active');
-  target.parent().addClass('active');
+  $('#view-type label').removeClass('active');
+  $(`label[for=${target.attr('id')}]`).addClass('active');
   if (target.val() === 'map') {
     $('#map-type').slideDown();
     $('#chart-type').slideUp();
     $('#chart').removeClass('active').attr('aria-hidden', true);
     $('#map').addClass('active')
-      .attr('aria-hidden', false)
-
+      .attr('aria-hidden', false);
   } else {
     $('#map-type').slideUp();
     $('#chart-type').slideDown();
@@ -33,17 +32,16 @@ function setView(event) {
 
 function setMap(event) {
   const target = $(event.target);
-  $('#map-type input').parent().removeClass('active');
-    target.parent().addClass('active');
-    getTrainingLayer().setVisible(target.val() === 'location');
-    getStateLayer().setVisible(target.val() === 'state');
-
+  $('#map-type label').removeClass('active');
+  $(`label[for=${target.attr('id')}]`).addClass('active');
+  getTrainingLayer().setVisible(target.val() === 'location');
+  getStateLayer().setVisible(target.val() === 'state');
 }
 
 function setChart(event) {
   const target = $(event.target);
-  $('#chart-type input').parent().removeClass('active');
-  target.parent().addClass('active');
+  $('#chart-type label').removeClass('active');
+  $(`label[for=${target.attr('id')}]`).addClass('active');
   renderChart(target.val());
 }
 

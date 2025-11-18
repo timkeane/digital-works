@@ -56,6 +56,7 @@ export default function addLayers(map, restore) {
           map.on('singleclick', highlight);
           createPopup(map);
           zoomFullExtent(map);
+          $('.ol-overlaycontainer-stopevent').append($('.zoom-full'));
           $('#zoom-full').on('click', () => {
             zoomFullExtent(map);
           })

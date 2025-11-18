@@ -267,17 +267,19 @@ h2.map-type * {
   color: var(--cPrimary);
 }
 
+div.zoom-full {
+  position: absolute;
+  right: .5em;
+  top: .5em;
+}
+
 button#zoom-full {
   background-image: url(../img/us.png);
   background-size: 20px;
   background-position: center center;
   background-repeat: no-repeat;
-  position: absolute;
-  right: .5em;
-  top: .5em;
   inline-size: 29px;
   block-size: 29px;
-  z-index: 100;
 }
 
 button#zoom-full:focus {
