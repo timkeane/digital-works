@@ -1,0 +1,21 @@
+#control-panel p {
+  margin-top: 1em;
+}
+
+#control-panel form label {
+  display: block;
+  margin: .5em
+}
+
+#control-panel form label.active {
+  background-color: var(--cPrimary);
+  color: var(--cOnPrimary);
+}
+
+#control-panel form input[type="radio"] {
+  visibility: hidden;
+}
+
+#chart-type {
+  display: none;
+}

@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-  %VITE_ANALYTICS%
   <title data-i18n="app.title"></title>
   <meta charset="utf-8">
   <meta name="description" content="%VITE_APP_DESC%">
@@ -45,49 +44,90 @@
       <div class="col-sm-12">
         <ul class="nav nav-tabs flex-sm-column" role="tablist">
           <li class="nav-item" role="presentation">
-            <button id="layers-tab" data-i18n="tab.layers.name" class="nav-link" data-bs-toggle="tab" data-bs-target="#layers" type="button" role="tab" aria-controls="layers" aria-selected="false"></button>
-          </li>
-          <li class="nav-item" role="presentation" aria-hidden="true">
-            <button id="map-tab" data-i18n="tab.map.name" class="nav-link active" aria-hidden="true" data-bs-toggle="tab" data-bs-target="#map" type="button" role="tab" aria-controls="map" aria-selected="false"></button>
+            <button id="map-tab" data-i18n="tab.activities.name" class="nav-link active" data-bs-toggle="tab" data-bs-target="#map" type="button" role="tab" aria-controls="map" aria-selected="true"></button>
           </li>
           <li class="nav-item" role="presentation">
-            <button id="location-tab" data-i18n="tab.locations.name" class="nav-link" data-bs-toggle="tab" data-bs-target="#locations" type="button" role="tab" aria-controls="locations" aria-selected="true"></button>
+            <button id="location-tab" data-i18n="tab.details.name" class="nav-link" data-bs-toggle="tab" data-bs-target="#locations" type="button" role="tab" aria-controls="locations" aria-selected="false"></button>
           </li>
           <li class="nav-item" role="presentation">
-            <button id="chart-tab" data-i18n="tab.chart.name" class="nav-link" data-bs-toggle="tab" data-bs-target="#chart" type="button" role="tab" aria-controls="chart" aria-selected="false"></button>
+            <button id="storie-tab" data-i18n="tab.stories.name" class="nav-link" data-bs-toggle="tab" data-bs-target="#stories" type="button" role="tab" aria-selected="false"></button>
           </li>
         </ul>
       </div>
     </div>
     <div class="row">
-      <div id="tab-col" class="col">
-        <div id="tab-content" class="tab-content">
-          <div id="layers" data-i18n="[prepend]tab.layers.msg" class="tab-pane fade" role="tabpanel" aria-labelledby="layers-tab">
-            <h2 class="screen-reader-only" data-i18n="tab.layers.name"></h2>
+      <div id="control-panel" class="col-sm col-sm-3">
+        <p>
+          Digital Works is a program by Connected Nation to close the digital divide.
+          View the progress to data and see future training sessions.
+        </p>
+        <form id="time-frame">
+          <strong>View by time:</strong>
+          <div class="btn-group-toggle" data-toggle="buttons">
+            <label class="btn btn-primary active">
+              <input type="radio" name="options" value="past" autocomplete="off" checked>
+              Previous activities
+            </label>
+            <label class="btn btn-primary">
+              <input type="radio" name="options"  value="future" autocomplete="off">
+              Future sessions
+            </label>
           </div>
-          <div id="map" class="tab-pane fade show active" role="tabpanel" aria-labelledby="map-tab" aria-hidden="true">
+        </form>
+        <form id="view-type">
+          <strong>View activity as:</strong>
+          <div class="btn-group-toggle" data-toggle="buttons">
+            <label class="btn btn-primary active">
+              <input type="radio" name="options" value="map" autocomplete="off" checked>
+              Map
+            </label>
+            <label class="btn btn-primary">
+              <input type="radio" name="options" value="chart" autocomplete="off">
+              Chart
+            </label>
+          </div>
+        </form>
+        <form id="map-type">
+          <strong>Map activity by:</strong>
+          <div class="btn-group-toggle" data-toggle="buttons">
+            <label class="btn btn-primary active">
+              <input type="radio" name="options" value="location" autocomplete="off" checked>
+              Location
+            </label>
+            <label class="btn btn-primary">
+              <input type="radio" name="options" value="state" autocomplete="off">
+              State
+            </label>
+          </div>
+        </form>
+        <form id="chart-type">
+         <strong>Chart activity by:</strong>
+          <div class="btn-group-toggle" data-toggle="buttons">
+            <label class="btn btn-primary active">
+              <input type="radio" name="options" value="state" autocomplete="off" checked>
+              State
+            </label>
+            <label class="btn btn-primary">
+              <input type="radio" name="options" value="year" autocomplete="off">
+              Year
+            </label>
+            <label class="btn btn-primary">
+              <input type="radio" name="options" value="type" autocomplete="off">
+              Training type
+            </label>
+          </div>
+        </form>
+      </div>
+      <div id="tab-col" class="col-sm col-sm-9">
+        <div id="tab-content" class="tab-content">
+          <div id="map" class="tab-pane fade show active" role="tabpanel">
             <div id="map-container" aria-hidden="true">
-              <h2 class="map-type">
-                <label for="map-type">Number of People Trained by</label>
-                <select id="map-type" class="form-select focus-ring">
-                  <option value="location" selected>Location</option>
-                  <option value="state">State</option>
-                </select>
-              </h2>
+              <button id="zoom-full" class="btn" title="Zoom to full extent"></button>
             </div>
           </div>
-          <div id="locations" class="tab-pane fade" role="tabpanel" aria-labelledby="location-tab">
-            <h2 class="screen-reader-only" data-i18n="tab.locations.name"></h2>
+          <div id="locations" class="tab-pane fade" role="tabpanel" aria-labelledby="location-tab" aria-hidden="true">
           </div>
-          <div id="chart" class="tab-pane fade" role="tabpanel" aria-labelledby="chart-tab">
-            <h2 class="chart-type">
-                <label for="chart-type">Number of People Trained by</label>
-              <select id="chart-type" class="form-select focus-ring">
-                <option value="state">State</option>
-                <option value="type">Project Type</option>
-                <option value="year">Year</option>
-              </select>
-            </h2>
+          <div id="chart" class="tab-pane fade" role="tabpanel" aria-hidden="true">
             <canvas></canvas>
           </div>
         </div>

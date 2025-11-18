@@ -29,6 +29,10 @@ export function getTrainingLayer() {
   return getMap().get('training');
 }
 
+export function getStateLayer() {
+  return getMap().get('state');
+}
+
 export function getBgLayer() {
   return getMap().get('bg');
 }

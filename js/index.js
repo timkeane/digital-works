@@ -8,10 +8,10 @@ import addLayers from './layer/layer';
 import {store} from './util';
 import {createLocator, getLocation} from './control/locate';
 import {createLists} from './list/list';
-// import {createLegend} from './control/legend';
+import createControlPanel from './control/control-panel';
 import createHelp from './control/help';
 import {createLayerControl} from './control/layer';
-import { createChart } from './control/chart';
+import {createChart} from './control/chart';
 
 function removeRotate(map) {
   const controls = map.getControls().getArray();
@@ -29,7 +29,8 @@ function load(restore) {
       .addClass('attribution')
       .one('click', () => {
         const cn = $('<a href="https://ConnectedNation.org" target="_blank" rel="noopeneer">Powered by ConnectedNation.org</a><br>');
-        $('.ol-attribution li').prepend(cn);
+        $('.ol-attribution li').prepend(cn).append(', The Noun Project');
+        
       });
 
     removeRotate(map);
@@ -39,17 +40,8 @@ function load(restore) {
       createHelp(layout.banner);
       createLocator(map, restore);
       createLists(layout, restore);
-      // createLegend(map, layout.tabs.layers);
+      createControlPanel();
       createLayerControl();
-
-      if (!restore || getLocation() === undefined) {
-        const view = map.getView();
-        const env = import.meta.env;
-        const center = JSON.parse(env.VITE_CENTER);
-        const zoom = env.VITE_ZOOM * 1;
-        view.setZoom(zoom);
-        view.setCenter(center);
-      }
 
       map.once('postrender', () => {
         $('body').removeClass('loading');

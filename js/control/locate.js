@@ -193,7 +193,7 @@ export function createLocator(map, restore) {
   const possible = div.find('#possible');
 
   form.append(div.prepend(input)).localize();
-  $('#map-container').prepend(form);
+  form.insertBefore($('#time-frame'));
 
   // check.on('change', toggleSearchType);
 

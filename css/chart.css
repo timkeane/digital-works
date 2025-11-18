@@ -17,3 +17,7 @@ h2.chart-type * {
   width: auto;
   color: var(--cPrimary);
 }
+
+#chart {
+  opacity: 1;
+}

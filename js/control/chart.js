@@ -16,7 +16,7 @@ function createStateChart() {
     }
   });
 
-  $(canvas).css('max-height', `${$(window).height() - 200}px`);
+  // $(canvas).css('max-height', `${$(window).height() - 200}px`);
 
   chart = new Chart(canvas, {
     type: 'bar',
@@ -41,7 +41,7 @@ function createTypeChart() {
     }
   });
 
-  $(canvas).css('max-height', `${$(window).height() - 200}px`);
+  // $(canvas).css('max-height', `${$(window).height() - 200}px`);
 
   chart = new Chart(canvas, {
     type: 'bar',
@@ -66,7 +66,7 @@ function createYearChart() {
     }
   });
 
-  $(canvas).css('max-height', `${$(window).height() - 200}px`);
+  // $(canvas).css('max-height', `${$(window).height() - 200}px`);
 
   console.warn(Object.values(years));
   
@@ -82,17 +82,11 @@ function createYearChart() {
   });
 }
 
-function render() {
+export function renderChart(type) {
   chart?.destroy();
-  if ($('#chart').hasClass('active')) {
-    const type = $('#chart-type').val();
-    if (type === 'state') createStateChart();
-    if (type === 'type') createTypeChart();
-    if (type === 'year') createYearChart();
-  }
+  if (type === 'state') createStateChart();
+  if (type === 'type') createTypeChart();
+  if (type === 'year') createYearChart();
 }
 
-export function createChart() {
-  $('#chart-tab').on('click', render);
-  $('#chart-type').on('change', render);
-}
+export function createChart() {}

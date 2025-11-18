@@ -23,7 +23,7 @@
 
 .ol-control button:focus,
 a.help:focus,
-.ol-control button:focus {
+button#zoom-full:focus {
   outline: none !important;
   background-color: var(--cSecondary);
   box-shadow: 0 0 0 2px var(--cPrimary);
@@ -32,7 +32,7 @@ a.help:focus,
 
 .ol-control button:hover,
 a.help:hover,
-.ol-control button:hover {
+button#zoom-full:hover {
   box-shadow: 0 0 0 2px var(--cSecondary);
 }
 
@@ -53,6 +53,7 @@ a.help:hover,
   border-color: var(--cPrimary);
 }
 
+button#zoom-full,
 button.ol-zoom-in,
 button.ol-zoom-out,
 #popup-closer,
@@ -264,4 +265,21 @@ h2.map-type * {
   text-align: center;
   width: auto;
   color: var(--cPrimary);
+}
+
+button#zoom-full {
+  background-image: url(../img/us.png);
+  background-size: 20px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  position: absolute;
+  right: .5em;
+  top: .5em;
+  inline-size: 29px;
+  block-size: 29px;
+  z-index: 100;
+}
+
+button#zoom-full:focus {
+  background-image: url(../img/us-hover.png);
 }

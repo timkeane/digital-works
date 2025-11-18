@@ -1,12 +1,3 @@
-form#locate {
-  position: absolute;
-  bottom: .5em;
-  left: .5em;
-  z-index: 100;
-  width: 350px;
-  max-width: 85%;
-}
-
 .form-group.search-map {
   position: relative;
   display: flex;

@@ -5,7 +5,7 @@ import style from './style/training';
 import html from '../feature/html';
 import {getMap, getSelectedFeature, getView, store} from '../util';
 import {listHighlight} from '../list/list';
-import $ from 'jquery';
+import $, { event } from 'jquery';
 
 const url = './data/training.csv';
 
@@ -41,6 +41,8 @@ function getFeature(eventOrFeature) {
 }
 
 export function highlight(eventOrFeature) {
+  console.warn(eventOrFeature.coordinate);
+  
   const feature = getFeature(eventOrFeature);
   console.warn(feature);
   

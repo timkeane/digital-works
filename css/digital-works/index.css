@@ -31,7 +31,3 @@ body.loading {
   min-block-size: 4rem;
   border-radius: 3px;
 }
-
-#layers, #nav li:first-of-type {
-  display: none;
-}
