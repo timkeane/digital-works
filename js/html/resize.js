@@ -29,7 +29,7 @@ function tabContentHeight(event) {
 
   // $('#legend')[isSmall ? 'addClass' : 'removeClass']('solo');
   // $('#locate')[hideLocate ? 'hide' : 'show']();
-  // $('#tab-content, #tab-col')[isMapTab ? 'addClass' : 'removeClass']('map-active');
+  $('#tab-content, #tab-col')[isMapTab ? 'addClass' : 'removeClass']('map-active');
 
   const windowHeight = $(window).outerHeight(true);
   const windowWidth = $(window).outerWidth(true);
