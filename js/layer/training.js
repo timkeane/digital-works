@@ -5,7 +5,6 @@ import style from './style/training';
 import html from '../feature/html';
 import {getMap, getSelectedFeature, getView, store} from '../util';
 import {listHighlight} from '../list/list';
-import $, { event } from 'jquery';
 
 const url = './data/training.csv';
 
@@ -23,7 +22,7 @@ const source = new Source({format, url});
 const layer = new Layer({
   source,
   style,
-  minZoom: 1
+  minZoom: 0
 });
 
 layer.set('name', 'training');

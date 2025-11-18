@@ -129,9 +129,9 @@ div.ol-control.ol-attribution {
   right: unset;
   top: unset;
   bottom: 0.5em;
-  right: 0.5em;
+  left: 0.5em;
   flex-flow: unset;
-  position: fixed;
+  position: absolute;
 }
 
 .ol-attribution .ol-attribution-collapse {

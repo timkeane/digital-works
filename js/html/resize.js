@@ -93,6 +93,8 @@ export function createResizeHandler() {
   //   tabContentHeight();
   // });
   $(window).on('resize', tabContentHeight);
+  $('#nav button').on('click', tabContentHeight);
+
 }
 
 // $('.nav-link').on('click', dealWithMap).on('click', tabContentHeight);

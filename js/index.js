@@ -44,10 +44,10 @@ function load(restore) {
       createLayerControl();
 
       map.once('postrender', () => {
-        $('body').removeClass('loading');
         $(window).trigger('resize');
         $('#search').trigger('focus');
         createChart();
+        $('body').removeClass('loading');
       });
       spin();
 
