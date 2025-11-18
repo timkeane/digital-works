@@ -1,6 +1,7 @@
 import $ from 'jquery';
-import {getStateLayer, getTrainingLayer} from '../util';
-import { renderChart } from './chart';
+import {getBorderStyle, getStateLayer, getTrainingLayer} from '../util';
+import {renderChart} from './chart';
+import countStyle from '../layer/style/state';
 
 function setTime(event) {
   const target = $(event.target);
@@ -35,7 +36,7 @@ function setMap(event) {
   $('#map-type label').removeClass('active');
   $(`label[for=${target.attr('id')}]`).addClass('active');
   getTrainingLayer().setVisible(target.val() === 'location');
-  getStateLayer().setVisible(target.val() === 'state');
+  getStateLayer().setStyle(target.val() === 'state' ? countStyle : getBorderStyle());
 }
 
 function setChart(event) {

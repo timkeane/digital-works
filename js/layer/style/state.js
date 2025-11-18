@@ -1,9 +1,8 @@
 import Style from 'ol/style/Style';
 import Stroke from 'ol/style/Stroke';
 import Fill from 'ol/style/Fill';
-import {getData, getTrainingByState} from '../../util';
+import {getTrainingByState} from '../../util';
 import * as ss from 'simple-statistics';
-import training from './training';
 
 const colors = [
   '#f1eef6',

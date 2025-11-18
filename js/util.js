@@ -146,3 +146,7 @@ export function getTrainingByState(feature) {
   }
   return storage.trainingByState;
 }
+
+export function getBorderStyle() {
+  return storage.borderStyle;
+}

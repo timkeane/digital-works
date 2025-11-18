@@ -1,4 +1,4 @@
-import {setData} from '../util';
+import {setData, store} from '../util';
 import {getCurrentLanguage} from '../i18n/i18n';
 import {updateLocationList} from '../list/list';
 import stateLayer from './state';
@@ -18,7 +18,7 @@ export default function addLayers(map, restore) {
           const trainingSource = trainingLayer.getSource();
           trainingSource.on('featuresloadend', updateLocationList);
           trainingSource.on('featuresloadend', setData);
-          stateLayer.setVisible(false);
+          store('borderStyle', stateLayer.getStyle());
           map.addLayer(stateLayer);
           map.addLayer(trainingLayer);
           map.set('state', stateLayer);
