@@ -6,7 +6,7 @@ import spin from './i18n/translate';
 import createLayout from './html/layout';
 import addLayers from './layer/layer';
 import {store} from './util';
-import {createLocator, getLocation} from './control/locate';
+import {createLocator} from './control/locate';
 import {createLists} from './list/list';
 import createControlPanel from './control/control-panel';
 import createHelp from './control/help';

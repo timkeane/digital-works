@@ -177,6 +177,9 @@ export function getData() {
   return storage.data;
 }
 
-export function getTrainingByState() {
+export function getTrainingByState(feature) {
+  if (feature) {
+    return storage.trainingByState[feature.getId()];
+  }
   return storage.trainingByState;
 }

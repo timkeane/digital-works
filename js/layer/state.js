@@ -15,6 +15,6 @@ const layer = new Layer({
 });
 
 layer.set('name', 'state');
-// layer.set('featureHtml', html);
+layer.set('featureHtml', html);
 
 export default layer;

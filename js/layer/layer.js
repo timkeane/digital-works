@@ -5,6 +5,7 @@ import stateLayer from './state';
 import trainingLayer, {highlight, zoomToFeature} from './training';
 import $ from 'jquery';
 import {createEmpty, extend} from 'ol/extent';
+import {createPopup} from '../control/popup';
 
 const env = import.meta.env;
 const styleUrl = `${env.VITE_BASEMAP_URL}?token=${env.VITE_ARC_TOKEN}`;
@@ -53,6 +54,7 @@ export default function addLayers(map, restore) {
           map.set('state', stateLayer);
           map.set('training', trainingLayer);
           map.on('singleclick', highlight);
+          createPopup(map);
           zoomFullExtent(map);
           $('#zoom-full').on('click', () => {
             zoomFullExtent(map);

@@ -92,6 +92,10 @@ function showPopup(map, coordinate, features, htmlFeatures) {
   }
 }
 
+function layerFilter(layer) {
+  return layer.get('name') === 'training' || layer.get('name') === 'state';
+}
+
 function getFeatureHtmls(event) {
   if (getPopupOverlay().active) {
     const map = event.map;
@@ -101,7 +105,7 @@ function getFeatureHtmls(event) {
       const featureHtml = layer.get('featureHtml');
       htmlFeatures.push(featureHtml(feature, 'popup'));
       features.push(feature);
-    }, {hitTolerance: 1000});
+    }, {hitTolerance: 5, layerFilter});
     showPopup(map, event.coordinate, features, htmlFeatures);
   }
 }

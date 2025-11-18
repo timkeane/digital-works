@@ -1,38 +1,11 @@
 import $ from 'jquery';
-
-const displayProps = [
-  'Organization',
-  'Organization Type',
-  'Project Type',
-  'Number of People Trained',
-  'Year of Engagement'
-];
-
-function i18nAddress(session) {
-  const addr = session['Address'];
-  const city = session['City'];
-  const state = session['State'];
-  const zip = session['Zip Code'];
-  if ($('html').attr('dir') === 'rtl') {
-    return `${zip} ${state}, ${city}<br>${addr}`;
-  }
-  return `${addr}<br>${city}, ${state} ${zip}`;
-}
+import { getTrainingByState } from '../util';
 
 export default function html(feature, type) {
-  const sessions = feature.get('data');
-  const html = $(`<div class="feature-html"><h4>${i18nAddress(sessions[0])}</h4></div>`);
-  sessions.forEach((session, i) => {
-    const css = i === 0 ? 'first' : 'more';
-    const div = $(`<div class="session ${css}"></div>`);
-
-    html.append(div);
-    displayProps.forEach(prop => {
-      const value = session[prop];
-      if (value && value.trim()) {
-        div.append(`<div><span class="field">${prop}:</span> <span class="value">${value}</span></div>`);
-      }
-    });
-  });
+  console.warn(feature.getProperties());
+  
+  const state = feature.get('name');
+  const html = $(`<div class="feature-html"><h4>${state}</h4></div>`);
+  html.append(`<div><span class="field">Number of people trained:</span> <span class="value">${getTrainingByState(feature)}</span></div>`);
   return html;
 }
