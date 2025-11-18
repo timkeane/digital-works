@@ -9,13 +9,6 @@ function append(features) {
   source.addFeatures(features);
   return sort(source.getFeatures());
 }
-function setDistance(userCoord, feature) {
-  const geom = feature.getGeometry();
-  const featureCoord = geom.getCoordinates();
-  const line = new LineString([userCoord, featureCoord]);
-  const distance = line.getLength();
-  feature.set('distance', distance);
-}
 
 export function sort(features) {
   const userCoord = getLocation();

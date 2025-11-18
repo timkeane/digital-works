@@ -50,5 +50,4 @@ export default function createControlPanel() {
   $('#view-type input').on('change', setView);
   $('#map-type input').on('change', setMap);
   $('#chart-type input').on('change', setChart);
-
 }

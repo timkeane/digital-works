@@ -19,13 +19,23 @@ function i18nAddress(session) {
   return `${addr}<br>${city}, ${state} ${zip}`;
 }
 
+function appendDistance(html, feature) {
+  const meters = feature.get('distance');
+  if (meters !== undefined) {
+    const format = new Intl.NumberFormat('en-US', {maximumFractionDigits: 1});
+
+    const miles = format.format(meters / 1609.34);
+    html.append(`<div class="distance">${miles} mi</div>`);
+  }
+}
+
 export default function html(feature, type) {
   const sessions = feature.get('data');
   const html = $(`<div class="feature-html"><h4>${i18nAddress(sessions[0])}</h4></div>`);
   sessions.forEach((session, i) => {
     const css = i === 0 ? 'first' : 'more';
     const div = $(`<div class="session ${css}"></div>`);
-
+    appendDistance(html, feature);
     html.append(div);
     displayProps.forEach(prop => {
       const value = session[prop];

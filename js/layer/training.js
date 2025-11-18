@@ -40,11 +40,7 @@ function getFeature(eventOrFeature) {
 }
 
 export function highlight(eventOrFeature) {
-  console.warn(eventOrFeature.coordinate);
-  
   const feature = getFeature(eventOrFeature);
-  console.warn(feature);
-  
   source.getFeatures().forEach(feature => feature.set('highlight', false));
   store('selectedFeature', feature);
   listHighlight();

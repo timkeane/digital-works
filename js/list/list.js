@@ -1,37 +1,10 @@
 import $ from 'jquery';
-import {getFeaturesInView, getMap, getSelectedFeature, getTrainingLayer, getView} from '../util';
+import {getLocation, getSelectedFeature, getTrainingLayer} from '../util';
 import {highlight} from '../layer/training';
-import {storeChunksOfFeatures, getNextChunkOfFeatures} from './chunk';
-import {getAddress} from '../control/locate';
+import { LineString } from 'ol/geom';
+import { distance } from 'ol/coordinate';
 
 const tabsAndLists = {};
-
-function hideShowLocationMesssage(list) {
-    const count = list.find('li:visible').length;
-    const tab = tabsAndLists.tabs.location;
-    const message = tab.find('.message');
-    const hasItems = count > 0;
-    if (hasItems) {
-      const alert = $(`<div>
-        <span data-i18n="list.alert.showing"></span>
-        ${count}
-        <span data-i18n="list.alert.sites"></span>
-        ${getAddress()}
-        </div>`)
-        .localize().text();
-      list.attr('aria-alert', alert);
-      message.hide();
-    } else {
-      list.removeAttr('aria-alert');
-      message.show();
-    }
-}
-
-function hideShowChallengeMesssage(list) {
-  const tab = tabsAndLists.tabs.challenge;
-  const hasItems = list.children().length > 0;
-  tab.find('.message')[hasItems ? 'hide' : 'show']();
-}
 
 function locationOnClick(feature, h4) {
   h4.on('click', () => {
@@ -60,16 +33,7 @@ export function listHighlight() {
   }
 }
 
-// export function renderNextChunckOfFeatures(locationList) {
-//   const features = getNextChunkOfFeatures();
-//   const layer = getTrainingLayer();
-//   const fHtml = layer.get('featureHtml');
-//   features.forEach(feature => {
-//     appendToLocationList(locationList, feature, fHtml, layer.getVisible());
-//   });
-// }
-
-function sort(features) {
+function sortByState(features) {
   return features.sort((f0, f1) => {
     const d0 = f0.get('data')[0];
     const d1 = f1.get('data')[0];
@@ -84,11 +48,39 @@ function sort(features) {
   });
 }
 
-export function updateLocationList(event) {
+function setDistance(location, feature) {
+  const geom = feature.getGeometry();
+  const featureCoord = geom.getCoordinates();
+  const line = new LineString([location, featureCoord]);
+  const distance = line.getLength();
+  feature.set('distance', distance);
+}
+
+export function sortByDistance(location) {
+  const features = getTrainingLayer().getSource().getFeatures();
+  if (location) {
+    features.sort((f0, f1) => {
+      setDistance(location, f0);
+      setDistance(location, f1);
+      const dist0 = f0.get('distance');
+      const dist1 = f1.get('distance')
+      if (dist0 < dist1) {
+        return -1;
+      } else if (dist0 > dist1) {
+        return 1;
+      }
+      return 0
+    });
+    updateLocationList({features, distance: true});
+  }
+}
+
+export function updateLocationList(event) {  
   const locationList = $('#location-list').empty();
+  const features = event.features; 
   const layer = getTrainingLayer();
   const fHtml = layer.get('featureHtml');
-  const features = sort(event.features);
+  if (!event.distance) sortByState(features);
   features.forEach(feature => appendToLocationList(locationList, feature, fHtml, true));
   $('#locate button').removeClass('loading');
 }

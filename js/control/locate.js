@@ -3,6 +3,7 @@ import Overlay from 'ol/Overlay';
 import {getLocationOverlay, getView} from '../util';
 import {showAlert} from './dialog';
 import {hidePopup} from './popup';
+import { sortByDistance } from '../list/list';
 
 const env = import.meta.env;
 const token = env.VITE_ARC_TOKEN;
@@ -150,6 +151,7 @@ function displayOnMap(candidate) {
     const address = candidate.address;
     const locationOverlay = getLocationOverlay();
     locationOverlay.setPosition(location);
+    sortByDistance(location);
     view.animate({zoom: 14, center: location},
       () => {
         $('#locate button').removeClass('loading');
