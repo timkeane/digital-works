@@ -2,7 +2,7 @@ import Csv from './format/Csv';
 import Source from 'ol/source/Vector';
 import Layer from 'ol/layer/Vector';
 import style from './style/training';
-import html from '../feature/html';
+import html from '../feature/training';
 import {getMap, getSelectedFeature, getView, store} from '../util';
 import {listHighlight} from '../list/list';
 

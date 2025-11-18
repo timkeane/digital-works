@@ -2,7 +2,7 @@ import GeoJSON from 'ol/format/GeoJSON';
 import Source from 'ol/source/Vector';
 import Layer from 'ol/layer/Vector';
 import style from './style/state';
-import html from '../feature/html';
+import html from '../feature/state';
 
 const url = './data/state.json';
 

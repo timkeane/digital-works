@@ -14,8 +14,6 @@ let trainingExtent;
 
 function getTrainingExtent() {
   const features = trainingSource.getFeatures();
-  console.warn(features);
-  
   if (features.length > 0) {
     if (!trainingExtent) {
       trainingExtent = createEmpty();
