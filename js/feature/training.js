@@ -30,7 +30,7 @@ function appendDistance(html, feature) {
 
 export default function html(feature, type) {
   const sessions = feature.get('data');
-  const html = $(`<div class="feature-html"><h4>${i18nAddress(sessions[0])}</h4></div>`);
+  const html = $(`<div class="feature-html training"><h4>${i18nAddress(sessions[0])}</h4></div>`);
   sessions.forEach((session, i) => {
     const css = i === 0 ? 'first' : 'more';
     const div = $(`<div class="session ${css}"></div>`);

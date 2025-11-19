@@ -4,8 +4,12 @@
   padding-top: 1em;
 }
 
-.feature-html .session {
+li .feature-html .session {
   padding: 1em;
+}
+
+.popup .feature-html .session {
+  padding: .5em;
 }
 
 .feature-html h4 {
@@ -50,7 +54,6 @@
   margin-block: 0px;
   background-repeat: no-repeat;
   background-size: 20px;
-  padding-inline-start: 1em;
   cursor: pointer;
   font-size: 115%;
 }
@@ -236,4 +239,15 @@ table.provider.loading th {
 
 li .feature-html .session.more {
   padding-top: 0;
+}
+
+.feature-html.state h4 {
+  padding-left: .25em;
+}
+
+li .feature-html.training h4 {
+  padding-left: 1em;
+}
+.popup .feature-html.training h4 {
+  padding-left: .5em;
 }
