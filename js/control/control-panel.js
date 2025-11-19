@@ -3,6 +3,9 @@ import {getBorderStyle, getStateLayer, getTrainingLayer} from '../util';
 import {renderChart} from './chart';
 import countStyle from '../layer/style/state';
 
+const storyUrl = 'https://storymaps.arcgis.com/stories/c222fb7619ea49c5a4db939b77dee4e5';
+const statsUrl = 'https://app.powerbi.com/view?r=eyJrIjoiMTMyZmRhNzMtNWY5NC00OTlmLTgxNjEtZjA1OTFlNWIxZTE2IiwidCI6IjVhMjNkMTNlLTBhM2UtNDI5MS04ZDMzLTM5N2Y2YTEwZjEwYiJ9';
+
 function setTime(event) {
   const target = $(event.target);
   $('#time-frame label').removeClass('active');
@@ -65,8 +68,11 @@ function showControlPanel(event) {
 function showStories(event) {
   event.preventDefault();
   const stories = $('#stories-tab').hasClass('active');
-  $('#control-panel')[stories ? 'slideUp' : 'slideDown']();
-  $('#tab-col')[stories ? 'addClass' : 'removeClass']('stories');
+  const stats = $('#stats-tab').hasClass('active');
+  const external = stories || stats;
+  $('#external').attr('src', stories ? storyUrl : statsUrl);
+  $('#control-panel')[external ? 'slideUp' : 'slideDown']();
+  $('#tab-col')[external ? 'addClass' : 'removeClass']('stories');
 }
 
 export default function createControlPanel() {

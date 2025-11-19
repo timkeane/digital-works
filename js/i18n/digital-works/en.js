@@ -9,6 +9,7 @@ export const translation = {
   "tab.details.name": "Details",
   "list.alert.showing": "Showing",
   "list.alert.sites": "Broadband Sites in the vicinity of",
+  "tab.stats.name": "Stats",
   "tab.stories.name": "Stories",
   "tab.submission.name": "Submission",
   "tab.challenges.new": "New Selection",
