@@ -26,7 +26,13 @@ body.loading {
   position: relative;
 }
 
-.banner .logoState {
-  min-block-size: 4rem;
-  border-radius: 3px;
+
+@media only screen and (max-width: 575px) {
+  #banner .logoState img {
+    width: 8rem;
+  }
+
+  #banner h1 {
+    font-size: 1.75em;
+  }
 }

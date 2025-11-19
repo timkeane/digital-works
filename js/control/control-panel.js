@@ -49,7 +49,6 @@ function setChart(event) {
 function showView(event) {
   event.preventDefault();
   const view = $('#view-type input:checked').val();
-  console.warn(view);
   $('#control-panel').slideUp();
   $(`#${view}`).slideDown();
 }
@@ -57,7 +56,7 @@ function showView(event) {
 function showControlPanel(event) {
   event.preventDefault();
   if ($(window).width() < 575) {
-    const view = $('#view-type input:checked').val();
+    const view = $('#location-tab').hasClass('active') ? 'locations' : $('#view-type input:checked').val();
     $(`#${view}`).slideUp();
     $('#control-panel').slideDown();
   }
