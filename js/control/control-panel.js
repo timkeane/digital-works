@@ -62,6 +62,13 @@ function showControlPanel(event) {
   }
 }
 
+function showStories(event) {
+  event.preventDefault();
+  const stories = $('#stories-tab').hasClass('active');
+  $('#control-panel')[stories ? 'slideUp' : 'slideDown']();
+  $('#tab-col')[stories ? 'addClass' : 'removeClass']('stories');
+}
+
 export default function createControlPanel() {
   $('#time-frame input').on('change', setTime);
   $('#view-type input').on('change', setView);
@@ -69,4 +76,5 @@ export default function createControlPanel() {
   $('#chart-type input').on('change', setChart);
   $('#show-view').on('click', showView);
   $('#map-tab').on('click', showControlPanel);
+  $('.nav button').on('click', showStories)
 }
