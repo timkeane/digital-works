@@ -46,9 +46,28 @@ function setChart(event) {
   renderChart(target.val());
 }
 
+function showView(event) {
+  event.preventDefault();
+  const view = $('#view-type input:checked').val();
+  console.warn(view);
+  $('#control-panel').slideUp();
+  $(`#${view}`).slideDown();
+}
+
+function showControlPanel(event) {
+  event.preventDefault();
+  if ($(window).width() < 575) {
+    const view = $('#view-type input:checked').val();
+    $(`#${view}`).slideUp();
+    $('#control-panel').slideDown();
+  }
+}
+
 export default function createControlPanel() {
   $('#time-frame input').on('change', setTime);
   $('#view-type input').on('change', setView);
   $('#map-type input').on('change', setMap);
   $('#chart-type input').on('change', setChart);
+  $('#show-view').on('click', showView);
+  $('#map-tab').on('click', showControlPanel);
 }
