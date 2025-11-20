@@ -16,8 +16,6 @@ function createStateChart() {
     }
   });
 
-  // $(canvas).css('max-height', `${$(window).height() - 200}px`);
-
   chart = new Chart(canvas, {
     type: 'bar',
     data: {
@@ -40,8 +38,6 @@ function createTypeChart() {
       types[type]['Number of People Trained'] = types[type]['Number of People Trained'] + (session['Number of People Trained'] * 1);
     }
   });
-
-  // $(canvas).css('max-height', `${$(window).height() - 200}px`);
 
   chart = new Chart(canvas, {
     type: 'bar',
@@ -66,10 +62,6 @@ function createYearChart() {
     }
   });
 
-  // $(canvas).css('max-height', `${$(window).height() - 200}px`);
-
-  console.warn(Object.values(years));
-  
   chart = new Chart(canvas, {
     type: 'bar',
     data: {
