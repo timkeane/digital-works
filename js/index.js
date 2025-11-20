@@ -50,6 +50,7 @@ function load() {
         $('#search').trigger('focus');
         createChart();
         $('body').removeClass('loading');
+        $(window).trigger('resize');
       });
       spin();
 
