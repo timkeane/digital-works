@@ -72,7 +72,8 @@ function showStories(event) {
   const external = stories || stats;
   $('#external').attr('src', stories ? storyUrl : statsUrl);
   $('#control-panel')[external ? 'slideUp' : 'slideDown']();
-  $('#tab-col')[external ? 'addClass' : 'removeClass']('stories');
+  $('#tab-col')[external ? 'addClass' : 'removeClass']('external');
+  $('#tab-content')[external ? 'addClass' : 'removeClass']('external');
 }
 
 export default function createControlPanel() {

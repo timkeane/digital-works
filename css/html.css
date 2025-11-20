@@ -144,9 +144,11 @@ body.intro .modal-backdrop {
 
 #tab-content {
   overflow-y: auto;
+  background: var(--cOnPrimary);
 }
 
-#tab-content.map-active {
+#tab-col.external, #tab-content.map-active, #tab-content.external {
+  width: 100%;
   overflow-y: hidden;
 }
 

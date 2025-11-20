@@ -19,7 +19,7 @@
 
 body.loading {
   background-image: url("../../img/digital-works/loading.avif");
-  background-color: #fff;
+  background-color: var(--cOnPrimary);
 }
 
 .banner .logoState {
@@ -28,12 +28,8 @@ body.loading {
 
 #external {
   width: 100%;
-  height: calc(100% - 1em);
-  padding: 1em;
-}
-
-#tab-col.stories {
-  width: 100%
+  height: calc(100% - .5em);
+  margin-top: .5em;
 }
 
 @media only screen and (max-width: 575px) {

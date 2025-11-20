@@ -21,16 +21,21 @@ export default class Csv extends Id {
     this.y = options.y;
   }
   readFeature(source, options) {
-    const feature = super.readFeature(source, options);
-    const point = new Point([source[this.x] * 1, source[this.y] * 1]);
-    feature.setGeometry(point.transform(this.dataProjection, this.defaultFeatureProjection));
-    return feature;
+    const x = source[this.x];
+    const y = source[this.y];
+    if (!isNaN(x)) {
+      const feature = super.readFeature(source, options);
+      const point = new Point([x * 1, y * 1]);
+      feature.setGeometry(point.transform(this.dataProjection, this.defaultFeatureProjection));
+      return feature;
+    }
   }
   readFeatures(source, options) {
     const features = [];
     const parsed = Papa.parse(source, papaConfig);
     parsed.data.forEach(row => {
-      features.push(this.readFeature(row));
+      const feature = this.readFeature(row);
+      if (feature) features.push(feature);
     });
     return this.aggregate(features);
   }
