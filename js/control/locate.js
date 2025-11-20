@@ -186,7 +186,7 @@ function toggleSearchType() {
   }
 }
 
-export function createLocator(map, restore) {
+export function createLocator(map) {
   const form = $('<form id="locate"></form>');
   const div = $('<div class="form-group search-map"><ul id="possible" class="list-group"></ul><button type="submit" class="btn btn-primary focus-ring" data-i18n="[aria-label]search"><div></div></button></div>');
   const input = $('<input type="text" class="form-control focus-ring" id="search" data-i18n="[placeholder]form.search.placeholder;[aria-label]form.search.placeholder">');
@@ -222,13 +222,4 @@ export function createLocator(map, restore) {
   map.set('locationOverlay', locationOverlay);
   $(form).on('submit', handleSearch);
   $('#search').on('keyup', handleSuggest);
-
-  // if (restore) {
-  //   const lastLocation = restoreLocation();
-  //   if (lastLocation !== undefined) {
-  //     $('#locate button').addClass('loading');
-  //     displayOnMap(lastLocation);
-  //     $('#search').val(lastLocation.address);
-  //   }
-  // }
 }

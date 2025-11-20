@@ -10,9 +10,9 @@ import {createLocator} from './control/locate';
 import {createLists} from './list/list';
 import createControlPanel from './control/control-panel';
 import createHelp from './control/help';
-import {createLayerControl} from './control/layer';
 import {createChart} from './control/chart';
 import createZoomFull from './control/ZoomFull';
+import { createLegend } from './control/legend';
 
 function removeRotate(map) {
   const controls = map.getControls().getArray();
@@ -22,7 +22,7 @@ function removeRotate(map) {
   map.removeControl(rotate);
 }
 
-function load(restore) {
+function load() {
   createLayout().then(layout => {
     const map = new Map({target: layout.map});
 
@@ -37,12 +37,12 @@ function load(restore) {
     removeRotate(map);
     store('map', map);
 
-    addLayers(map, restore).then(map => {
+    addLayers(map).then(map => {
       createHelp(layout.banner);
-      createLocator(map, restore);
-      createLists(layout, restore);
+      createLocator(map);
+      createLists(layout);
+      createLegend(map);
       createControlPanel();
-      createLayerControl();
       createZoomFull(map);
       map.once('postrender', () => {
         $(window).trigger('resize');

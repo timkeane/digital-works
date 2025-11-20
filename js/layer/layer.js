@@ -6,11 +6,12 @@ import trainingLayer, {highlight, zoomToFeature} from './training';
 import $ from 'jquery';
 import {createPopup} from '../control/popup';
 import {forMobile} from '../html/resize';
+import { updateLegend } from '../control/legend';
 
 const env = import.meta.env;
 const styleUrl = `${env.VITE_BASEMAP_URL}?token=${env.VITE_ARC_TOKEN}`;
 
-export default function addLayers(map, restore) {
+export default function addLayers(map) {
   $('#map-tab').on('click', zoomToFeature);
   return new Promise((resolve, reject) => {
     import('ol-mapbox-style').then(olms => {
@@ -20,6 +21,7 @@ export default function addLayers(map, restore) {
           trainingSource.on('featuresloadend', updateLocationList);
           trainingSource.on('featuresloadend', setData);
           trainingSource.on('featuresloadend', forMobile);
+          trainingSource.on('featuresloadend', updateLegend);
           store('borderStyle', stateLayer.getStyle());
           map.addLayer(stateLayer);
           map.addLayer(trainingLayer);

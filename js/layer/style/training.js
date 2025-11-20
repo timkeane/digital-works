@@ -4,11 +4,7 @@ import Stroke from 'ol/style/Stroke';
 import Fill from 'ol/style/Fill';
 
 export default function(feature, resolution) {
-  const sessions = feature.get('data');
-  let people = 0;
-  sessions.forEach(session => {
-    people += (session['Number of People Trained'] * 1);
-  });
+  const people = feature.get('people');
   let radius = people / 200;
   if (radius < 5) radius = 5;
   return new Style({

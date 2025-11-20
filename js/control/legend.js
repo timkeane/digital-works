@@ -1,64 +1,61 @@
 import $ from 'jquery';
 import Control from 'ol/control/Control';
-import {getBgLayer, getPrimaryLayer} from '../util';
+import {getTrainingLayer, getTrainingByState, getTrainingByLocation, formatNumber} from '../util';
+import * as ss from 'simple-statistics';
 
-const html = `<div id="legend" class="legend">
-  <div class="legend-content">
-    <div class="layer">
-      <input id="primary-check" type="checkbox"
-        class="form-check-input layer-check"
-        checked disabled>
-      <h3>
-        <img src="img/served.svg" data-i18n="[alt]legend.served">
-        <label for="primary-check" data-i18n="layer.primary.name">
-      </h3>
-    </div>
-    <div class="layer" aria-hidden="true">
-      <input id="bg-check" type="checkbox"
-        class="form-check-input layer-check">
-      <h3>
-        <img src="img/bg.svg" data-i18n="[alt]layer.bg.name">
-        <label for="bg-check" data-i18n="layer.bg.name"></label></h3>
-    </div>
-  </div>
+const html = `<div id="legend">
+  <h3>Legend</h3>
+  <ul class="buckets">
+    <li class="low"><div></div><span></span></li>
+    <li class="high"><div></div><span></span></li>
+    <li class="bucket-0"><div></div><span class="from"></span> - <span class="to"></span></li>
+    <li class="bucket-1"><div></div><span class="from"></span> - <span class="to"></span></li>
+    <li class="bucket-2"><div></div><span class="from"></span> - <span class="to"></span></li>
+    <li class="bucket-3"><div></div><span class="from"></span> - <span class="to"></span></li>
+    <li class="bucket-4"><div></div><span class="from"></span> - <span class="to"></span></li>
+  </ul>
 </div>`;
 
 $('body').append(html);
 
-function toggleLayer(event) {
-  const input = $(event.target);
-  const layer = input.data('layer');
-  const visible = input.is(':checked');
-  const which = layer.get('name');
-  layer.setVisible(visible);
-  $(`#location-list li.${which}`)[visible ? 'show' : 'hide']();
+export function updateLegend() {
+  const trainingLayer = getTrainingLayer();
+  const layer = trainingLayer.getVisible() ? 'training' : 'state';
+  const data = layer === 'training' ?  getTrainingByLocation() : getTrainingByState();
+
+  if (data) {
+    const buckets = ss.equalIntervalBreaks(Object.values(data), 5);
+    if (layer === 'state') {
+      for (let i = 0; i < 5; i = i + 1) {
+        const from = Math.ceil(buckets[i]);
+        const to = Math.ceil(buckets[i + 1]);
+        $(`#legend .bucket-${i} .from`).html(formatNumber(from));
+        $(`#legend .bucket-${i} .to`).html(formatNumber(to));
+      }
+    } else {
+      const max = Math.floor(buckets[5] / 100);
+      $(`#legend .low div`).css({width: '10px', height: '10px', 'margin-left': `${max / 2.5}px`});
+      $(`#legend .high div`).css({width: `${max}px`, height: `${max}px`});
+      $(`#legend .low span`).html(1);
+      $(`#legend .high span`).html(formatNumber(buckets[5]));
+      $(`#legend .high span`).css('padding-top', `${max / 4}px`);
+    }
+  }
+  
+  $('#legend').removeClass('training').removeClass('state').addClass(layer === 'training' ? 'training' : 'state');
+  $('#legend h3').html(layer === 'training' ? 'People trained<br>by location' : 'People trained<br>by state');
 }
 
-export function createLegend(map, layersTab) {
+function toggle() {
+  const minimized = $('#legend').hasClass('minimized');
+  $('#legend')[minimized ? 'removeClass' : 'addClass']('minimized');
+}
+
+export function createLegend(map) {
   const legend =  $('#legend');
-  const view = map.getView();
-
-  legend.find('#primary-check')
-    .data('layer', getPrimaryLayer())
-    .on('change', toggleLayer);
-
-  legend.find('#bg-check')
-    .data('layer', getBgLayer())
-    .on('change', toggleLayer);
-
-  view.on('change:resolution', () => {
-    const input = $('#primary-check');
-    const zoom = view.getZoom();
-    const layer = input.data('layer');
-    const legLayer = input.parent();
-    const disabled = zoom <= layer.getMinZoom();
-    const title = disabled ? $('<span data-i18n="legend.disabled"/>').localize().html() : '';
-    $(input).prop('disabled', disabled);
-    legLayer[disabled ? 'addClass' : 'removeClass']('disabled')
-        .attr({title, 'aria-label': title});
-    layersTab.find('p.message')[disabled ? 'slideDown' : 'slideUp']();
-  });
-
-  const control = new Control({target: layersTab.get(0), element: legend.get(0)});
+  const control = new Control({element: legend.get(0)});
+  const trainingLayer = getTrainingLayer();
   control.setMap(map);
+  trainingLayer.on('change:visible', updateLegend);
+  legend.on('click', toggle);
 }

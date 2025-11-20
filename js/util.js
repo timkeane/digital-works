@@ -119,9 +119,18 @@ export function formatNumber(number) {
 }
 
 export function setData(event) {
+  storage.trainingByLocation = {};
   event.features.forEach(feature => {
-    storage.data = storage.data.concat(feature.get('data'));
+    const sessions = feature.get('data');
+    let people = 0;
+    sessions.forEach(session => {
+      people += (session['Number of People Trained'] * 1);
+    });
+    feature.set('people', people);
+    storage.trainingByLocation[feature.getId()] = people;
+    storage.data = storage.data.concat(sessions);
   });
+  
   const prop = 'State';
   const data = getData();
   const states = {};
@@ -140,6 +149,10 @@ export function getData() {
   return storage.data;
 }
 
+export function getTrainingByLocation() {
+  return storage.trainingByLocation;
+}
+
 export function getTrainingByState(feature) {
   if (feature) {
     return storage.trainingByState[feature.getId()];
@@ -150,3 +163,4 @@ export function getTrainingByState(feature) {
 export function getBorderStyle() {
   return storage.borderStyle;
 }
+
