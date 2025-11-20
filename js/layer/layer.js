@@ -5,6 +5,7 @@ import stateLayer from './state';
 import trainingLayer, {highlight, zoomToFeature} from './training';
 import $ from 'jquery';
 import {createPopup} from '../control/popup';
+import {forMobile} from '../html/resize';
 
 const env = import.meta.env;
 const styleUrl = `${env.VITE_BASEMAP_URL}?token=${env.VITE_ARC_TOKEN}`;
@@ -18,6 +19,7 @@ export default function addLayers(map, restore) {
           const trainingSource = trainingLayer.getSource();
           trainingSource.on('featuresloadend', updateLocationList);
           trainingSource.on('featuresloadend', setData);
+          trainingSource.on('featuresloadend', forMobile);
           store('borderStyle', stateLayer.getStyle());
           map.addLayer(stateLayer);
           map.addLayer(trainingLayer);

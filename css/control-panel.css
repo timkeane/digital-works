@@ -38,6 +38,34 @@
 
 #show-view {
   display: inline-block;
+  padding-right: 2.75em;
+  background-size: 24px;
+  background-position: calc(100% - 12px) center;
+  background-repeat: no-repeat;
+}
+
+#show-view.map {
+  background-image: url('../img/us-hover.png');
+}
+
+#show-view.map:active {
+  background-image: url('../img/us.png');
+}
+
+#show-view.chart {
+  background-image: url('../img/chart.svg');
+}
+
+#show-view.chart:active {
+  background-image: url('../img/chart-hover.svg');
+}
+
+#show-view.detail {
+  background-image: url('../img/detail.svg');
+}
+
+#show-view.detail:active {
+  background-image: url('../img/detail-hover.svg');
 }
 
 @media only screen and (min-width: 575px) {

@@ -15,15 +15,19 @@ function setTime(event) {
 
 function setView(event) {
   const target = $(event.target);
+  const view = target.val();
   $('#view-type label').removeClass('active');
   $(`label[for=${target.attr('id')}]`).addClass('active');
-  if (target.val() === 'map') {
+  $('#show-view').removeClass('detail').removeClass('map').removeClass('chart').addClass(view);
+  if (view === 'map') {
+    $('#show-view').attr('aria-label', 'Show map').attr('title', 'Show map');
     $('#map-type').slideDown();
     $('#chart-type').slideUp();
     $('#chart').removeClass('active').attr('aria-hidden', true);
     $('#map').addClass('active')
       .attr('aria-hidden', false);
   } else {
+    $('#show-view').attr('aria-label', 'Show chart').attr('title', 'Show chart');
     $('#map-type').slideUp();
     $('#chart-type').slideDown();
     $('#map').removeClass('active').attr('aria-hidden', true);
@@ -83,5 +87,9 @@ export default function createControlPanel() {
   $('#chart-type input').on('change', setChart);
   $('#show-view').on('click', showView);
   $('#map-tab').on('click', showControlPanel);
-  $('.nav button').on('click', showStories)
+  $('.nav button').on('click', showStories);
+  $('#location-tab').on('click', () => {
+    $('#show-view').attr('aria-label', 'Show details').attr('title', 'Show details');
+    $('#show-view').removeClass('map').removeClass('chart').addClass('detail')
+  });
 }

@@ -11,8 +11,19 @@ function tabContentHeight(event) {
   $('#map-container').css('height', `${windowHeight - bannerHeight - navHeight}px`);
 }
 
+
+export function forMobile() {
+  if ($(window).width() < 575) {
+    if ($('#show-view').is(':visible')) {
+      $('#map').removeClass('active');
+    }
+  }  
+}
+
 export function createResizeHandler() {
   $(window).on('resize', tabContentHeight);
   $('#nav button').on('click', tabContentHeight);
-  setTimeout(tabContentHeight, 500);
+  
+  setTimeout(() => tabContentHeight, 200);
+
 }
