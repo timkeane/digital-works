@@ -68,22 +68,22 @@
   background-color: #045a8d;
 }
 
-#legend.training div {
+#legend.location div {
   background-color: #3399CC;
   border: 1px solid #fff;
   border-radius: 50%;
 }
 
-#legend.training li {
+#legend.location li {
   display: none;
 }
 
-#legend.training li.low,
-#legend.training li.high {
+#legend.location li.low,
+#legend.location li.high {
   display: block;
 }
 
-#legend.training span {
+#legend.location span {
   display: block;
   float: right;
 }

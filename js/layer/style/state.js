@@ -1,7 +1,7 @@
 import Style from 'ol/style/Style';
 import Stroke from 'ol/style/Stroke';
 import Fill from 'ol/style/Fill';
-import {getTrainingByState} from '../../util';
+import {getHeadCountByState} from '../../util';
 import * as ss from 'simple-statistics';
 
 const colors = [
@@ -13,8 +13,8 @@ const colors = [
 ];
 
 export default function(feature, resolution) {
-  const buckets = ss.equalIntervalBreaks(Object.values(getTrainingByState()), 5);
-  const count = getTrainingByState()[feature.getId()] || 0;
+  const buckets = ss.equalIntervalBreaks(Object.values(getHeadCountByState()), 5);
+  const count = getHeadCountByState()[feature.getId()] || 0;
   
   let bucket = 0;
   while (bucket < 5) {

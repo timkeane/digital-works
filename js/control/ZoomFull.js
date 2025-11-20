@@ -12,9 +12,9 @@ class ZoomFull extends Control {
     element.find('button').on('click', this.zoom.bind(this));
   }
 
-  getTrainingExtent() {
-    const trainingLayer = this.getMap().get('training');
-    const features = trainingLayer.getSource().getFeatures();
+  getLocationExtent() {
+    const layer = this.getMap().get('location');
+    const features = layer.getSource().getFeatures();
     if (features.length > 0) {
       if (!this.trainingExtent) {
         this.trainingExtent = createEmpty();
@@ -28,13 +28,13 @@ class ZoomFull extends Control {
 
   zoom() {
     const i = setInterval(() => {
-      if (this.getTrainingExtent()) {
+      if (this.getLocationExtent()) {
         const map = this.getMap();
         const view = map.getView();
         const size = map.getSize();
         const w = size[0];
         const padding = [w * .02, w * .02, w * .02, w * .02];
-        view.fit(this.getTrainingExtent(), {padding, size, duration: 500});
+        view.fit(this.getLocationExtent(), {padding, size, duration: 500});
         clearInterval(i);
       }
     }, 100);

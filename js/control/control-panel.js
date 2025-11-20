@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import {getBorderStyle, getStateLayer, getTrainingLayer} from '../util';
+import {getBorderStyle, getStateLayer, getLocationLayer} from '../util';
 import {renderChart} from './chart';
 import countStyle from '../layer/style/state';
 
@@ -34,14 +34,13 @@ function setView(event) {
       .attr('aria-hidden', false);
     setChart({target: $('#chart-type input:checked').get(0)});
   }
-  
 }
 
 function setMap(event) {
   const target = $(event.target);
   $('#map-type label').removeClass('active');
   $(`label[for=${target.attr('id')}]`).addClass('active');
-  getTrainingLayer().setVisible(target.val() === 'location');
+  getLocationLayer().setVisible(target.val() === 'location');
   getStateLayer().setStyle(target.val() === 'state' ? countStyle : getBorderStyle());
 }
 

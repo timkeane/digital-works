@@ -2,11 +2,11 @@ import {setData, store} from '../util';
 import {getCurrentLanguage} from '../i18n/i18n';
 import {updateLocationList} from '../list/list';
 import stateLayer from './state';
-import trainingLayer, {highlight, zoomToFeature} from './training';
+import locationLayer, {highlight, zoomToFeature} from './location';
 import $ from 'jquery';
 import {createPopup} from '../control/popup';
 import {forMobile} from '../html/resize';
-import { updateLegend } from '../control/legend';
+import {updateLegend} from '../control/legend';
 
 const env = import.meta.env;
 const styleUrl = `${env.VITE_BASEMAP_URL}?token=${env.VITE_ARC_TOKEN}`;
@@ -17,16 +17,16 @@ export default function addLayers(map) {
     import('ol-mapbox-style').then(olms => {
       return new Promise(() => {
         olms.apply(map, `${styleUrl}&language=${getCurrentLanguage()}`).then(map => {
-          const trainingSource = trainingLayer.getSource();
-          trainingSource.on('featuresloadend', updateLocationList);
-          trainingSource.on('featuresloadend', setData);
-          trainingSource.on('featuresloadend', forMobile);
-          trainingSource.on('featuresloadend', updateLegend);
+          const locationSource = locationLayer.getSource();
+          locationSource.on('featuresloadend', updateLocationList);
+          locationSource.on('featuresloadend', setData);
+          locationSource.on('featuresloadend', forMobile);
+          locationSource.on('featuresloadend', updateLegend);
           store('borderStyle', stateLayer.getStyle());
           map.addLayer(stateLayer);
-          map.addLayer(trainingLayer);
+          map.addLayer(locationLayer);
           map.set('state', stateLayer);
-          map.set('training', trainingLayer);
+          map.set('location', locationLayer);
           map.on('singleclick', highlight);
           createPopup(map);
           resolve(map);

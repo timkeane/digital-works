@@ -27,8 +27,8 @@ export function getView() {
   return getMap().getView();
 }
 
-export function getTrainingLayer() {
-  return getMap().get('training');
+export function getLocationLayer() {
+  return getMap().get('location');
 }
 
 export function getStateLayer() {
@@ -119,7 +119,7 @@ export function formatNumber(number) {
 }
 
 export function setData(event) {
-  storage.trainingByLocation = {};
+  storage.headCountByLocation = {};
   event.features.forEach(feature => {
     const sessions = feature.get('data');
     let people = 0;
@@ -127,37 +127,37 @@ export function setData(event) {
       people += (session['Number of People Trained'] * 1);
     });
     feature.set('people', people);
-    storage.trainingByLocation[feature.getId()] = people;
+    storage.headCountByLocation[feature.getId()] = people;
     storage.data = storage.data.concat(sessions);
   });
   
   const prop = 'State';
   const data = getData();
   const states = {};
-  data.forEach(training => {
-    if (training[prop]) {
-      let number = training['Number of People Trained'];
+  data.forEach(session => {
+    if (session[prop]) {
+      let number = session['Number of People Trained'];
       number = number?.trim() ? parseInt(number) : 0;
-      states[training[prop]] = states[training[prop]] || 0;
-      states[training[prop]] = states[training[prop]] + number;
+      states[session[prop]] = states[session[prop]] || 0;
+      states[session[prop]] = states[session[prop]] + number;
     }
   });
-  storage.trainingByState = states;
+  storage.headCountByState = states;
 }
 
 export function getData() {
   return storage.data;
 }
 
-export function getTrainingByLocation() {
-  return storage.trainingByLocation;
+export function getHeadCountByLocation() {
+  return storage.headCountByLocation;
 }
 
-export function getTrainingByState(feature) {
+export function getHeadCountByState(feature) {
   if (feature) {
-    return storage.trainingByState[feature.getId()];
+    return storage.headCountByState[feature.getId()];
   }
-  return storage.trainingByState;
+  return storage.headCountByState;
 }
 
 export function getBorderStyle() {

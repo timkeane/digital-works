@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import Overlay from 'ol/Overlay';
-import {getPopupOverlay, getTrainingLayer} from '../util';
+import {getPopupOverlay, getLocationLayer} from '../util';
 
 const html = $(`<div id="popup" class="popup">
   <a href="#" id="popup-closer" class="popup-closer" data-i18n=[aria-label]btn.close.name}" rel="noopener"></a>
@@ -85,7 +85,7 @@ function showPopup(map, coordinate, features, htmlFeatures) {
 function layerFilter(layer) {
   const name = layer.get('name');
   if (layer)
-  return name === 'training' || (name === 'state' && !getTrainingLayer().getVisible());
+  return name === 'training' || (name === 'state' && !getLocationLayer().getVisible());
 }
 
 function getFeatureHtmls(event) {

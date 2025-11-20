@@ -1,7 +1,7 @@
 import Csv from './format/Csv';
 import Source from 'ol/source/Vector';
 import Layer from 'ol/layer/Vector';
-import style from './style/training';
+import style from './style/location';
 import html from '../feature/training';
 import {getMap, getSelectedFeature, getView, store} from '../util';
 import {listHighlight} from '../list/list';
@@ -25,11 +25,11 @@ const layer = new Layer({
   minZoom: 0
 });
 
-layer.set('name', 'training');
+layer.set('name', 'location');
 layer.set('featureHtml', html);
 
 function layerFilter(layer) {
-  return layer.get('name') === 'training';
+  return layer.get('name') === 'location';
 }
 
 function getFeature(eventOrFeature) {

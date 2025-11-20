@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import {getMap, getView, getTrainingLayer} from '../util';
+import {getMap, getView, getLocationLayer} from '../util';
 import Overlay from 'ol/Overlay';
 
 function filter(feature, flatStyle) {
@@ -44,7 +44,7 @@ export function pulseFeature(feature, listClick) {
   map.addOverlay(overlay);
 
   const id = feature.getId();
-  const layer = getTrainingLayer();
+  const layer = getLocationLayer();
   const pulse = $(overlay.getElement());
   const flatStyle =layer.getStyle();
   const scale = getIconScale(getView(), feature, flatStyle);

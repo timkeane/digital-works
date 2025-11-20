@@ -1,3 +1,3 @@
-import {getMap, getTrainingLayer} from '../util';
+import {getMap, getLocationLayer} from '../util';
 
 

@@ -1,6 +1,6 @@
 import $ from 'jquery';
-import {getLocation, getSelectedFeature, getTrainingLayer} from '../util';
-import {highlight} from '../layer/training';
+import {getLocation, getSelectedFeature, getLocationLayer} from '../util';
+import {highlight} from '../layer/location';
 import { LineString } from 'ol/geom';
 import { distance } from 'ol/coordinate';
 
@@ -57,7 +57,7 @@ function setDistance(location, feature) {
 }
 
 export function sortByDistance(location) {
-  const features = getTrainingLayer().getSource().getFeatures();
+  const features = getLocationLayer().getSource().getFeatures();
   if (location) {
     features.sort((f0, f1) => {
       setDistance(location, f0);
@@ -78,7 +78,7 @@ export function sortByDistance(location) {
 export function updateLocationList(event) {  
   const locationList = $('#location-list').empty();
   const features = event.features; 
-  const layer = getTrainingLayer();
+  const layer = getLocationLayer();
   const fHtml = layer.get('featureHtml');
   if (!event.distance) sortByState(features);
   features.forEach(feature => appendToLocationList(locationList, feature, fHtml, true));

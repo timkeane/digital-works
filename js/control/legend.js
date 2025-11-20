@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import Control from 'ol/control/Control';
-import {getTrainingLayer, getTrainingByState, getTrainingByLocation, formatNumber} from '../util';
+import {getLocationLayer, getHeadCountByState, getHeadCountByLocation, formatNumber} from '../util';
 import * as ss from 'simple-statistics';
 
 const html = `<div id="legend">
@@ -19,9 +19,9 @@ const html = `<div id="legend">
 $('body').append(html);
 
 export function updateLegend() {
-  const trainingLayer = getTrainingLayer();
-  const layer = trainingLayer.getVisible() ? 'training' : 'state';
-  const data = layer === 'training' ?  getTrainingByLocation() : getTrainingByState();
+  const trainingLayer = getLocationLayer();
+  const layer = trainingLayer.getVisible() ? 'location' : 'state';
+  const data = layer === 'location' ?  getHeadCountByLocation() : getHeadCountByState();
 
   if (data) {
     const buckets = ss.equalIntervalBreaks(Object.values(data), 5);
@@ -42,8 +42,8 @@ export function updateLegend() {
     }
   }
   
-  $('#legend').removeClass('training').removeClass('state').addClass(layer === 'training' ? 'training' : 'state');
-  $('#legend h3').html(layer === 'training' ? 'People trained<br>by location' : 'People trained<br>by state');
+  $('#legend').removeClass('location').removeClass('state').addClass(layer === 'location' ? 'location' : 'state');
+  $('#legend h3').html(layer === 'location' ? 'People trained<br>by location' : 'People trained<br>by state');
 }
 
 function toggle() {
@@ -54,7 +54,7 @@ function toggle() {
 export function createLegend(map) {
   const legend =  $('#legend');
   const control = new Control({element: legend.get(0)});
-  const trainingLayer = getTrainingLayer();
+  const trainingLayer = getLocationLayer();
   control.setMap(map);
   trainingLayer.on('change:visible', updateLegend);
   legend.on('click', toggle);
