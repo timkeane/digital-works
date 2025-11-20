@@ -55,7 +55,10 @@ function setChart(event) {
 
 function showView(event) {
   event.preventDefault();
-  const view = $('#view-type input:checked').val();
+  let view = $('#view-type input:checked').val();
+  if ($('#show-view').hasClass('detail')) view = 'detail';
+  console.warn(view);
+  $('#map')[view === 'map' ? 'addClass' : 'removeClass']('active');
   $('#control-panel').slideUp();
   $(`#${view}`).slideDown();
 }
@@ -65,6 +68,7 @@ function showControlPanel(event) {
   if ($(window).width() < 575) {
     const view = $('#location-tab').hasClass('active') ? 'locations' : $('#view-type input:checked').val();
     $(`#${view}`).slideUp();
+    $(view === 'map' ? '#chart-type' : '#map-type').hide();
     $('#control-panel').slideDown();
   }
 }
