@@ -10,7 +10,6 @@ function setTime(event) {
   const target = $(event.target);
   $('#time-frame label').removeClass('active');
   $(`label[for=${target.attr('id')}]`).addClass('active');
-
 }
 
 function setView(event) {

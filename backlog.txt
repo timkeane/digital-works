@@ -1,3 +1,2 @@
-legends
 flip chart for mobile
 change location naming to training
