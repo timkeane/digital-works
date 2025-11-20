@@ -85,7 +85,7 @@ function showPopup(map, coordinate, features, htmlFeatures) {
 function layerFilter(layer) {
   const name = layer.get('name');
   if (layer)
-  return name === 'training' || (name === 'state' && !getLocationLayer().getVisible());
+  return name === 'location' || (name === 'state' && !getLocationLayer().getVisible());
 }
 
 function getFeatureHtmls(event) {
