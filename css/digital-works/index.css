@@ -32,12 +32,28 @@ body.loading {
   margin-top: .5em;
 }
 
+.modal-header h2 {
+  font-size: 1.5em;
+}
+
+div#modal.intro {
+  top: 5em;
+}
+
 @media only screen and (max-width: 575px) {
   #banner .logoState img {
     width: 8rem;
   }
 
   #banner h1 {
-    font-size: 1.75em;
+    font-size: 1.1em;
   }
+
+  .modal-header h2 {
+    font-size: 1em;
+  }
+
+  div#modal.intro {
+  top: 3.25em;
+}
 }

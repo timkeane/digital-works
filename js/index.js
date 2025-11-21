@@ -13,6 +13,7 @@ import createHelp from './control/help';
 import {createChart} from './control/chart';
 import createZoomFull from './control/ZoomFull';
 import { createLegend } from './control/legend';
+import { showIntro } from './control/dialog';
 
 function removeRotate(map) {
   const controls = map.getControls().getArray();
@@ -23,6 +24,7 @@ function removeRotate(map) {
 }
 
 function load() {
+  showIntro();
   createLayout().then(layout => {
     const map = new Map({target: layout.map});
 

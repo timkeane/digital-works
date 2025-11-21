@@ -1,2 +1,4 @@
 flip chart for mobile
 change location naming to training
+
+proj type = community planning not in people stats
