@@ -37,9 +37,10 @@ export default function html(feature, type) {
     appendDistance(html, feature);
     html.append(div);
     displayProps.forEach(prop => {
+      const lngKey = feature.get('Organization Type').replace(/\//g, '_').replace(/ /g, '_').toLowerCase();
       const value = session[prop];
       if (value && value.trim()) {
-        div.append(`<div><span class="field">${prop}:</span> <span class="value">${value}</span></div>`);
+        div.append(`<div><span class="field">${prop}:</span> <span class="value" i18n="org.type.${lngKey}"></span></div>`);
       }
     });
   });

@@ -11,6 +11,8 @@ const svg = {
 
 const numberFormat = new Intl.NumberFormat(getCurrentLanguage(), {maximumFractionDigits: 1});
 
+window.storage=storage;
+
 export function getSelectedFeature() {
   return storage.selectedFeature;
 }
@@ -119,6 +121,8 @@ export function formatNumber(number) {
 }
 
 export function setData(event) {
+  console.warn(event);
+  
   storage.headCountByLocation = {};
   event.features.forEach(feature => {
     const sessions = feature.get('data');

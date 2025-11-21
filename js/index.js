@@ -9,11 +9,10 @@ import {store} from './util';
 import {createLocator} from './control/locate';
 import {createLists} from './list/list';
 import createControlPanel from './control/control-panel';
-import createHelp from './control/help';
 import {createChart} from './control/chart';
 import createZoomFull from './control/ZoomFull';
-import { createLegend } from './control/legend';
-import { showIntro } from './control/dialog';
+import {createLegend} from './control/legend';
+import {showIntro} from './control/dialog';
 
 function removeRotate(map) {
   const controls = map.getControls().getArray();
@@ -40,7 +39,6 @@ function load() {
     store('map', map);
 
     addLayers(map).then(map => {
-      createHelp(layout.banner);
       createLocator(map);
       createLists(layout);
       createLegend(map);
