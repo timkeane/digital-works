@@ -13,13 +13,11 @@ export default function() {
   return new Promise((resolve, reject) => {
     import(`./banner/${getAppPath()}.js`).then(html => {
       const banner = $(html.default).attr('id', 'banner').addClass('banner');
-      const challengeTab = $('#challenges');
       $('body').prepend(banner.localize());
       banner.find('h1, div').on('click', () => {
-        document.location = `./?locale=${$('html').prop('lang')}`;
+        document.location = `./index.html?locale=${$('html').prop('lang')}`;
       });
       createResizeHandler();
-      store('challengeTab', challengeTab);
       setTabAction();
       resolve({
         banner,
@@ -27,8 +25,6 @@ export default function() {
         map: $('#map-container').get(0),
         tabs: {
           location: $('#locations'),
-          layers: $('#layers'),
-          challenge: challengeTab,
           content: $('#tab-content')
         }
       });
