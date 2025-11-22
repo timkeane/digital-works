@@ -51,23 +51,23 @@
 }
 
 #legend.state .bucket-0 div {
-  background-color: #f1eef6;
+  background-color: #a6bddb;
 }
 
 #legend.state .bucket-1 div {
-  background-color: #bdc9e1;
-}
-
-#legend.state .bucket-2 div {
   background-color: #74a9cf;
 }
 
+#legend.state .bucket-2 div {
+  background-color: #3690c0;
+}
+
 #legend.state .bucket-3 div {
-  background-color: #2b8cbe;
+  background-color: #0570b0;
 }
 
 #legend.state .bucket-4 div {
-  background-color: #045a8d;
+  background-color: #034e7b;
 }
 
 #legend.location div {

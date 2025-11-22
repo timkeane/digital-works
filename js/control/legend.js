@@ -24,11 +24,11 @@ export function updateLegend() {
   const data = layer === 'location' ?  getHeadCountByLocation() : getHeadCountByState();
 
   if (data) {
-    const buckets = ss.equalIntervalBreaks(Object.values(data), 5);
+    const buckets = ss.jenks(Object.values(data), 5);
     if (layer === 'state') {
       for (let i = 0; i < 5; i = i + 1) {
-        const from = Math.ceil(buckets[i]);
-        const to = Math.ceil(buckets[i + 1]);
+        const from = Math.ceil(buckets[i]) || 1;
+        const to = Math.floor(buckets[i + 1]);
         $(`#legend .bucket-${i} .from`).html(formatNumber(from));
         $(`#legend .bucket-${i} .to`).html(formatNumber(to));
       }
