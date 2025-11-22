@@ -11,7 +11,7 @@ export default function spin() {
 const languages = JSON.parse(import.meta.env.VITE_LANGUAGES);
 
 languages.forEach(lang => {
-  html.find('.dropdown-menu').append(`<a data-i18n="translate.${lang}" class="dropdown-item" href="./?locale=${lang}" rel="noopener"></a>`)
+  html.find('.dropdown-menu').append(`<a data-i18n="translate.${lang}" class="dropdown-item" href="./index.html?locale=${lang}" rel="noopener"></a>`)
 });
 $('.banner').append(html.localize());
 
