@@ -15,6 +15,7 @@ function setTime(event) {
 function setView(event) {
   const target = $(event.target);
   const view = target.val();
+  $('#locate')[view === 'chart' ? 'slideUp' : 'slideDown']();
   $('#view-type label').removeClass('active');
   $(`label[for=${target.attr('id')}]`).addClass('active');
   $('#show-view').removeClass('detail').removeClass('map').removeClass('chart').addClass(view);
@@ -23,15 +24,13 @@ function setView(event) {
     $('#map-type').slideDown();
     $('#chart-type').slideUp();
     $('#chart').removeClass('active').attr('aria-hidden', true);
-    $('#map').addClass('active')
-      .attr('aria-hidden', false);
+    $('#map').addClass('active').attr('aria-hidden', false);
   } else {
     $('#show-view').attr('aria-label', 'Show chart').attr('title', 'Show chart');
     $('#map-type').slideUp();
     $('#chart-type').slideDown();
     $('#map').removeClass('active').attr('aria-hidden', true);
-    $('#chart').addClass('active')
-      .attr('aria-hidden', false);
+    $('#chart').addClass('active').attr('aria-hidden', false);
     setChart({target: $('#chart-type input:checked').get(0)});
   }
 }
@@ -62,12 +61,14 @@ function showView(event) {
 
 function showControlPanel(event) {
   event.preventDefault();
+  const view = $('#location-tab').hasClass('active') ? 'locations' : $('#view-type input:checked').val();
   if ($(window).width() < 575) {
-    const view = $('#location-tab').hasClass('active') ? 'locations' : $('#view-type input:checked').val();
     $('#show-view').removeClass('detail').removeClass('map').removeClass('chart').addClass(view);
     $(`#${view}`).slideUp();
     $(view === 'map' ? '#chart-type' : '#map-type').hide();
     $('#control-panel').slideDown();
+  } else {
+    $('#view-type input:checked').trigger('change');
   }
 }
 
@@ -93,5 +94,10 @@ export default function createControlPanel() {
   $('#location-tab').on('click', () => {
     $('#show-view').attr('aria-label', 'Show details').attr('title', 'Show details');
     $('#show-view').removeClass('map').removeClass('chart').addClass('detail')
+  });
+  $('#nav button').on('click', event => {
+    if (event.target.id === 'location-tab') {
+      $('#locate').slideDown();  
+    }
   });
 }
