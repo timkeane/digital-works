@@ -25,6 +25,7 @@ export function updateLegend() {
 
   if (data) {
     const buckets = ss.jenks(Object.values(data), 5);
+    const min = ss.min(Object.values(data)) || 1;
     if (layer === 'state') {
       for (let i = 0; i < 5; i = i + 1) {
         const from = Math.ceil(buckets[i]) || 1;
@@ -32,11 +33,12 @@ export function updateLegend() {
         $(`#legend .bucket-${i} .from`).html(formatNumber(from));
         $(`#legend .bucket-${i} .to`).html(formatNumber(to));
       }
+      $(`#legend .bucket-0 .from`).html(min);
     } else {
       const max = Math.floor(buckets[5] / 100);
       $(`#legend .low div`).css({width: '10px', height: '10px', 'margin-left': `${max / 2.5}px`});
       $(`#legend .high div`).css({width: `${max}px`, height: `${max}px`});
-      $(`#legend .low span`).html(1);
+      $(`#legend .low span`).html(min);
       $(`#legend .high span`).html(formatNumber(buckets[5]));
       $(`#legend .high span`).css('padding-top', `${max / 4}px`);
     }
