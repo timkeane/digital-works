@@ -2,10 +2,12 @@ import Style from 'ol/style/Style';
 import Circle from 'ol/style/Circle';
 import Stroke from 'ol/style/Stroke';
 import Fill from 'ol/style/Fill';
+import {getView} from '../../util';
 
 export default function(feature, resolution) {
+  const zoom = getView().getZoomForResolution(resolution);
   const people = feature.get('people');
-  let radius = people / 200;
+  let radius = (zoom / 2) * people / 200;
   if (radius < 5) radius = 5;
   return new Style({
     zIndex: -people,
