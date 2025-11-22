@@ -1,4 +1,5 @@
 #legend {
+  max-width: 220px;
   position: absolute;
   right: .5em;
   bottom: .5em;
@@ -17,6 +18,7 @@
 
 #legend h3 {
   cursor: pointer;
+  margin: 0;
 }
 
 #legend.minimized ul {
@@ -25,7 +27,7 @@
 
 #legend ul {
   padding-inline-start: 0;
-  margin: 0;
+  margin: .25em 0 0 0;
 }
 
 #legend li {

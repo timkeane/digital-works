@@ -46,10 +46,6 @@ body.loading #legend {
   box-shadow: 0 0 0 2px var(--cPrimary), 0 0 0 5px var(--cSecondary);
 }
 
-#translate {
-  display: none;
-}
-
 a.dropdown-item:focus,
 a.dropdown-item:focus-visible {
   outline-width: 0;

@@ -4,7 +4,7 @@ import {getLocationLayer, getHeadCountByState, getHeadCountByLocation, formatNum
 import * as ss from 'simple-statistics';
 
 const html = `<div id="legend">
-  <h3>Legend</h3>
+  <h3></h3>
   <ul class="buckets">
     <li class="low"><div></div><span></span></li>
     <li class="high"><div></div><span></span></li>
@@ -43,7 +43,7 @@ export function updateLegend() {
   }
   
   $('#legend').removeClass('location').removeClass('state').addClass(layer === 'location' ? 'location' : 'state');
-  $('#legend h3').html(layer === 'location' ? 'People trained<br>by location' : 'People trained<br>by state');
+  $('#legend h3').attr('data-i18n', layer === 'location' ? 'legend.title.location' : 'legend.title.state').localize();
 }
 
 function toggle() {
