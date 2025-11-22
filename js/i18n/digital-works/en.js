@@ -122,6 +122,10 @@ export const translation = {
     "type.value.school-affiliated_club": "School-Affiliated Club",
     "type.value.food_bank": "Food Bank",
 
+    "type.value.cn_dst_orkshops": "CN DST Workshops",
+    "type.value.teens_teach_teach": "Teens Teach Teach",
+    "type.value.community_planning": "Community Planning",
+
 
   "translate": "Translate",
   "translate.en": "English",
