@@ -141,9 +141,12 @@ export const translation = {
   "control.panel.year": "Year",
   "control.panel.proj": "Project type",
   "control.panel.show": "Show",
+  "control.panel.show_map": "Show map",
+  "control.panel.show_chart": "Show chart",
 
   "legend.title.location": "People trained by location",
   "legend.title.state": "People trained by state",
+  "zoom.full": "Zoom to full extent",
 
   "translate": "Translate",
   "translate.en": "English",

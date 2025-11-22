@@ -2,11 +2,11 @@ import Control from 'ol/control/Control';
 import $ from 'jquery';
 import {createEmpty, extend} from 'ol/extent';
 
-const html = '<div class="zoom-full ol-unselectable ol-control"><button id="zoom-full" class="btn" title="Zoom to full extent"></button></div>';
+const html = '<div class="zoom-full ol-unselectable ol-control"><button id="zoom-full" class="btn" data-i18n="[title]zoom.full;[aria-label]zoom.full"></button></div>';
 
 class ZoomFull extends Control {
   constructor() {
-    const element = $(html);
+    const element = $(html).localize();
     super({element: element.get(0)});
     this.trainingExtent = null;
     element.find('button').on('click', this.zoom.bind(this));

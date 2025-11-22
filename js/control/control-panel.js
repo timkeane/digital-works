@@ -20,13 +20,13 @@ function setView(event) {
   $(`label[for=${target.attr('id')}]`).addClass('active');
   $('#show-view').removeClass('detail').removeClass('map').removeClass('chart').addClass(view);
   if (view === 'map') {
-    $('#show-view').attr('aria-label', 'Show map').attr('title', 'Show map');
+    $('#show-view').attr('data-i18n', 'control.panel.show;[aria-label]control.panel.show_map;[title]control.panel.show_map').localize();
     $('#map-type').slideDown();
     $('#chart-type').slideUp();
     $('#chart').removeClass('active').attr('aria-hidden', true);
     $('#map').addClass('active').attr('aria-hidden', false);
   } else {
-    $('#show-view').attr('aria-label', 'Show chart').attr('title', 'Show chart');
+    $('#show-view').attr('data-i18n', 'control.panel.show;[aria-label]control.panel.show_chart;[title]control.panel.show_chart').localize();
     $('#map-type').slideUp();
     $('#chart-type').slideDown();
     $('#map').removeClass('active').attr('aria-hidden', true);

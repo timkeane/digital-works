@@ -48,7 +48,7 @@ div#modal.intro {
   #banner h1 {
     font-size: 1.1em;
     display: block;
-    max-block-size: 100px;
+    max-width: 100px;
   }
 
   .modal-header h2 {
@@ -60,8 +60,8 @@ div#modal.intro {
   }
 
   .banner .dropdown {
-    inset-inline-end: .5em;
-    inset-block-start: .5em;
+    inset-inline-end: .5em !important;
+    inset-block-start: .5em !important;
   }
 
 }
