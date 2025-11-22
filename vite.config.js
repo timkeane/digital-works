@@ -14,6 +14,7 @@ export default defineConfig({
     host: true,
   },
   build: {
+    sourcemap: true,
     outDir: './dist',
     minify: 'terser'
   },

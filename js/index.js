@@ -53,26 +53,10 @@ function load() {
         $(window).trigger('resize');
       });
       spin();
-
-      // if (!hasStorage) showIntro();
     });
   });
 }
 
 initI18n().then(() => {
   load(false);
-  // if (hasStorage) {
-  //   if (getAlwaysLoad()) {
-  //     load(true);
-  //   } else {
-  //     showRestoreDialog(load);
-  //   }
-  // } else {
-  //   load(false);
-  // }
 });
-
-// fetch('https://utility.arcgis.com/usrsvcs/servers/02d1b1a641694dcd89f63b06ecc0dd9e/rest/services/MN_LECP_Locations/FeatureServer/1/query/?f=geojson&outSR=3857&cacheHint=true&outFields=*&token=AAPK075a045352e64bd583ef4645224e213fBIBCnmrqPubNPP2Sxmi9DxqvDgDZBX1Toq4nMJu4bYGkd_TyL-Oaf426BVzX5-UW&esriSpatialRelIntersects&geometry=%7B%22xmin%22%3A-10412368.996946095%2C%22ymin%22%3A5856512.361743237%2C%22xmax%22%3A-10382596.774429018%2C%22ymax%22%3A5872029.0784851285%2C%22spatialReference%22%3A%7B%22wkid%22%3A102100%2C%22latestWkid%22%3A3857%7D%7D&where=1%20%3D%201')
-// .then(r=>{
-//   r.json().then(j=>console.warn(j));
-// });

@@ -19,11 +19,7 @@ export default function addLayers(map) {
         olms.apply(map, `${styleUrl}&language=${getCurrentLanguage()}`).then(map => {
           const locationSource = locationLayer.getSource();
           locationSource.on('featuresloadend', updateLocationList);
-          locationSource.on('featuresloadend', event => {
-            console.warn('wtf',event);
-            setData(event);
-            
-          });
+          locationSource.on('featuresloadend', setData);
           locationSource.on('featuresloadend', forMobile);
           locationSource.on('featuresloadend', updateLegend);
           store('borderStyle', stateLayer.getStyle());

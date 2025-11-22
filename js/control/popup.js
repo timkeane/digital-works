@@ -63,9 +63,7 @@ function pageFeatures(event) {
 }
 
 function showPopup(map, coordinate, features, htmlFeatures) {
-  const popup = $('#popup')
-    .attr('dir', $('html').attr('dir'))
-    .removeClass('challenge');
+  const popup = $('#popup').attr('dir', $('html').attr('dir'));
   const popupOverlay = map.get('popupOverlay');
   const content = $('#popup-content');
   if (htmlFeatures.length > 0) {

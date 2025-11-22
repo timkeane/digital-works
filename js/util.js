@@ -121,8 +121,6 @@ export function formatNumber(number) {
 }
 
 export function setData(event) {
-  console.warn(event);
-  
   storage.headCountByLocation = {};
   event.features.forEach(feature => {
     const sessions = feature.get('data');

@@ -37,12 +37,16 @@ export default function html(feature, type) {
     appendDistance(html, feature);
     html.append(div);
     displayProps.forEach(prop => {
-      const lngKey = feature.get('Organization Type').replace(/\//g, '_').replace(/ /g, '_').toLowerCase();
       const value = session[prop];
       if (value && value.trim()) {
-        div.append(`<div><span class="field">${prop}:</span> <span class="value" i18n="org.type.${lngKey}"></span></div>`);
+        if (prop.indexOf('Type') > -1) {
+          const lngKey = session[prop].replace(/\//g, '_').replace(/\-/g, '_').replace(/ /g, '_').toLowerCase();
+          div.append(`<div><span class="field">${prop}:</span> <span class="value" data-i18n="type.value.${lngKey}"></span></div>`);
+        } else {
+          div.append(`<div><span class="field">${prop}:</span> <span class="value">${value}</span></div>`);
+        }
       }
     });
   });
-  return html;
+  return html.localize();
 }
