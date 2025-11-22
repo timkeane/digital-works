@@ -28,7 +28,7 @@ export const translation = {
   "legend.unserved": "Sin servicio (Elegible)",
   "legend.filter": "Filtrar",
   "legend.disabled": "Busque una ubicación para habilitar",
-  "form.search.placeholder": "Buscar una dirección...",
+  "form.search.placeholder": "Busque una dirección o código postal...",
   "form.lid.placeholder": "Ingrese ID de ubicación...",
   "form.lid.label": "Buscar por ID de ubicación",
   "form.challenges.submit": "Enviar selección",

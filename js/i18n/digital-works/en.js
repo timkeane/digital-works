@@ -28,7 +28,7 @@ export const translation = {
   "legend.unserved": "Unserved (Eligible)",
   "legend.filter": "Filter",
   "legend.disabled": "Search for a location to enable",
-  "form.search.placeholder": "Search for an address...",
+  "form.search.placeholder": "Search for an address or ZIP Code...",
   "form.lid.placeholder": "Enter Location ID...",
   "form.lid.label": "Search by Location ID",
   "form.challenges.submit": "Submit Selection",

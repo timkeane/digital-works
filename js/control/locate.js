@@ -3,7 +3,7 @@ import Overlay from 'ol/Overlay';
 import {getLocationOverlay, getView} from '../util';
 import {showAlert} from './dialog';
 import {hidePopup} from './popup';
-import { sortByDistance } from '../list/list';
+import {sortByDistance} from '../list/list';
 
 const env = import.meta.env;
 const token = env.VITE_ARC_TOKEN;
@@ -159,7 +159,6 @@ function displayOnMap(candidate) {
           .attr('title', address)
           .attr('aria-label', address);
     });
-    // storeLocation(candidate);
     hidePopup();
   } else {
     $('#locate button').removeClass('loading');
@@ -174,30 +173,14 @@ export function getAddress() {
   return $(getLocationOverlay().getElement()).attr('title');
 }
 
-function toggleSearchType() {
-  const check =$('#search-lid');
-  const input = $('#search');
-  if (check.is(':checked')) {
-    input.attr('data-i18n', '[placeholder]form.lid.placeholder;[aria-label]form.lid.placeholder')
-      .val('').localize();
-  } else {
-    input.attr('data-i18n', '[placeholder]form.search.placeholder;[aria-label]form.search.placeholder')
-      .val('').localize();
-  }
-}
-
 export function createLocator(map) {
   const form = $('<form id="locate"></form>');
   const div = $('<div class="form-group search-map"><ul id="possible" class="list-group"></ul><button type="submit" class="btn btn-primary focus-ring" data-i18n="[aria-label]search"><div></div></button></div>');
   const input = $('<input type="text" class="form-control focus-ring" id="search" data-i18n="[placeholder]form.search.placeholder;[aria-label]form.search.placeholder">');
-  // const check = $('<input type="checkbox" class="form-check-input focus-ring" id="search-lid"><label for="search-lid" data-i18n="form.lid.label"></label>');
-  // const download = $('<a href="https://connectednation.app.box.com/s/eaggc4qyshqfxtvqxv6vgs6uonjrpzj8" rel="noopener" target="_blank"><span>&#8679;</span> Download all</a>');
   const possible = div.find('#possible');
 
   form.append(div.prepend(input)).localize();
   form.insertBefore($('#time-frame'));
-
-  // check.on('change', toggleSearchType);
 
   $(document).on('click', () => $('#possible').slideUp());
   possible.on('keyup', event => {
