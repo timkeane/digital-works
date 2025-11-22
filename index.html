@@ -60,49 +60,46 @@
     </div>
     <div class="row">
       <div id="control-panel" class="col-sm col-sm-3">
-        <p>
-          Digital Works is a program by Connected Nation to close the digital divide.
-          View the progress to date and see future training sessions.
-        </p>
+        <p data-i18n="control.panel.msg"></p>
         <form id="time-frame">
-          <strong>View by time:</strong>
+          <strong data-i18n="control.panel.time"></strong>
           <div class="btn-group-toggle" data-toggle="buttons">
-            <label class="btn btn-primary active" for="past-radio">Previous activities</label>
+            <label class="btn btn-primary active" for="past-radio" data-i18n="control.panel.past"></label>
             <input id="past-radio" type="radio" name="options" value="past" autocomplete="off" checked>
-            <label class="btn btn-primary" for="future-radio">Future sessions</label>
+            <label class="btn btn-primary" for="future-radio" data-i18n="control.panel.future"></label>
             <input id="future-radio" type="radio" name="options"  value="future" autocomplete="off">
           </div>
         </form>
         <form id="view-type">
-          <strong>View activity as:</strong>
+          <strong data-i18n="control.panel.view_type"></strong>
           <div class="btn-group-toggle" data-toggle="buttons">
-            <label class="btn btn-primary active" for="map-radio">Map</label>
+            <label class="btn btn-primary active" for="map-radio" data-i18n="control.panel.map"></label>
             <input id="map-radio" type="radio" name="options" value="map" autocomplete="off" checked>
-            <label class="btn btn-primary" for="chart-radio">Chart</label>
+            <label class="btn btn-primary" for="chart-radio" data-i18n="control.panel.chart"></label>
             <input id="chart-radio" type="radio" name="options" value="chart" autocomplete="off">
           </div>
         </form>
         <form id="map-type">
-          <strong>Map activity by:</strong>
+          <strong data-i18n="control.panel.map_type"></strong>
           <div class="btn-group-toggle" data-toggle="buttons">
-            <label class="btn btn-primary active" for="location-radio">Location</label>
+            <label class="btn btn-primary active" for="location-radio" data-i18n="control.panel.location"></label>
             <input id="location-radio" type="radio" name="options" value="location" autocomplete="off" checked>
-            <label class="btn btn-primary" for="map-state-radio">State</label>
+            <label class="btn btn-primary" for="map-state-radio" data-i18n="control.panel.state"></label>
             <input id="map-state-radio" type="radio" name="options" value="state" autocomplete="off">
           </div>
         </form>
         <form id="chart-type">
-         <strong>Chart activity by:</strong>
+         <strong data-i18n="control.panel.map_type"></strong>
           <div class="btn-group-toggle" data-toggle="buttons">
-            <label class="btn btn-primary active" for="chart-state-raido">State</label>
+            <label class="btn btn-primary active" for="chart-state-raido" data-i18n="control.panel.state"></label>
             <input id="chart-state-raido" type="radio" name="options" value="state" autocomplete="off" checked>
-            <label class="btn btn-primary" for="year-radio">Year</label>
+            <label class="btn btn-primary" for="year-radio" data-i18n="control.panel.year"></label>
             <input id="year-radio" type="radio" name="options" value="year" autocomplete="off">
-            <label class="btn btn-primary" for="type-radio">Training type</label>
+            <label class="btn btn-primary" for="type-radio" data-i18n="control.panel.proj"></label>
             <input id="type-radio" type="radio" name="options" value="type" autocomplete="off">
           </div>
         </form>
-        <form><button id="show-view" class="btn btn-primary map">Show</button></form>
+        <form><button id="show-view" class="btn btn-primary map" data-i18n="control.panel.show"></button></form>
       </div>
       <div id="tab-col" class="col-sm col-sm-9">
         <div id="tab-content" class="tab-content">

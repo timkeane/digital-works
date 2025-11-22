@@ -126,10 +126,23 @@ export const translation = {
     "type.value.teens_teach_teach": "Teens Teach Teach",
     "type.value.community_planning": "Community Planning",
 
+    "control.panel.msg": "Digital Works is a program by Connected Nation to close the digital divide. View the progress to date and see future training sessions.",
+    "control.panel.time": "View by time:",
+    "control.panel.past": "Previous activities",
+    "control.panel.future": "Future sessions",
+    "control.panel.time": "View by time:",
+    "control.panel.view_type": "View activity as:",
+    "control.panel.map": "Map",
+    "control.panel.chart": "Chart",
+    "control.panel.map_type": "Map activity by:",
+    "control.panel.location": "Location",
+    "control.panel.state": "State",
+    "control.panel.map_type": "Chart activity by:",
+    "control.panel.year": "Year",
+    "control.panel.proj": "Project type",
+    "control.panel.show": "Show",
 
   "translate": "Translate",
   "translate.en": "English",
-  "translate.es": "Español",
-  "translate.pl": "Polski",
-  "translate.he": "עִברִית"
+  "translate.es": "Español"
 };
