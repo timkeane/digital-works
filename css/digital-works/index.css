@@ -47,6 +47,8 @@ div#modal.intro {
 
   #banner h1 {
     font-size: 1.1em;
+    display: block;
+    max-block-size: 100px;
   }
 
   .modal-header h2 {
