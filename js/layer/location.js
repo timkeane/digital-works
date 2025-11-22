@@ -6,7 +6,7 @@ import html from '../feature/location';
 import {getMap, getSelectedFeature, getView, store} from '../util';
 import {listHighlight} from '../list/list';
 
-const url = './data/training.csv';
+const url = './data/location.csv';
 
 const format = new Csv({
   dataProjection: 'EPSG:4326',
