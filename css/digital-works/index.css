@@ -56,6 +56,12 @@ div#modal.intro {
   }
 
   div#modal.intro {
-  top: 3.25em;
-}
+    top: 3.25em;
+  }
+
+  .banner .dropdown {
+    inset-inline-end: .5em;
+    inset-block-start: .5em;
+  }
+
 }

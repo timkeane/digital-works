@@ -31,8 +31,8 @@
 
 .banner .dropdown {
   position: absolute;
-  inset-inline-end: .5em;
-  inset-block-start: .5em;
+  inset-inline-end: 1em;
+  inset-block-start: 22px;
   max-height: 100px;
 }
 
