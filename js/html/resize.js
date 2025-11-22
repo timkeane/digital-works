@@ -28,4 +28,3 @@ export function createResizeHandler() {
   setTimeout(() => tabContentHeight, 100);
 
 }
-window.tabContentHeight=tabContentHeight

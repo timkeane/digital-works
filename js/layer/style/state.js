@@ -19,8 +19,6 @@ export default function(feature, resolution) {
   let bucket = 0;
   while (bucket < 5) {
     if (count > buckets[bucket] && count <= buckets[bucket + 1]) {
-      window.bucket = window.bucket || {};
-      window.bucket[bucket] = window.bucket[bucket] ? window.bucket[bucket] + 1 : 1;
       break;
     };
     bucket = bucket + 1;

@@ -11,8 +11,6 @@ const svg = {
 
 const numberFormat = new Intl.NumberFormat(getCurrentLanguage(), {maximumFractionDigits: 1});
 
-window.storage=storage;
-
 export function getSelectedFeature() {
   return storage.selectedFeature;
 }
