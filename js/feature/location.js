@@ -7,9 +7,9 @@ function i18nAddress(session) {
   const state = session['State'];
   const zip = session['Zip Code'];
   if ($('html').attr('dir') === 'rtl') {
-    return `${zip} ${state}, ${city}<br>${addr}`;
+    return `${zip} ${state}, ${city}${addr ? '<br>' : ''}${addr}`;
   }
-  return `${addr}<br>${city}, ${state} ${zip}`;
+  return `${addr}${addr ? '<br>' : ''}${city}, ${state} ${zip}`;
 }
 
 function appendDistance(html, feature) {
