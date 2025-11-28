@@ -1,8 +1,6 @@
 import $ from 'jquery';
-import {getPrimaryLayer, getBgLayer, getSecondaryLayer} from '../util';
 import Overlay from 'ol/Overlay';
 import {i18nAddress} from '../feature/html';
-import secondary from '../layer/style/secondary';
 
 let nextId = 0;
 function getNextId() {
@@ -150,9 +148,6 @@ export function createFeatureTips(map) {
   new FeatureTip({
     map,
     tips: [
-      {layer: getPrimaryLayer(), label: primaryTip},
-      {layer: getSecondaryLayer(), label: secondaryTip},
-      {layer: getBgLayer(), label: blockGroupTip}
     ]
   });
 }

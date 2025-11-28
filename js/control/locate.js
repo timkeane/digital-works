@@ -165,14 +165,6 @@ function displayOnMap(candidate) {
   }
 }
 
-export function getLocation() {
-  return getLocationOverlay().getPosition();
-}
-
-export function getAddress() {
-  return $(getLocationOverlay().getElement()).attr('title');
-}
-
 export function createLocator(map) {
   const form = $('<form id="locate"></form>');
   const div = $('<div class="form-group search-map"><ul id="possible" class="list-group"></ul><button type="submit" class="btn btn-primary focus-ring" data-i18n="[aria-label]search"><div></div></button></div>');

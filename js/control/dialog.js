@@ -10,10 +10,8 @@ const dialogHtml = `<div id="dialog" class="modal fade" data-bs-keyboard="false"
     <div class="modal-body"></div>
       <div class="modal-footer">
         <div class="end">
-          <button type="button" class="btn btn-secondary no" data-bs-dismiss="modal" data-i18n="btn.no.name"></button>
-          <button type="button" class="btn btn-primary yes" data-i18n="btn.yes.name"></button>
           <button type="button" class="btn btn-primary ok" data-i18n="btn.ok.name"></button>
-          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -25,8 +23,6 @@ const dialog = new bootstrap.Modal('#dialog');
 
 const header = $('#dialog .modal-header').hide();
 const footer = $('#dialog .modal-footer').hide();
-const yes = $('#dialog button.yes').hide();
-const no = $('#dialog button.no').hide();
 const ok = $('#dialog button.ok').hide();
 const message = $('#dialog .modal-body');
 const modal = $('#modal').get(0);
@@ -39,8 +35,6 @@ function close(callback, yesNo) {
   message.removeAttr('data-i18n').empty();
   header.hide().find('h2').removeAttr('data-i18n').empty();
   footer.hide();
-  yes.hide().off();
-  no.hide().off();
   ok.hide();
   if (typeof callback === 'function') callback(yesNo);
 }
@@ -63,15 +57,5 @@ export function showAlert(alert, callback) {
   header.hide();
   footer.show();
   ok.show().one('click', () => close(callback, false));
-  dialog.show();
-}
-
-export function showYesNo(alert, callback) {
-  modal.className = 'modal-dialog alert';
-  message.html(alert);
-  header.hide();
-  footer.show();
-  yes.show().one('click', () => close(callback, true));
-  no.show().one('click', () => close(callback, false));
   dialog.show();
 }

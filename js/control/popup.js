@@ -111,7 +111,7 @@ function setActive(active) {
   }, 500);
 }
 
-export function panPopup() {
+function panPopup() {
   setTimeout(() => {
     getPopupOverlay().panIntoView();
   }, 500);
