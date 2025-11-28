@@ -2,6 +2,7 @@ import $ from 'jquery';
 import {getBorderStyle, getStateLayer, getLocationLayer, setFuture} from '../util';
 import {renderChart} from './chart';
 import countStyle from '../layer/style/state';
+import { updateLegend } from './legend';
 
 const storyUrl = 'https://storymaps.arcgis.com/stories/c222fb7619ea49c5a4db939b77dee4e5';
 const statsUrl = 'https://app.powerbi.com/view?r=eyJrIjoiMTMyZmRhNzMtNWY5NC00OTlmLTgxNjEtZjA1OTFlNWIxZTE2IiwidCI6IjVhMjNkMTNlLTBhM2UtNDI5MS04ZDMzLTM5N2Y2YTEwZjEwYiJ9';
@@ -9,15 +10,15 @@ const statsUrl = 'https://app.powerbi.com/view?r=eyJrIjoiMTMyZmRhNzMtNWY5NC00OTl
 function setTime(event) {
   const target = $(event.target);
   const future = $('#future-radio').is(':checked');
+  const layer = getLocationLayer();
+  const style = layer.getStyle();
   setFuture(future);
   $('body')[future ? 'addClass' : 'removeClass']('future');
   $('#time-frame label').removeClass('active');
   $(`label[for=${target.attr('id')}]`).addClass('active');
-  const layer = getLocationLayer();
-  const style = layer.getStyle();
   layer.setStyle(layer.get('blankStyle'));
-  window.layer=layer;
-  // layer.setStyle(style); 
+  layer.setStyle(style); 
+  updateLegend();
 }
 
 function setView(event) {

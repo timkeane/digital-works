@@ -1,5 +1,5 @@
 #legend {
-  max-width: 220px;
+  max-width: 165px;
   position: absolute;
   right: .5em;
   bottom: .5em;
@@ -85,8 +85,21 @@
   display: block;
 }
 
+#legend .low div {
+  width: 11px;
+  height: 11px;
+}
+
 #legend.location span {
   display: block;
   float: right;
 }
 
+body.future #legend.location .high,
+body.future #legend.location span {
+  display: none;
+}
+
+body.future #legend.location .low div {
+  margin-left: calc(50% + 5px) !important;
+}

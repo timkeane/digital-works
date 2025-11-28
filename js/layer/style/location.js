@@ -17,12 +17,10 @@ export default function(feature, resolution) {
       height: 150
     });
   }
-  
-  if (feature.get('has-future') === getFuture()) {
-    const zoom = getView().getZoomForResolution(resolution);
-    const people = feature.get('people');
-    let radius = zoom * people / 50;
-    if (radius < 5) radius = 5;
+  const zoom = getView().getZoomForResolution(resolution);
+  const people = getFuture() ? 1 : feature.get('people');
+  let radius = zoom * people / 50;
+  if (radius < 5) radius = 5;
     return new Style({
       zIndex: -people,
       image: new Circle({
@@ -31,5 +29,4 @@ export default function(feature, resolution) {
         fill: new Fill({color: '#3399CC'})
       })
     });
-  }
 }

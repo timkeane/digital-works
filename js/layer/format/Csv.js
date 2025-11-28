@@ -59,13 +59,6 @@ export default class Csv extends Id {
       feature.set('Training Date', date);
       feature.set('Year of Engagement', parseInt(date.split('-')[0]));
       feature.set('future', date > today);
-
-  if (date>today){
-    console.warn(feature.get('Address'), date, today);
-  }else{
-    console.log(feature.get('Address'), date, today);
-  }
-
     }
     feature.set('Training Topic', feature.get('Training Topic')?.trim());
     feature.setGeometry(point.transform(this.dataProjection, this.defaultFeatureProjection));

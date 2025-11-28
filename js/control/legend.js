@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import Control from 'ol/control/Control';
-import {getLocationLayer, getHeadCountByState, getHeadCountByLocation, formatNumber} from '../util';
+import {getLocationLayer, getHeadCountByState, getHeadCountByLocation, formatNumber, getFuture} from '../util';
 import * as ss from 'simple-statistics';
 
 const html = `<div id="legend">
@@ -21,10 +21,11 @@ $('body').append(html);
 export function updateLegend() {
   const trainingLayer = getLocationLayer();
   const layer = trainingLayer.getVisible() ? 'location' : 'state';
-  const data = layer === 'location' ?  getHeadCountByLocation() : getHeadCountByState();
-  if (data) {
-    const buckets = ss.jenks(Object.values(data), 5);
-    const min = ss.min(Object.values(data)) || 1;
+  const people = layer === 'location' ?  getHeadCountByLocation() : getHeadCountByState();
+  const future = getFuture();
+  if (people) {
+    const buckets = ss.jenks(Object.values(people), 5);
+    const min = ss.min(Object.values(people)) || 1;
     if (layer === 'state') {
       for (let i = 0; i < 5; i = i + 1) {
         const from = Math.ceil(buckets[i]) || 1;
@@ -34,17 +35,27 @@ export function updateLegend() {
       }
       $(`#legend .bucket-0 .from`).html(min);
     } else {
-      const max = Math.floor(ss.max(Object.values(data)) / 100);
-      $(`#legend .low div`).css({width: '10px', height: '10px', 'margin-left': `${max / 2.5}px`});
+      // TODO FIX WHEN NULL ISLAND IS FIXED
+      const max = 15 + (buckets[3] / 50);
+      // const max = buckets[5] / 100;
+      const w = $(`#legend .low div`).width()
+      if (!future) $(`#legend .low div`).css('margin-left', `${(max / 2) - (w / 2)}px`);
       $(`#legend .high div`).css({width: `${max}px`, height: `${max}px`});
       $(`#legend .low span`).html(min);
-      $(`#legend .high span`).html(formatNumber(buckets[5]));
+
+      // TODO FIX WHEN NULL ISLAND IS FIXED
+      $(`#legend .high span`).html(formatNumber(buckets[3]));
+      // $(`#legend .high span`).html(formatNumber(buckets[5]));
+
       $(`#legend .high span`).css('padding-top', `${max / 4}px`);
     }
   }
-  
+
+  let i18n = 'state';
+  if (layer === 'location') i18n = 'location';
+  if (future) i18n = 'future';
   $('#legend').removeClass('location').removeClass('state').addClass(layer === 'location' ? 'location' : 'state');
-  $('#legend h3').attr('data-i18n', layer === 'location' ? 'legend.title.location' : 'legend.title.state').localize();
+  $('#legend h3').attr('data-i18n', `legend.title.${i18n}`).localize();
 }
 
 function toggle() {

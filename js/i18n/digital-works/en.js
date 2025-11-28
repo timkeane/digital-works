@@ -101,7 +101,7 @@ export const translation = {
   "prop.name.organization_type": "Organization Type",
   "prop.name.project_type": "Project Type",
   "prop.name.number_of_people_trained": "Number of People Trained",
-  "prop.name.training_date": "Traing Date",
+  "prop.name.training_date": "Training Date",
   "prop.name.training_topic": "Training Topic",
 
   "type.value.non-profit": "Non-Profit",
@@ -158,6 +158,7 @@ export const translation = {
   "control.panel.show_map": "Show map",
   "control.panel.show_chart": "Show chart",
 
+  "legend.title.future": "Future training location",
   "legend.title.location": "People trained by location",
   "legend.title.state": "People trained by state",
   "zoom.full": "Zoom to full extent",

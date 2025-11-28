@@ -144,6 +144,7 @@ export const translation = {
   "control.panel.show_map": "Mostrar mapa",
   "control.panel.show_chart": "Mostrar gráfico",
 
+  "legend.title.future": "Lugar de formación futuro",
   "legend.title.location": "Personas capacitadas según su ubicación",
   "legend.title.state": "Personas capacitadas por el estado",
   "zoom.full": "Ampliar al máximo",

@@ -1,8 +1,8 @@
 {
   "lang": "en",
-  "name": "Connected Nation - Digital Works Program",
-  "short_name": "Connected Nation - Digital Works Program",
-  "description": "Digital Works is a program by Connected Nation to close the digital divide.",
+  "name": "Connected Nation - Digital Empowerment",
+  "short_name": "Connected Nation - Digital Empowerment",
+  "description": "\"Connected Nation - Digital Empowerment\" is a program by Connected Nation to close the digital divide.",
   "start_url": "http://localhost:5173/",
   "display": "standalone",
   "background_color": "#111a52",
