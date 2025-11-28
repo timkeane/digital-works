@@ -101,7 +101,7 @@ export const translation = {
   "prop.name.organization_type": "Tipo de organización",
   "prop.name.project_type": "Tipo de proyecto",
   "prop.name.number_of_people_trained": "Número de personas capacitadas",
-  "prop.name.year_of_engagement": "Año de participación",
+  "prop.name.training_date": "Fecha de entrenamiento",
 
   "type.value.non-profit": "Sin fines de lucro",
   "type.value.school": "Escuela",

@@ -28,10 +28,7 @@ li .feature-html.has-providers {
 }
 
 li.list-group-item {
-  border-block-color: var(--cSecondary);
-}
-li.list-group-item.challenge {
-  border-block-color: var(--cPrimary);
+  border: none;
 }
 
 .list-group-item {

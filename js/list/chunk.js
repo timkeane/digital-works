@@ -21,7 +21,7 @@ export function sort(features) {
       setDistance(userCoord, f0);
       setDistance(userCoord, f1);
       const dist0 = f0.get('distance');
-      const dist1 = f1.get('distance')
+      const dist1 = f1.get('distance');
       if (dist0 < dist1) {
         return -1;
       } else if (dist0 > dist1) {

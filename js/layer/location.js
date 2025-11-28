@@ -2,6 +2,7 @@ import Csv from './format/Csv';
 import Source from 'ol/source/Vector';
 import Layer from 'ol/layer/Vector';
 import style from './style/location';
+import blankStyle from './style/blank';
 import html from '../feature/location';
 import {getMap, getSelectedFeature, getView, store} from '../util';
 import {listHighlight} from '../list/list';
@@ -25,6 +26,8 @@ const layer = new Layer({
 
 layer.set('name', 'location');
 layer.set('featureHtml', html);
+layer.set('blankStyle', blankStyle);
+layer.set('pointStyle', style);
 
 function layerFilter(layer) {
   return layer.get('name') === 'location';

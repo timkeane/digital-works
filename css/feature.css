@@ -255,3 +255,22 @@ li .feature-html.location h4 {
 .popup .feature-html.location h4 {
   padding-left: .5em;
 }
+
+#location-list .feature-html {
+  border-bottom: 1px solid var(--cSecondary);
+}
+
+body.future .feature-html.no-future {
+  display: none;
+}
+
+body.future .feature-html.has-future {
+  display: flex;
+}
+
+body.future .session {
+  display: none;
+}
+body.future .session.future {
+  display: block;
+}

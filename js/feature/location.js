@@ -1,5 +1,6 @@
 import $ from 'jquery';
 import {formatNumber} from '../util';
+import { getCurrentLanguage } from '../i18n/i18n';
 
 function i18nAddress(session) {
   const addr = session['Address'];
@@ -26,17 +27,19 @@ function valueKey(value) {
 }
 
 export default function html(feature, type) {
+  const hasFuture = feature.get('has-future') ? 'has-future' : 'no-future';
   const sessions = feature.get('data');
-  const html = $(`<div class="feature-html location"><h4>${i18nAddress(sessions[0])}</h4></div>`);
+  const html = $(`<div class="feature-html location ${hasFuture}"><h4>${i18nAddress(sessions[0])}</h4></div>`);
   sessions.forEach((session, i) => {
-    const css = i === 0 ? 'first' : 'more';
+    const future = session['future'] ? 'future' : '';
+    const css = `${i === 0 ? 'first' : 'more'} ${future}`;
     const div = $(`<div class="session ${type} ${css}"></div>`);
     const org = session['Organization'];
     const orgKey = valueKey(session['Organization Type']);
     const projKey = valueKey(session['Project Type']);
     const topicKey = valueKey(session['Training Topic']);
     const people = formatNumber(session['Number of People Trained']);
-    const year = session['Year of Engagement'];
+    const date = session['Training Date'];
     appendDistance(html, feature);
     html.append(div);
     div.append(`<div><span class="field" data-i18n="[prepend]prop.name.organization">:</span> <span class="value">${org}</span></div>`)
@@ -44,7 +47,7 @@ export default function html(feature, type) {
       .append(`<div><span class="field" data-i18n="[prepend]prop.name.project_type">:</span> <span class="value" data-i18n="type.value.${projKey}"></span></div>`)
       .append(`<div><span class="field" data-i18n="[prepend]prop.name.number_of_people_trained">:</span> <span class="value">${people}</span></div>`)
       .append(`<div><span class="field" data-i18n="[prepend]prop.name.training_topic">:</span> <span class="value" data-i18n="type.value.${topicKey}"></span></div>`)
-      .append(`<div><span class="field" data-i18n="[prepend]prop.name.year_of_engagement">:</span> <span class="value">${year}</span></div>`);
+      .append(`<div><span class="field" data-i18n="[prepend]prop.name.training_date">:</span> <span class="value">${date}</span></div>`);
   });
   return html.localize();
 }

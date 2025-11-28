@@ -14,7 +14,30 @@ const papaConfig = {
   skipEmptyLines: false,
   columns: ['ID','Organization','Organization Type','Training Date','Address','City','State','Zip Code','Longitude','Latitude','Number of People Trained','Project Type','Taining Topic']
 };
-  
+
+function sortSessions(sessions) {
+  sessions.sort((s0, s1) => {
+      const date0 = s0['Training Date'];
+      const date1 = s1['Training Date'];
+      if (date0 < date1) {
+        return -1;
+      } else if (date0 > date1) {
+        return 1;
+      }
+      return 0
+    });
+  return sessions;
+}
+
+function pad(num) {
+  return num.length === 1 ? `0${num}` : num;
+}
+
+function isoDate(dateString) {
+  const dateParts = dateString.split('/');
+  return `${dateParts[2]}-${pad(dateParts[0])}-${pad(dateParts[1])}`;
+}
+
 export default class Csv extends Id {
   constructor(options) {
     super(options);
@@ -29,11 +52,20 @@ export default class Csv extends Id {
     const dateString = feature.get('Training Date');
     if (!x || isNaN(x)) x = 0;
     if (!y || isNaN(y)) y = 0;
+    feature.set('future', false);
     if (dateString) {
-      const dateParts = dateString.split('/');
-      const date = new Date(`${dateParts[2]}-${dateParts[0]}-${dateParts[1]}`);
+      const date = isoDate(dateString);
+      const today = (new Date()).toISOString().split('T')[0];
       feature.set('Training Date', date);
-      feature.set('Year of Engagement', date.getFullYear());
+      feature.set('Year of Engagement', parseInt(date.split('-')[0]));
+      feature.set('future', date > today);
+
+  if (date>today){
+    console.warn(feature.get('Address'), date, today);
+  }else{
+    console.log(feature.get('Address'), date, today);
+  }
+
     }
     feature.set('Training Topic', feature.get('Training Topic')?.trim());
     feature.setGeometry(point.transform(this.dataProjection, this.defaultFeatureProjection));
@@ -59,12 +91,14 @@ export default class Csv extends Id {
     Object.values(featuresByLocation).forEach((features, id) => {
       const aggregatedFeature = new Feature(features[0].getGeometry());
       const data = [];
+      let hasFuture = false;
       features.forEach(feature => {
         data.push(feature.getProperties());
+        if (feature.get('future')) hasFuture = true;
       });
       aggregatedFeature.setId(`aggregate-${id}`);
-      
-      aggregatedFeature.set('data', data);
+      aggregatedFeature.set('has-future', hasFuture);
+      aggregatedFeature.set('data', sortSessions(data));
       aggregated.push(aggregatedFeature);
     });
     setData(aggregated);

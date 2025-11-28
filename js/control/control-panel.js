@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import {getBorderStyle, getStateLayer, getLocationLayer} from '../util';
+import {getBorderStyle, getStateLayer, getLocationLayer, setFuture} from '../util';
 import {renderChart} from './chart';
 import countStyle from '../layer/style/state';
 
@@ -8,8 +8,16 @@ const statsUrl = 'https://app.powerbi.com/view?r=eyJrIjoiMTMyZmRhNzMtNWY5NC00OTl
 
 function setTime(event) {
   const target = $(event.target);
+  const future = $('#future-radio').is(':checked');
+  setFuture(future);
+  $('body')[future ? 'addClass' : 'removeClass']('future');
   $('#time-frame label').removeClass('active');
   $(`label[for=${target.attr('id')}]`).addClass('active');
+  const layer = getLocationLayer();
+  const style = layer.getStyle();
+  layer.setStyle(layer.get('blankStyle'));
+  window.layer=layer;
+  // layer.setStyle(style); 
 }
 
 function setView(event) {
