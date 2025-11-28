@@ -100,7 +100,7 @@ export const translation = {
   "prop.name.organization": "Organización",
   "prop.name.organization_type": "Tipo de organización",
   "prop.name.project_type": "Tipo de proyecto",
-  "prop.name.number_of_people_trained": "Número de personas capacitadas",
+  "prop.name.number_trained": "Número de personas capacitadas",
   "prop.name.year_of_engagement": "Año de participación",
 
   "type.value.non-profit": "Sin fines de lucro",
@@ -122,9 +122,9 @@ export const translation = {
   "type.value.school-affiliated_club": "Club afiliado a la escuela",
   "type.value.food_bank": "Banco de alimentos",
 
-  "type.value.cn_dst_orkshops": "Talleres CN DST",
-  "type.value.teens_teach_teach": "Adolescentes enseñan a enseñar",
-  "type.value.community_planning": "Planificación comunitaria",
+  "type.value.cn_wosted_workshops": "Talleres organizados por CN",
+  "type.value.teens_teach_tech": "Los adolescentes enseñan tecnología",
+  "type.value.community_organization_led_programs": "Programas dirigidos por organizaciones comunitarias",
 
   "control.panel.msg": "Digital Works es un programa de Connected Nation para cerrar la brecha digital. Vea el progreso hasta la fecha y consulte futuras sesiones de capacitación.",
   "control.panel.time": "Ver por tiempo:",

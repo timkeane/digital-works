@@ -22,6 +22,7 @@ export function updateLegend() {
   const trainingLayer = getLocationLayer();
   const layer = trainingLayer.getVisible() ? 'location' : 'state';
   const data = layer === 'location' ?  getHeadCountByLocation() : getHeadCountByState();
+      console.warn(layer);
 
   if (data) {
     const buckets = ss.jenks(Object.values(data), 5);
@@ -35,7 +36,7 @@ export function updateLegend() {
       }
       $(`#legend .bucket-0 .from`).html(min);
     } else {
-      const max = Math.floor(buckets[5] / 100);
+      const max = Math.floor(ss.max(Object.values(data)) / 100);
       $(`#legend .low div`).css({width: '10px', height: '10px', 'margin-left': `${max / 2.5}px`});
       $(`#legend .high div`).css({width: `${max}px`, height: `${max}px`});
       $(`#legend .low span`).html(min);

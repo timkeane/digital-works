@@ -11,8 +11,6 @@ const url = './data/location.csv';
 const format = new Csv({
   dataProjection: 'EPSG:4326',
   featureProjection: 'EPSG:3857',
-  idPrefix: 'training-',
-  idProp: 'ID',
   x: 'Longitude',
   y: 'Latitude' 
 });

@@ -4,6 +4,10 @@
   padding-top: 1em;
 }
 
+.popup .feature-html {
+  padding-top: 0;
+}
+
 li .feature-html .session {
   padding: 1em;
 }

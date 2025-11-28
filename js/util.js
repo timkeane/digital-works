@@ -1,5 +1,6 @@
 import $ from 'jquery';
 import {getCurrentLanguage} from './i18n/i18n';
+import { updateLegend } from './control/legend';
 
 const env = import.meta.env;
 const storage = {data: []};
@@ -8,8 +9,6 @@ const svg = {
   challenge: '<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48"><circle fill="" stroke="#000" stroke-width="3" cx="24" cy="24" r="19"/><circle fill="#111a52" stroke="#fff" stroke-width="3" cx="24" cy="24" r="16"/><path fill="#fff" transform="translate(12, 12)" d="M6.043 19.496l-1.482 1.505c-2.791-2.201-4.561-5.413-4.561-9.001s1.77-6.8 4.561-9l1.482 1.504c-2.326 1.835-3.804 4.512-3.804 7.496s1.478 5.661 3.804 7.496zm.675-7.496c0-1.791.887-3.397 2.282-4.498l-1.481-1.502c-1.86 1.467-3.04 3.608-3.04 6s1.18 4.533 3.04 6l1.481-1.502c-1.396-1.101-2.282-2.707-2.282-4.498zm15.043 0c0-2.984-1.478-5.661-3.804-7.496l1.482-1.504c2.791 2.2 4.561 5.412 4.561 9s-1.77 6.8-4.561 9.001l-1.482-1.505c2.326-1.835 3.804-4.512 3.804-7.496zm-6.761 4.498l1.481 1.502c1.86-1.467 3.04-3.608 3.04-6s-1.18-4.533-3.04-6l-1.481 1.502c1.396 1.101 2.282 2.707 2.282 4.498s-.886 3.397-2.282 4.498zm-3-7.498c-1.656 0-3 1.343-3 3s1.344 3 3 3 3-1.343 3-3-1.344-3-3-3z"/></svg>',
   primary: '<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48"><circle fill="" stroke="#000" stroke-width="3" cx="24" cy="24" r="19"/><circle fill="#008450" stroke="#fff" stroke-width="3" cx="24" cy="24" r="16"/><path fill="#fff" transform="translate(12, 12)" d="M0 7.244c3.071-3.24 7.314-5.244 12-5.244 4.687 0 8.929 2.004 12 5.244l-2.039 2.15c-2.549-2.688-6.071-4.352-9.961-4.352s-7.412 1.664-9.961 4.352l-2.039-2.15zm5.72 6.034c1.607-1.696 3.827-2.744 6.28-2.744s4.673 1.048 6.28 2.744l2.093-2.208c-2.143-2.261-5.103-3.659-8.373-3.659s-6.23 1.398-8.373 3.659l2.093 2.208zm3.658 3.859c.671-.708 1.598-1.145 2.622-1.145 1.023 0 1.951.437 2.622 1.145l2.057-2.17c-1.197-1.263-2.851-2.044-4.678-2.044s-3.481.782-4.678 2.044l2.055 2.17zm2.622 1.017c-1.062 0-1.923.861-1.923 1.923s.861 1.923 1.923 1.923 1.923-.861 1.923-1.923-.861-1.923-1.923-1.923z"/></svg>',
 };
-
-const numberFormat = new Intl.NumberFormat(getCurrentLanguage(), {maximumFractionDigits: 1});
 
 export function getSelectedFeature() {
   return storage.selectedFeature;
@@ -115,16 +114,17 @@ export function getTranslate() {
 }
 
 export function formatNumber(number) {
+  const numberFormat = new Intl.NumberFormat(getCurrentLanguage(), {maximumFractionDigits: 1});
   return numberFormat.format(number);
 }
 
-export function setData(event) {
+export function setData(features) {
   storage.headCountByLocation = {};
-  event.features.forEach(feature => {
+  features.forEach(feature => {
     const sessions = feature.get('data');
     let people = 0;
     sessions.forEach(session => {
-      people += (session['Number of People Trained'] * 1);
+      people += (session['Number Trained'] * 1);
     });
     feature.set('people', people);
     storage.headCountByLocation[feature.getId()] = people;
@@ -136,13 +136,14 @@ export function setData(event) {
   const states = {};
   data.forEach(session => {
     if (session[prop]) {
-      let number = session['Number of People Trained'];
+      let number = session['Number Trained'];
       number = number?.trim() ? parseInt(number) : 0;
       states[session[prop]] = states[session[prop]] || 0;
       states[session[prop]] = states[session[prop]] + number;
     }
   });
   storage.headCountByState = states;
+  updateLegend();
 }
 
 export function getData() {

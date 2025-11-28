@@ -2,6 +2,7 @@ import Id from './Id';
 import Papa from 'papaparse';
 import Point from 'ol/geom/Point';
 import Feature from 'ol/Feature';
+import { setData } from '../../util';
 
 const papaConfig = {
   quotes: false,
@@ -11,7 +12,7 @@ const papaConfig = {
   header: true,
   newline: "\n",
   skipEmptyLines: false,
-  columns: ['ID','Organization','Organization Type','Year of Engagement','Scheduled Training Date','Scheduled Workshops','Address','City','State','Zip Code','Longitude','Latitude','Number of People Trained','Project Type']
+  columns: ['ID','Organization','Organization Type','Training Date','Address','City','State','Zip Code','Longitude','Latitude','Number Trained','Project Type','Taining Topic']
 };
   
 export default class Csv extends Id {
@@ -21,14 +22,21 @@ export default class Csv extends Id {
     this.y = options.y;
   }
   readFeature(source, options) {
-    const x = source[this.x];
-    const y = source[this.y];
-    if (!isNaN(x)) {
-      const feature = super.readFeature(source, options);
-      const point = new Point([x * 1, y * 1]);
-      feature.setGeometry(point.transform(this.dataProjection, this.defaultFeatureProjection));
-      return feature;
+    let x = source[this.x];
+    let y = source[this.y];
+    const point = new Point([x * 1, y * 1]);
+    const feature = super.readFeature(source, options);
+    const dateString = feature.get('Training Date');
+    if (!x || isNaN(x)) x = 0;
+    if (!y || isNaN(y)) y = 0;
+    if (dateString) {
+      const dateParts = dateString.split('/');
+      const date = new Date(`${dateParts[2]}-${dateParts[0]}-${dateParts[1]}`);
+      feature.set('Training Date', date);
+      feature.set('Year of Engagement', date.getFullYear());
     }
+    feature.setGeometry(point.transform(this.dataProjection, this.defaultFeatureProjection));
+    return feature;
   }
   readFeatures(source, options) {
     const features = [];
@@ -54,9 +62,12 @@ export default class Csv extends Id {
         data.push(feature.getProperties());
       });
       aggregatedFeature.setId(`aggregate-${id}`);
+      
       aggregatedFeature.set('data', data);
       aggregated.push(aggregatedFeature);
+      if (id==317) console.warn(aggregatedFeature);
     });
+    setData(aggregated);
     return aggregated;
   }
   readProjection() {
