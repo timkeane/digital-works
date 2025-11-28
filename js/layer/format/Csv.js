@@ -2,7 +2,7 @@ import Id from './Id';
 import Papa from 'papaparse';
 import Point from 'ol/geom/Point';
 import Feature from 'ol/Feature';
-import { setData } from '../../util';
+import {setSessions} from '../../sessions';
 
 const papaConfig = {
   quotes: false,
@@ -83,18 +83,18 @@ export default class Csv extends Id {
     });
     Object.values(featuresByLocation).forEach((features, id) => {
       const aggregatedFeature = new Feature(features[0].getGeometry());
-      const data = [];
+      const sessions = [];
       let hasFuture = false;
       features.forEach(feature => {
-        data.push(feature.getProperties());
+        sessions.push(feature.getProperties());
         if (feature.get('future')) hasFuture = true;
       });
       aggregatedFeature.setId(`aggregate-${id}`);
       aggregatedFeature.set('has-future', hasFuture);
-      aggregatedFeature.set('data', sortSessions(data));
+      aggregatedFeature.set('sessions', sortSessions(sessions));
       aggregated.push(aggregatedFeature);
     });
-    setData(aggregated);
+    setSessions(aggregated);
     return aggregated;
   }
   readProjection() {

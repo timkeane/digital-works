@@ -1,10 +1,8 @@
 import {getCurrentLanguage} from './i18n/i18n';
-import {updateLegend} from './control/legend';
 
 const env = import.meta.env;
 const storage = {
   future: false,
-  sessions: [],
   headCount: {
     state: {},
     location: {}
@@ -56,35 +54,39 @@ export function formatNumber(number) {
   return numberFormat.format(number);
 }
 
-export function setData(features) {
-  features.forEach(feature => {
-    const sessions = feature.get('data');
-    let people = 0;
-    sessions.forEach(session => {
-      people = people + session['Number of People Trained'] * 1;
-    });
-    feature.set('people', people);
-    storage.headCount.location[feature.getId()] = people;
-    storage.sessions = storage.sessions.concat(sessions);
-  });
+// export function setData(features) {
+//   features.forEach(feature => {
+//     const sessions = feature.get('data');
+//     let people = 0;
+//     sessions.forEach(session => {
+//       people = people + session['Number of People Trained'] * 1;
+//     });
+//     feature.set('people', people);
+//     storage.headCount.location[feature.getId()] = people;
+//     storage.sessions = storage.sessions.concat(sessions);
+//   });
 
-  const prop = 'State';
-  const data = getData();
-  const states = {};
-  data.forEach(session => {
-    if (session[prop]) {
-      let number = session['Number of People Trained'];
-      number = number?.trim() ? parseInt(number) : 0;
-      states[session[prop]] = states[session[prop]] || 0;
-      states[session[prop]] = states[session[prop]] + number;
-    }
-  });
-  storage.headCountByState = states;
-  updateLegend();
+//   const prop = 'State';
+//   const data = getSessions();
+//   const states = {};
+//   data.forEach(session => {
+//     if (session[prop]) {
+//       let number = session['Number of People Trained'];
+//       number = number?.trim() ? parseInt(number) : 0;
+//       states[session[prop]] = states[session[prop]] || 0;
+//       states[session[prop]] = states[session[prop]] + number;
+//     }
+//   });
+//   storage.headCountByState = states;
+//   updateLegend();
+// }
+
+export function getHeadCount() {
+  return storage.headCount;
 }
 
-export function getData() {
-  return storage.sessions;
+export function setHeadCount(headCount) {
+  return storage.headCount = headCount;
 }
 
 export function getHeadCountByLocation() {
@@ -93,9 +95,9 @@ export function getHeadCountByLocation() {
 
 export function getHeadCountByState(feature) {
   if (feature) {
-    return storage.headCountByState[feature.getId()];
+    return storage.headCount.state[feature.getId()];
   }
-  return storage.headCountByState;
+  return storage.headCount.state;
 }
 
 export function getBorderStyle() {

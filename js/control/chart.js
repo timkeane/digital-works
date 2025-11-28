@@ -1,13 +1,13 @@
 import $ from 'jquery';
 import Chart from 'chart.js/auto';
-import {getData} from '../util';
+import {getSessions} from '../sessions';
 
 const canvas = $('#chart canvas').get(0);
 let chart;
 
 function createStateChart() {
   const states = {};
-  getData().forEach(session => {
+  getSessions().forEach(session => {
     const state = session['State'];
     if (state) {
       states[state] = states[state] || {'Number of People Trained': 0};
@@ -30,7 +30,7 @@ function createStateChart() {
 
 function createTypeChart() {
   const types = {};
-  getData().forEach(session => {
+  getSessions().forEach(session => {
     const type = session['Project Type'];
     if (type) {
       types[type] = types[type] || {'Number of People Trained': 0};
@@ -53,7 +53,7 @@ function createTypeChart() {
 
 function createYearChart() {
   const years = {};
-  getData().forEach(session => {
+  getSessions().forEach(session => {
     const year = session['Year of Engagement'];
     if (year) {
       years[year] = years[year] || {'Number of People Trained': 0};

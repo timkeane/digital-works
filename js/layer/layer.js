@@ -1,4 +1,4 @@
-import {setData, store} from '../util';
+import {store} from '../util';
 import {getCurrentLanguage} from '../i18n/i18n';
 import {updateLocationList} from '../list/list';
 import stateLayer from './state';
@@ -6,7 +6,6 @@ import locationLayer, {highlight, zoomToFeature} from './location';
 import $ from 'jquery';
 import {createPopup} from '../control/popup';
 import {forMobile} from '../html/resize';
-import {updateLegend} from '../control/legend';
 
 const env = import.meta.env;
 const styleUrl = `${env.VITE_BASEMAP_URL}?token=${env.VITE_ARC_TOKEN}`;
