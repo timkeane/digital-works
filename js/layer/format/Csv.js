@@ -12,7 +12,7 @@ const papaConfig = {
   header: true,
   newline: "\n",
   skipEmptyLines: false,
-  columns: ['ID','Organization','Organization Type','Training Date','Address','City','State','Zip Code','Longitude','Latitude','Number Trained','Project Type','Taining Topic']
+  columns: ['ID','Organization','Organization Type','Training Date','Address','City','State','Zip Code','Longitude','Latitude','Number of People Trained','Project Type','Taining Topic']
 };
   
 export default class Csv extends Id {
@@ -35,6 +35,7 @@ export default class Csv extends Id {
       feature.set('Training Date', date);
       feature.set('Year of Engagement', date.getFullYear());
     }
+    feature.set('Training Topic', feature.get('Training Topic')?.trim());
     feature.setGeometry(point.transform(this.dataProjection, this.defaultFeatureProjection));
     return feature;
   }
@@ -65,7 +66,6 @@ export default class Csv extends Id {
       
       aggregatedFeature.set('data', data);
       aggregated.push(aggregatedFeature);
-      if (id==317) console.warn(aggregatedFeature);
     });
     setData(aggregated);
     return aggregated;

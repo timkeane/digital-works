@@ -22,8 +22,6 @@ export function updateLegend() {
   const trainingLayer = getLocationLayer();
   const layer = trainingLayer.getVisible() ? 'location' : 'state';
   const data = layer === 'location' ?  getHeadCountByLocation() : getHeadCountByState();
-      console.warn(layer);
-
   if (data) {
     const buckets = ss.jenks(Object.values(data), 5);
     const min = ss.min(Object.values(data)) || 1;

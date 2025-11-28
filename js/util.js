@@ -124,7 +124,7 @@ export function setData(features) {
     const sessions = feature.get('data');
     let people = 0;
     sessions.forEach(session => {
-      people += (session['Number Trained'] * 1);
+      people += (session['Number of People Trained'] * 1);
     });
     feature.set('people', people);
     storage.headCountByLocation[feature.getId()] = people;
@@ -136,7 +136,7 @@ export function setData(features) {
   const states = {};
   data.forEach(session => {
     if (session[prop]) {
-      let number = session['Number Trained'];
+      let number = session['Number of People Trained'];
       number = number?.trim() ? parseInt(number) : 0;
       states[session[prop]] = states[session[prop]] || 0;
       states[session[prop]] = states[session[prop]] + number;

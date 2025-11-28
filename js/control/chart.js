@@ -10,9 +10,9 @@ function createStateChart() {
   getData().forEach(session => {
     const state = session['State'];
     if (state) {
-      states[state] = states[state] || {'Number Trained': 0};
+      states[state] = states[state] || {'Number of People Trained': 0};
       states[state]['State'] = state;
-      states[state]['Number Trained'] = states[state]['Number Trained'] + (session['Number Trained'] * 1);
+      states[state]['Number of People Trained'] = states[state]['Number of People Trained'] + (session['Number of People Trained'] * 1);
     }
   });
 
@@ -21,8 +21,8 @@ function createStateChart() {
     data: {
       labels: Object.values(states).map(row => row['State']),
       datasets: [{
-        label: 'Number Trained',
-        data: Object.values(states).map(row => row['Number Trained'])
+        label: 'Number of People Trained',
+        data: Object.values(states).map(row => row['Number of People Trained'])
       }]
     }
   });
@@ -33,9 +33,9 @@ function createTypeChart() {
   getData().forEach(session => {
     const type = session['Project Type'];
     if (type) {
-      types[type] = types[type] || {'Number Trained': 0};
+      types[type] = types[type] || {'Number of People Trained': 0};
       types[type]['Project Type'] = type;
-      types[type]['Number Trained'] = types[type]['Number Trained'] + (session['Number Trained'] * 1);
+      types[type]['Number of People Trained'] = types[type]['Number of People Trained'] + (session['Number of People Trained'] * 1);
     }
   });
 
@@ -44,8 +44,8 @@ function createTypeChart() {
     data: {
       labels: Object.values(types).map(row => row['Project Type']),
       datasets: [{
-        label: 'Number Trained',
-        data: Object.values(types).map(row => row['Number Trained'])
+        label: 'Number of People Trained',
+        data: Object.values(types).map(row => row['Number of People Trained'])
       }]
     }
   });
@@ -56,9 +56,9 @@ function createYearChart() {
   getData().forEach(session => {
     const year = session['Year of Engagement'];
     if (year) {
-      years[year] = years[year] || {'Number Trained': 0};
+      years[year] = years[year] || {'Number of People Trained': 0};
       years[year]['Year of Engagement'] = year;
-      years[year]['Number Trained'] = years[year]['Number Trained'] + (session['Number Trained'] * 1);
+      years[year]['Number of People Trained'] = years[year]['Number of People Trained'] + (session['Number of People Trained'] * 1);
     }
   });
 
@@ -67,8 +67,8 @@ function createYearChart() {
     data: {
       labels: Object.values(years).map(row => row['Year of Engagement']),
       datasets: [{
-        label: 'Number Trained',
-        data: Object.values(years).map(row => row['Number Trained'])
+        label: 'Number of People Trained',
+        data: Object.values(years).map(row => row['Number of People Trained'])
       }]
     }
   });
