@@ -29,6 +29,10 @@ export function getLocationLayer() {
   return getMap().get('location');
 }
 
+export function getLocationSource() {
+  return getLocationLayer().getSource();
+}
+
 export function getStateLayer() {
   return getMap().get('state');
 }
@@ -53,33 +57,6 @@ export function formatNumber(number) {
   const numberFormat = new Intl.NumberFormat(getCurrentLanguage(), {maximumFractionDigits: 1});
   return numberFormat.format(number);
 }
-
-// export function setData(features) {
-//   features.forEach(feature => {
-//     const sessions = feature.get('data');
-//     let people = 0;
-//     sessions.forEach(session => {
-//       people = people + session['Number of People Trained'] * 1;
-//     });
-//     feature.set('people', people);
-//     storage.headCount.location[feature.getId()] = people;
-//     storage.sessions = storage.sessions.concat(sessions);
-//   });
-
-//   const prop = 'State';
-//   const data = getSessions();
-//   const states = {};
-//   data.forEach(session => {
-//     if (session[prop]) {
-//       let number = session['Number of People Trained'];
-//       number = number?.trim() ? parseInt(number) : 0;
-//       states[session[prop]] = states[session[prop]] || 0;
-//       states[session[prop]] = states[session[prop]] + number;
-//     }
-//   });
-//   storage.headCountByState = states;
-//   updateLegend();
-// }
 
 export function getHeadCount() {
   return storage.headCount;

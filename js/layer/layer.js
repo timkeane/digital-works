@@ -1,8 +1,9 @@
 import {store} from '../util';
 import {getCurrentLanguage} from '../i18n/i18n';
-import {updateLocationList} from '../list/list';
+import {listHighlight, updateLocationList} from '../list/list';
 import stateLayer from './state';
-import locationLayer, {highlight, zoomToFeature} from './location';
+import locationLayer from './location';
+import {highlight, zoomToFeature} from './highlight';
 import $ from 'jquery';
 import {createPopup} from '../control/popup';
 import {forMobile} from '../html/resize';
@@ -25,6 +26,7 @@ export default function addLayers(map) {
           map.set('state', stateLayer);
           map.set('location', locationLayer);
           map.on('singleclick', highlight);
+          map.on('singleclick', listHighlight);
           createPopup(map);
           resolve(map);
         }).catch(error => {

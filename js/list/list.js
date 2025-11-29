@@ -1,14 +1,14 @@
 import $ from 'jquery';
-import {getLocation, getSelectedFeature, getLocationLayer} from '../util';
-import {highlight} from '../layer/location';
-import { LineString } from 'ol/geom';
-import { distance } from 'ol/coordinate';
+import {getSelectedFeature, getLocationLayer, store} from '../util';
+import {highlight} from '../layer/highlight';
+import {LineString} from 'ol/geom';
 
 const tabsAndLists = {};
 
 function locationOnClick(feature, h4) {
   h4.on('click', () => {
-    $('#map-tab').data('feature', feature);
+    store('selectedFeature', feature);
+    listHighlight();
     highlight(feature);
   });
 }
@@ -35,8 +35,8 @@ export function listHighlight() {
 
 function sortByState(features) {
   return features.sort((f0, f1) => {
-    const d0 = f0.get('data')[0];
-    const d1 = f1.get('data')[0];
+    const d0 = f0.get('sessions')[0];
+    const d1 = f1.get('sessions')[0];
     const a0 = `${d0['State']}:${d0['City']}:${d0['Zip Code']}`;
     const a1 = `${d1['State']}:${d1['City']}:${d1['Zip Code']}`;
     if (a0 < a1) {
@@ -75,7 +75,7 @@ export function sortByDistance(location) {
   }
 }
 
-export function updateLocationList(event) {  
+export function updateLocationList(event) {
   const locationList = $('#location-list').empty();
   const features = event.features; 
   const layer = getLocationLayer();

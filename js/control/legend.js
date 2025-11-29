@@ -54,7 +54,7 @@ export function updateLegend() {
   let i18n = 'state';
   if (layer === 'location') i18n = 'location';
   if (future) i18n = 'future';
-  $('#legend').removeClass('location').removeClass('state').addClass(layer === 'location' ? 'location' : 'state');
+  $('#legend').removeClass('location').removeClass('state').addClass(layer === 'location' ? 'location' : 'state').show();
   $('#legend h3').attr('data-i18n', `legend.title.${i18n}`).localize();
 }
 

@@ -20,6 +20,9 @@ li .feature-html .session {
   border-radius: 3px;
   font-weight: bold;
 }
+.feature-html h4:hover {
+  text-decoration: underline;
+}
 
 .feature-html h4.focus-ring:focus {
   background-color: var(--cSecondary);

@@ -28,8 +28,8 @@ function valueKey(value) {
 
 export default function html(feature, type) {
   const hasFuture = feature.get('has-future') ? 'has-future' : 'no-future';
-  const sessions = feature.get('data');
-  const html = $(`<div class="feature-html location ${hasFuture}"><h4>${i18nAddress(sessions[0])}</h4></div>`);
+  const sessions = feature.get('sessions');
+  const html = $(`<div class="feature-html location ${hasFuture}"><h4 role="button">${i18nAddress(sessions[0])}</h4></div>`);
   sessions.forEach((session, i) => {
     const future = session['future'] ? 'future' : '';
     const css = `${i === 0 ? 'first' : 'more'} ${future}`;
