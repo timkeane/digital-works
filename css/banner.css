@@ -21,18 +21,17 @@
 .banner h1 {
   margin: 0px;
   color: var(--cPrimary);
-  font-size: 3rem;
-  line-height: .8em;
+  font-size: 2.25rem;
+  line-height: 1em;
 }
 
-.banner .sub-heading {
-  font-size: .65em;
+.banner img {
+  max-height: 50px;
 }
 
 .banner .dropdown {
   position: absolute;
   inset-inline-end: 1em;
-  inset-block-start: 22px;
   max-height: 100px;
 }
 
