@@ -93,17 +93,13 @@
   display: inline-block;
   width: 29px;
   height: 29px;
+  text-align: center;
+  line-height: .5em;
+  padding: 0;
 }
 
 #popup-pager button.btn.btn-secondary span {
-  display: block;
   font-size: 32px;
-  margin-top: -20px;
-  margin-inline-start: -2px;
-}
-
-#popup-pager button.btn.btn-secondary.previous span {
-  margin-inline-start: -3px;
 }
 
 #popup, #possible {
@@ -164,8 +160,7 @@
 }
 
 #popup-standby {
-  position: fixed;
-  left: -10000px;
+  display: none;
 }
 
 #popup-content .field {
