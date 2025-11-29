@@ -215,39 +215,6 @@ a.help {
   z-index: 2;
 }
 
-.feature-tip {
-  border-radius: 2px;
-  padding: 3px;
-  min-inline-size: 100px;
-  background-color: var(--tipBg);
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 4px;
-  margin: 8px;
-  max-inline-size: 300px;
-}
-
- .feature-tip .title {
-  font-weight: 600;
- }
-
-.pulse {
-  block-size: 60px;
-  inline-size: 60px;
-  background-repeat: no-repeat;
-  background-position: center center;
-  animation-name: stretch;
-  animation-duration: 0.4s;
-  animation-timing-function: ease-in-out;
-  animation-direction: alternate;
-  animation-iteration-count: infinite;
-  animation-play-state: running;
-}
-
-.pulse.list-click {
-  border-radius: 50%;
-  background-color: var(--scrollbarBg);
-  box-shadow: 0 0 0 3px var(--scrollbarBg), 0 0 0 6px var(--scrollbarBg), 0 0 0 9px var(--scrollbarBorder);
-}
-
 h2.map-type {
   position: absolute;
   top: .5em;

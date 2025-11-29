@@ -1,6 +1,7 @@
 import $ from 'jquery';
 import Overlay from 'ol/Overlay';
-import {i18nAddress} from '../feature/html';
+import {i18nAddress} from '../feature/location';
+import {formatNumber, getHeadCountByLocation, getHeadCountByState, getLocationLayer, getStateLayer} from '../util';
 
 let nextId = 0;
 function getNextId() {
@@ -106,48 +107,32 @@ FeatureTip.Options
  */
 FeatureTip.HTML = '<div class="feature-tip" role="tooltip"></div>';
 
-function primaryTip(feature) {
-  const address = i18nAddress({
-    name: feature.get('busname'),
-    addr: feature.get('streetaddress'),
-    city: feature.get('city'),
-    state: '<span data-i18n="feature.value.addr_state"></span>',
-    zip: feature.get('zipcode')
-  });
-  const div = $(`<div class="address">${address}</div>`);
-  const html = $('<div><div class="title" data-i18n="layer.primary.name"></div></div>')
-    .append(div);
-  return {html};
+function locationTip(feature) {
+  if (getLocationLayer().getVisible()) {
+    const address = i18nAddress(feature.get('sessions')[0]);
+    const people = getHeadCountByLocation()[feature.getId()];
+    const html = $(`<div><h3>${address}</h3></div>`)
+      .append(people ? `<div><span class="field" data-i18n="[prepend]prop.name.number_of_people_trained">:</span> <span class="value">${formatNumber(people)}</span></div>` : '');
+    return {html};
+  }
 }
 
-function secondaryTip(feature) {
-  const address = i18nAddress({
-    name: feature.get('busname'),
-    addr: feature.get('streetaddress'),
-    city: feature.get('city'),
-    state: '<span data-i18n="feature.value.addr_state"></span>',
-    zip: feature.get('zipcode')
-  });
-  const div = $(`<div class="address">${address}</div>`);
-  const html = $('<div><div class="title" data-i18n="layer.secondary.name"></div></div>')
-    .append(div);
-  return {html};
-}
-
-function blockGroupTip(feature) {
-  const tr = feature.get('tr');
-  const bg = feature.get('bg');
-  const html = $(`<div>
-    <div class="title" data-i18n="[prepend]feature.field.tr"> ${tr}</div>
-    <div class="title" data-i18n="[prepend]feature.field.bg"> ${bg}</div>
-  </div>`);
-  return {html};
+function stateTip(feature) {
+  if (!getLocationLayer().getVisible()) {
+    const state = feature.get('name');
+    const people = getHeadCountByState(feature);
+    const html = $(`<div><h3>${state}</h3></div>`)
+      .append(`<div><span class="field" data-i18n="[prepend]prop.name.number_of_people_trained">:</span> <span class="value">${formatNumber(people)}</span></div>`);
+    return {html};
+  }
 }
 
 export function createFeatureTips(map) {
   new FeatureTip({
     map,
     tips: [
+      {layer: getLocationLayer(), label: locationTip},
+      {layer: getStateLayer(), label: stateTip}
     ]
   });
 }
