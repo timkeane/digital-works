@@ -20,9 +20,11 @@ li .feature-html .session {
   border-radius: 3px;
   font-weight: bold;
 }
-.feature-html h4:hover {
+
+li .feature-html h4:hover {
   text-decoration: underline;
   color: var(--cPrimary);
+  cursor: pointer;
 }
 
 .feature-html::before,
@@ -42,37 +44,7 @@ li .feature-html .session {
 .feature-html h4 {
   margin-block: 0px;
   background-repeat: no-repeat;
-  background-size: 20px;
-  cursor: pointer;
   font-size: 115%;
-}
-
-[dir="rtl"] .feature-html h4 {
-  background-position-x: right;
-}
-
-.feature-html.primary h4 {
-  background-image: url("../img/unserved.svg");
-}
-
-.feature-html.secondary h4 {
-  background-image: url("../img/secondary.svg");
-}
-
-.feature-html.primary.underserved h4 {
-  background-image: url("../img/underserved.svg");
-}
-
-.feature-html.primary.unserved h4 {
-  background-image: url("../img/unserved.svg");
-}
-
-.feature-html.cai.y h4 {
-  background-image: url("../img/y-eligible.svg");
-}
-
-.feature-html.cai.n h4 {
-  background-image: url("../img/n-eligible.svg");
 }
 
 .feature-html div.distance {
@@ -133,97 +105,6 @@ li .feature-html .session {
 
 .feature-html button[aria-expanded=true]::after {
   background-size: 0px 100%, 100% 2px !important;
-}
-
-button.challenge {
-  height: 38px;
-}
-
-#popup.challenge button.challenge::after,
-.list-group-item.challenge button.challenge::after {
-  background-size: 0px 100%, 100% 2px;
-}
-
-.feature-html table.provider {
-  order: 99999;
-  width: 100%;
-  flex: 0 0 100%;
-  margin-block: 0.5rem;
-}
-
-.feature-html table.provider tbody {
-  border-block-end: 1px solid var(--borderSubtle);
-}
-
-button.providers.list[aria-expanded=true] {
-  height: 43px;
-}
-
-table.provider.show,
-table.provider.showing,
-table.provider.collapsing {
-  min-height: unset;
-  border-radius: 0.25rem;
-  overflow: hidden;
-}
-
-table.provider th,
-table.provider td {
-  padding: 5px;
-}
-
-table.provider th + td,
-table.provider td + td {
-  border-inline-start: 1px solid var(--borderSubtle);
-}
-
-table.provider th + th,
-table.provider td + th {
-  border-inline-start: 1px solid var(--cOnSecondary);
-}
-
-table.provider th {
-  border-bottom: 1px solid var(--cPrimary);
-  background-color: var(--cSecondary);
-  background-color: var(--cPrimary);
-  color: var(--cOnPrimary);
-}
-
-table.provider td {
-  background-color: var(--cSecondary);
-  color: var(--cPrimary);
-}
-
-table.provider tbody tr:nth-child(n+2) {
-  border-block-start: 1px solid var(--borderSubtle);
-}
-
-table.provider th:last-of-type,
-table.provider td:last-of-type {
-  text-align: end;
-}
-
-.challenge table.provider td {
-  background-color: var(--cOnPrimary);
-  color: var(--cPrimary);
-}
-
-table.provider.loading {
-  background-image: url("/img/loading.svg");
-  background-repeat: no-repeat;
-  background-position: center center;
-  animation-name: stretch;
-  animation-duration: 0.4s;
-  animation-timing-function: ease-in-out;
-  animation-direction: alternate;
-  animation-iteration-count: infinite;
-  animation-play-state: running;
-  box-shadow: none;
-  min-height: 50px;
-}
-
-table.provider.loading th {
-  display: none;
 }
 
 li .feature-html .session.more {

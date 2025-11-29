@@ -134,18 +134,6 @@
   margin-inline-start: -11px;
 }
 
-#popup.challenge {
-  background-color: var(--popupActiveBg);
-}
-
-#popup.challenge::before {
-  border-top-color: var(--popupActiveBorder);
-}
-
-#popup.challenge::after {
-  border-top-color: var(--popupActiveBg);
-}
-
 .popup-closer {
   text-decoration: none;
   display: flex;

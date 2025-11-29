@@ -20,10 +20,7 @@ const html = $(`<div id="popup" class="popup">
 
 export function hidePopup() {
   getPopupOverlay().setPosition(undefined);
-  $('#popup')
-    .removeClass('challenge')
-    .css('opacity', 0)
-    .show();
+  $('#popup').css('opacity', 0).show();
 }
 
 function showPager(features, htmlFeatures) {
@@ -68,8 +65,7 @@ function showPopup(map, coordinate, features, htmlFeatures) {
   const content = $('#popup-content');
   if (htmlFeatures.length > 0) {
     const featureHtml = htmlFeatures[0];
-    popup.attr('data-fid', features[0].getId())
-      .addClass(features[0].get('challenge') ? 'challenge' : '');
+    popup.attr('data-fid', features[0].getId());
     content.html(featureHtml);
     showPager(features, htmlFeatures);
     popupOverlay.setPosition(coordinate);

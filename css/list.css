@@ -2,8 +2,7 @@
   container: locationListContainer/inline-size;
 }
 
-#location-list,
-#challenge-list {
+#location-list {
   padding-inline: 0;
 }
 
@@ -23,24 +22,12 @@ li .feature-html {
   overflow: hidden;
 }
 
-li .feature-html.has-providers {
-  overflow-x: auto;
-}
-
 li.list-group-item {
   border: none;
 }
 
 .list-group-item {
   background: var(--cOnPrimary);
-}
-
-.list-group-item.challenge {
-  background: var(--popupActiveBg);
-}
-
-.list-group-item.challenge button.challenge::after {
-  background-size: 0px 0.875em, 0.875em 2px !important;
 }
 
 #locations li.filtered {

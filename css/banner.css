@@ -23,6 +23,7 @@
   color: var(--cPrimary);
   font-size: 2.25rem;
   line-height: 1em;
+  font-weight: bold;
 }
 
 .banner img {

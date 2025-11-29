@@ -89,15 +89,6 @@ button.ol-zoom-out::after {
   background-size: 0px 100%, 100% 2px;
 }
 
-button.select-button:disabled,
-.add-selection button:disabled {
-  opacity: 0.5;
-}
-
-.select.ol-toggle.ol-active > button {
-  box-shadow: 0 0 0 2px var(--cOnPrimary), 0 0 0 4px var(--cPrimary);
-}
-
 div.ol-control.ol-attribution {
   right: unset;
   top: unset;
@@ -126,37 +117,6 @@ div.ol-control.ol-attribution {
   text-align: left;
   line-height: 95%;
   max-width: calc(100% - 5em);
-}
-
-.select.ol-control {
-  inset-block-start: 0.5em;
-  inset-inline-end: 0.5em;
-}
-
-.select.ol-control button {
-  background-repeat: no-repeat;
-  background-position: center;
-  border-radius: 0.25rem !important;
-}
-
-.select.ol-control button {
-  background-size: 39px;
-  background-image: url("../img/select.svg");
-}
-
-.add-selection.ol-control {
-  display: none;
-  inset-block-start: 0.5em;
-  inset-inline-end: 2.9em;
-}
-
-.add-selection.ol-control button {
-  font-size: 16px;
-  font-weight: normal;
-  inline-size: auto !important;
-  white-space: nowrap;
-  padding-inline: 0.375em;
-  border-radius: 0.25em;
 }
 
 .overlay-0 {

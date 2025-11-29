@@ -1,3 +1,1 @@
 proj type = community planning not in people stats
-
-animate locations on map over training date

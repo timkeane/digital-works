@@ -109,30 +109,14 @@ body.intro .modal-backdrop {
   padding-block-start: 0.5em;
 }
 
-#challenge-tab.new {
-  font-weight: bold;
-  position: relative;
-}
-
-#challenge-tab.new::before {
-  content: "!";
-  block-size: 1.5em;
-  inline-size: 1.5em;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--cPrimary);
-  background: var(--newChallenge);
-  border-radius: 100%;
-  margin-inline: 0px 0.375em;
-}
-
 #tab-content {
   overflow-y: auto;
   background: var(--cOnPrimary);
 }
 
-#tab-col.external, #tab-content.map-active, #tab-content.external {
+#tab-col.external,
+#tab-content.map-active,
+#tab-content.external {
   width: 100%;
   overflow-y: hidden;
 }
