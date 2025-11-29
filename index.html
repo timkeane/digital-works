@@ -86,6 +86,7 @@
             <input id="location-radio" type="radio" name="options" value="location" autocomplete="off" checked>
             <label class="btn btn-primary" for="map-state-radio" data-i18n="control.panel.state" role="button"></label>
             <input id="map-state-radio" type="radio" name="options" value="state" autocomplete="off">
+            <button id="animate" class="btn btn-primary" data-i18n="map.animate"></button>
           </div>
         </form>
         <form id="chart-type">
@@ -104,7 +105,9 @@
       <div id="tab-col" class="col-sm col-sm-9">
         <div id="tab-content" class="tab-content">
           <div id="map" class="tab-pane fade show active" role="tabpanel">
-            <div id="map-container" aria-hidden="true"></div>
+            <div id="map-container" aria-hidden="true">
+              <h2 id="calendar">&nbsp;</h2>
+            </div>
           </div>
           <div id="locations" class="tab-pane fade" role="tabpanel" aria-labelledby="location-tab" aria-hidden="true">
           </div>

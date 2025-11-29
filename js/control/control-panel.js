@@ -1,8 +1,11 @@
 import $ from 'jquery';
-import {getBorderStyle, getStateLayer, getLocationLayer, setFuture} from '../util';
+import {getBorderStyle, getStateLayer, getLocationLayer, setFuture, getLocationSource, getMap} from '../util';
 import {renderChart} from './chart';
 import countStyle from '../layer/style/state';
-import { updateLegend } from './legend';
+import {updateLegend} from './legend';
+import {getSessions} from '../sessions';
+import blankStyle from '../layer/style/blank';
+import animateStyle from '../layer/style/animate';
 
 const storyUrl = 'https://storymaps.arcgis.com/stories/c222fb7619ea49c5a4db939b77dee4e5';
 const statsUrl = 'https://app.powerbi.com/view?r=eyJrIjoiMTMyZmRhNzMtNWY5NC00OTlmLTgxNjEtZjA1OTFlNWIxZTE2IiwidCI6IjVhMjNkMTNlLTBhM2UtNDI5MS04ZDMzLTM5N2Y2YTEwZjEwYiJ9';
@@ -46,10 +49,12 @@ function setView(event) {
 
 function setMap(event) {
   const target = $(event.target);
+  const type = target.val();
   $('#map-type label').removeClass('active');
   $(`label[for=${target.attr('id')}]`).addClass('active');
-  getLocationLayer().setVisible(target.val() === 'location');
-  getStateLayer().setStyle(target.val() === 'state' ? countStyle : getBorderStyle());
+  getLocationLayer().setVisible(type === 'location');
+  getStateLayer().setStyle(type === 'state' ? countStyle : getBorderStyle());
+  $('#animate')[type === 'location' ? 'slideDown' : 'slideUp']();
 }
 
 function setChart(event) {
@@ -92,6 +97,82 @@ function showStories(event) {
   $('#tab-content')[external ? 'addClass' : 'removeClass']('external');
 }
 
+
+function getSessionMonth(date) {
+  if (date?.length >= 10) {
+    return date.substring(0, date.lastIndexOf('-'));
+  }
+}
+
+function getMonths() {
+  const months = {};
+  const thisMonth = getSessionMonth(new Date().toISOString());
+  const sessions = getSessions();
+  sessions.forEach(session => {
+    const month = getSessionMonth(session['Training Date']);
+    if (month < thisMonth || month === thisMonth) months[month] = month;
+  });
+  return Object.values(months).sort((y0, y1) => {
+    if (y0 < y1) {
+      return -1;
+    } else if (y0 > y1) {
+      return 1;
+    }
+    return 0;
+  });
+}
+
+function displayMonth(month) {
+  const parts = month.split('-');
+  const yr = $(`<span class="year">${parts[0]}</span>`);
+  const mo = $(`<span class="month" data-i18n="month.${parts[1]}"></span>`);
+  $('#calendar').empty().append(mo).append(yr).localize();
+}
+
+function animate(layer, style, months) {
+  const map = getMap();
+  const features = getLocationSource().getFeatures();
+  let i = 0;
+  layer.setStyle(animateStyle);
+  const interval = setInterval(() => {
+    const month = months[i];
+    displayMonth(month);
+    features.forEach(feature => {
+      const sessions = feature.get('sessions');
+      sessions.forEach(session => {
+        const sessionMonth = getSessionMonth(session['Training Date']); 
+        const people = parseInt(session['Number Trained']);
+        if (sessionMonth === month && people > 0) {
+          const animate = feature.get('animate');
+          feature.set('animate', animate + people);
+          map.renderSync();
+        }
+      });
+    });
+    if (i === months.length - 1) {
+      clearInterval(interval);
+      setTimeout(() => $('#calendar').fadeOut(), 3000);
+      layer.setStyle(style);
+    }
+    i = i + 1;
+  }, 10000 / months.length);
+}
+
+function prepareAnimation(event) {
+  event.preventDefault();
+  const layer = getLocationLayer();
+  const style = layer.getStyle();
+  const features = getLocationSource().getFeatures();
+  $('#calendar').empty().show();
+  layer.setStyle(blankStyle);
+  features.forEach(feature => {
+    feature.set('animate', 0);
+  });
+  setTimeout(() => {
+    animate(layer, style, getMonths());
+  }, 2000)
+}
+
 export default function createControlPanel() {
   $('#time-frame input').on('change', setTime);
   $('#view-type input').on('change', setView);
@@ -100,6 +181,7 @@ export default function createControlPanel() {
   $('#show-view').on('click', showView);
   $('#map-tab').on('click', showControlPanel);
   $('.nav button').on('click', showStories);
+  $('#animate').on('click', prepareAnimation);
   $('#location-tab').on('click', () => {
     $('#show-view').attr('aria-label', 'Show details').attr('title', 'Show details');
     $('#show-view').removeClass('map').removeClass('chart').addClass('detail')
