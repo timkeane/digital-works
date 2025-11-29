@@ -18,6 +18,8 @@ export default function addLayers(map) {
       const styleUrl = `${env.VITE_BASEMAP_URL}?token=${env.VITE_ARC_TOKEN}&language=${getCurrentLanguage()}`;
       return new Promise(() => {
         olms.apply(map, styleUrl).then(map => {
+          console.warn(map.getAllLayers()[0]);
+          
           const locationSource = locationLayer.getSource();
           locationSource.on('featuresloadend', updateLocationList);
           locationSource.on('featuresloadend', forMobile);

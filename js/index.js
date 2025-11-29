@@ -26,7 +26,7 @@ function load() {
   showIntro();
   createLayout().then(layout => {
     const map = new Map({target: layout.map});
-
+    window.map=map;
     $('.ol-attribution button')
       .addClass('attribution')
       .one('click', () => {

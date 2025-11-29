@@ -56,7 +56,11 @@ button.ol-zoom-in,
 button.ol-zoom-out {
   text-indent: 0;
   font-size: 24px;
-  padding-bottom: 5px;
+  padding-bottom: 4px;
+}
+
+button.ol-zoom-out {
+  padding-bottom: 3px;
 }
 
 button.ol-zoom-in::before,

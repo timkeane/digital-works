@@ -18,7 +18,8 @@ const source = new Source({format, url});
 
 const layer = new Layer({
   source,
-  style
+  style,
+  zIndex: 0
 });
 
 layer.set('name', 'location');
