@@ -5,7 +5,7 @@ const dialogHtml = `<div id="dialog" class="modal fade" data-bs-keyboard="false"
     <div class="modal-content">
     <div class="modal-header">
       <h2></h2>
-      <button type="button" class="btn-close" data-bs-dismiss="modal" data-i18n="[aria-label]btn.close.no"></button>
+      <button class="popup-closer" data-i18n="[aria-label]btn.close.name;[title]btn.close.name" data-bs-dismiss="modal"></button>
     </div>
     <div class="modal-body"></div>
       <div class="modal-footer">
@@ -26,7 +26,7 @@ const footer = $('#dialog .modal-footer').hide();
 const ok = $('#dialog button.ok').hide();
 const message = $('#dialog .modal-body');
 const modal = $('#modal').get(0);
-const dismiss = $('#dialog button.btn-close');
+const dismiss = $('#dialog button.popup-closer');
 
 function close(callback, yesNo) {
   dialog.hide();

@@ -25,25 +25,6 @@ li .feature-html .session {
   color: var(--cPrimary);
 }
 
-.feature-html h4.focus-ring:focus {
-  background-color: var(--cSecondary);
-  box-shadow: 0 0 0 2px var(--cPrimary);
-}
-
-.feature-html h4.focus-ring:hover {
-  background-color: var(--scrollbarBg);
-}
-
-.feature-html button.focus-ring:focus {
-  background-color: var(--cPrimary);
-  color: var(--cOnPrimary);
-}
-
-.feature-html button.focus-ring:hover,
-#challenge button.focus-ring:hover {
-  box-shadow: 0 0 0 1px var(--cPrimary);
-}
-
 .feature-html::before,
 .feature-html::after {
   content: "";
@@ -306,7 +287,7 @@ body.future .feature-html a.directions:hover {
   color: var(--cOnPrimary);
   background-color: var(--tipBg);
   border: 1px solid var(--cSecondary);
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 4px;
+  box-shadow: rgba(0, 0, 0, .2) 0px 1px 4px;
   margin: 4px;
   max-inline-size: 300px;
   line-height: .75em;

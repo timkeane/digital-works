@@ -2,18 +2,27 @@ body.intro #modal {
   box-shadow: rgba(0, 0, 0, 0.3) 0px 10px 10px;
 }
 
-.modal-backdrop {
+body.intro:not(.loading) .modal-backdrop {
   backdrop-filter: blur(3px);
-  background-color: rgba(0, 0, 0, 0.375);
+  background-color: var(--modalBd);
   opacity: 1 !important;
 }
 
 .modal-header {
   align-items: center;
+  background-color: var(--cPrimary);
 }
 
-.modal-header > :is(h1, h2, h3, h4, h5, h6) {
+.modal-header h2 {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: var(--cOnPrimary);
   margin-block: 0;
+}
+
+div#modal.intro {
+  margin: 6em 4em;
+  border-radius: .5em !important;
 }
 
 #dialog .modal-footer {
@@ -25,67 +34,37 @@ body.intro #modal {
 
 #dialog .modal-footer .start {
   flex-grow: 9999;
-}
-
-#dialog .modal-footer .start {
   flex-grow: 1;
 }
 
-#dialog .btn-primary:focus {
+#dialog .btn-primary:focus,
+#dialog .btn-primary:hover {
   box-shadow: 0 0 0 3px var(--cPrimary);
 }
 
 #dialog .btn-secondary:focus,
-#dialog .btn-close:focus {
-  box-shadow: 0 0 0 3px var(--cSecondary);
-}
-
-#dialog a:focus {
-  color: var(--cPrimary);
-  background-color: var(--cSecondary);
-  border-radius: 3px;
-  box-shadow: 0 0 0 3px var(--cSecondary);
-}
-
-#dialog input {
-  width: 1.5em;
-  height: 1.5em;
-  margin-top: 0;
+#dialog .btn-secondary:hover {
+  box-shadow: 0 0 0 2px var(--cSecondary);
 }
 
 #dialog .btn-close {
   margin-inline-start: 0;
-  margin-inline-end: -8px;
+  margin-inline-end: -.5em;
+  color: var(--cOnPrimary) !important;
 }
 
-div.guide,
-div.intro {
-  position: fixed;
-  display: block;
-  left: 0.75em;
-  right: 0.75em;
-  margin: 0;
-}
-
-div.intro {
-  top: 4em;
-  bottom: 1.5em;
-}
-
-div.guide {
-  top: 1em;
-  bottom: 1em;
-}
-
-div.guide .modal-content,
-div.intro .modal-content {
+body.intro #modal .modal-content {
   width: 100%;
   height: 100%;
+  border: 1px solid var(--cSecondary);
+  border-radius: .5em !important;
+  box-shadow: rgba(0, 0, 0, .2) 0px 1px 4px;
 }
 
-div.guide .modal-body,
 div.intro .modal-body {
   overflow-y: auto;
+  background-color: transparent;
+  border: none;
 }
 
 div.provider .modal-body table {

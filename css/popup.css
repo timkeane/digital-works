@@ -17,7 +17,7 @@
   min-block-size: 24px;
 }
 
-#popup #popup-closer {
+#popup .popup-closer {
   position: absolute;
   top: 0.33em;
   right: 0.33em;
@@ -38,12 +38,12 @@
   margin: 0px;
 }
 
-#popup-closer {
+.popup-closer {
   float: inline-end;
   position: relative;
 }
 
-#popup-closer::after {
+.popup-closer::after {
   inline-size: 12px;
   block-size: 12px;
   opacity: 1;
@@ -54,8 +54,6 @@
   text-shadow: none;
   font-weight: 700;
   content: "";
-  background: transparent;
-  background: linear-graident(to top, currentColor, currentColor) no-repeat center/100% 2px, linear-graident(to top, currentColor, currentColor) no-repeat center/2px 100%;
   background: linear-gradient(to top, currentColor, currentColor) no-repeat center/100% 2px, linear-gradient(to top, currentColor, currentColor) no-repeat center/2px 100%;
   z-index: 2;
   transform: rotate(45deg);
@@ -104,7 +102,7 @@
 
 #popup, #possible {
   background-color: var(--cOnPrimary);
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 4px;
+  box-shadow: rgba(0, 0, 0, .2) 0px 1px 4px;
   border: none;
 }
 
@@ -148,7 +146,7 @@
   border-top-color: var(--popupActiveBg);
 }
 
-#popup-closer {
+.popup-closer {
   text-decoration: none;
   display: flex;
   flex-flow: row wrap;

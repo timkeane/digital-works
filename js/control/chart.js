@@ -29,6 +29,7 @@ const options =  {
   plugins: {
     title: {
       display: true,
+      color: '#111a52',
       font: {
         size: 16,
         weight: 'bold'

@@ -2,52 +2,32 @@
   position: relative;
   width: 100%;
   overflow: hidden;
-}
-
-#map-container.wayout {
-  position: fixed;
-  left: -10000px;
-  width: 960px;
-  height: 960px;
-}
-
-#map-container.draw-select {
-  cursor: pointer;
-}
-
-#wait {
-  width: 40px;
-  height: 40px;
-  background-size: 80px;
-}
-
-.ol-control button:focus,
-a.help:focus,
-button#zoom-full:focus {
-  outline: none !important;
-  background-color: var(--cSecondary);
-  box-shadow: 0 0 0 2px var(--cPrimary);
-  color: var(--cPrimary);
+  box-shadow: inset 0 0 0 20px var(--cPrimary);
 }
 
 .ol-control button:hover,
-a.help:hover,
-button#zoom-full:hover {
-  box-shadow: 0 0 0 2px var(--cSecondary);
+button#zoom-full:hover,
+.popup-closer:hover,
+#popup-pager .btn:hover {
+  box-shadow: inset 0 0 0 2px var(--cPrimary);
+  background-color: var(--cSecondary);
+  color: var(--cOnSecondary);
 }
 
-.ol-control button.select-button:focus {
-  background-image: url("../img/select-focus.svg");
+.popup-closer:hover:after {
+  color: var(--cPrimary);
 }
 
 .ol-control button {
   inline-size: 29px !important;
   block-size: 29px !important;
+  box-shadow: rgba(0, 0, 0, .2) 0px 1px 4px;
 }
+
 .ol-control button.ol-zoom-out {
   margin-top: 3px;
 }
-.ol-control button, #popup-closer::after {
+.ol-control button, .popup-closer::after {
   color: var(--cOnPrimary);
   background-color: var(--cPrimary);
   border-color: var(--cPrimary);
@@ -56,10 +36,8 @@ button#zoom-full:hover {
 button#zoom-full,
 button.ol-zoom-in,
 button.ol-zoom-out,
-#popup-closer,
-button.attribution,
-button.select-button
-a.help {
+.popup-closer,
+button.attribution {
   font-weight: bold;
   position: relative;
   grid-area: 1/2;
@@ -74,15 +52,6 @@ a.help {
   border-radius: 0.25rem !important;
 }
 
-a.help {
-  display: none;
-  border-radius: 0.25rem !important;
-  background:  var(--cPrimary);
-  font-weight: bold;
-  text-decoration: none;
-  text-align: center;
-}
-
 button.ol-zoom-in,
 button.ol-zoom-out {
   text-indent: 0;
@@ -94,7 +63,7 @@ button.ol-zoom-in::before,
 button.ol-zoom-in::after,
 button.ol-zoom-out::before,
 button.ol-zoom-out::after,
-#popup-closer::before,
+.popup-closer::before,
 button.attribution::before,
 button.attribution::after {
   content: "";
@@ -102,7 +71,7 @@ button.attribution::after {
 
 button.ol-zoom-in::before,
 button.ol-zoom-out::before,
-#popup-closer::before,
+.popup-closer::before,
 button.attribution::before {
   display: none;
 }
@@ -142,12 +111,6 @@ div.ol-control.ol-attribution {
   display: none;
 }
 
-.ol-attribution button.attribution[aria-expanded="true"]:focus {
-  background-image: var(--leftArrowFocus) !important;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
 .ol-attribution button.attribution[aria-expanded="true"] .ol-attribution-collapse {
   transform: rotate(180deg);
   font-size: 32px;
@@ -159,17 +122,6 @@ div.ol-control.ol-attribution {
   text-align: left;
   line-height: 95%;
   max-width: calc(100% - 5em);
-}
-
-a.help {
-    color: var(--cOnPrimary);
-    position: absolute;
-    right: 0.5em;
-    bottom: 0.5em;
-    width: 1.75em;
-    z-index: 2;
-    font-size: 1.5em;
-    padding: 0.125em 0;
 }
 
 .select.ol-control {
@@ -249,6 +201,6 @@ button#zoom-full {
   block-size: 29px;
 }
 
-button#zoom-full:focus {
+button#zoom-full:hover {
   background-image: url(../img/us-hover.png);
 }

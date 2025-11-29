@@ -38,13 +38,6 @@ body.loading #legend {
   display: none;
 }
 
-*.focus-ring:focus {
-  box-shadow: none;
-}
-
-#translate.focus-ring:focus {
-  box-shadow: 0 0 0 2px var(--cPrimary), 0 0 0 5px var(--cSecondary);
-}
 
 a.dropdown-item:focus,
 a.dropdown-item:focus-visible {
@@ -58,16 +51,12 @@ a.dropdown-item:hover {
   color: var(--cPrimary);
 }
 
-.nav-link.focus-ring:focus {
-  box-shadow: none;
-  color: var(--cOnSecondary);
-  background-color: var(--cSecondary);
+.nav-link {
+  font-weight: bold;
 }
 
-.nav-link.focus-ring.active:focus {
-  box-shadow: none;
-  color: var(--cOnPrimary);
-  background-color: var(--cPrimary);
+#nav .nav-link.active {
+ color: var(--cPrimary);
 }
 
 #tab-col {

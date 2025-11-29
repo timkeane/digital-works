@@ -118,8 +118,7 @@ function displayPossible(possibles, textOrAddress) {
   possibles.forEach(possible => {
     const location = possible[textOrAddress];
     if (added[location] === undefined) {
-      const li = $(`<li class="list-group-item focus-ring" 
-        tabindex="0">${location}</li>`);
+      const li = $(`<li class="list-group-item" tabindex="0">${location}</li>`);
       added[location] = true;
       li.on('click', event => {
         list.slideUp();
@@ -167,8 +166,8 @@ function displayOnMap(candidate) {
 
 export function createLocator(map) {
   const form = $('<form id="locate"></form>');
-  const div = $('<div class="form-group search-map"><ul id="possible" class="list-group"></ul><button type="submit" class="btn btn-primary focus-ring" data-i18n="[aria-label]search"><div></div></button></div>');
-  const input = $('<input type="text" class="form-control focus-ring" id="search" data-i18n="[placeholder]form.search.placeholder;[aria-label]form.search.placeholder">');
+  const div = $('<div class="form-group search-map"><ul id="possible" class="list-group"></ul><button type="submit" class="btn btn-primary" data-i18n="[aria-label]search"><div></div></button></div>');
+  const input = $('<input type="text" class="form-control" id="search" data-i18n="[placeholder]form.search.placeholder;[aria-label]form.search.placeholder">');
   const possible = div.find('#possible');
 
   form.append(div.prepend(input)).localize();

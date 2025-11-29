@@ -3,7 +3,7 @@ import Overlay from 'ol/Overlay';
 import {getPopupOverlay, getLocationLayer} from '../util';
 
 const html = $(`<div id="popup" class="popup">
-  <a href="#" id="popup-closer" class="popup-closer" data-i18n=[aria-label]btn.close.name" rel="noopener"></a>
+  <a href="#" id="popup-closer" class="popup-closer" data-i18n="[aria-label]btn.close.name" rel="noopener"></a>
   <div id="popup-content">
   </div>
   <div id="popup-pager">
@@ -74,7 +74,7 @@ function showPopup(map, coordinate, features, htmlFeatures) {
     showPager(features, htmlFeatures);
     popupOverlay.setPosition(coordinate);
     popup.animate({opacity: 1});
-    $('#popup-closer').one('click', event => {
+    $('.popup-closer').one('click', event => {
       popup.fadeOut(() => hidePopup());
     });
   }

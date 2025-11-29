@@ -3,7 +3,7 @@ import {store} from '../util';
 
 export default function spin() {
   const html = $(`<div class="dropdown">
-  <button id="translate" class="btn btn-primary dropdown-toggle focus-ring" type="button" data-i18n="translate" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+  <button id="translate" class="btn btn-primary dropdown-toggle" type="button" data-i18n="translate" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
   <div class="dropdown-menu" aria-labelledby="translate">
   </div>
 </div>`);
