@@ -66,7 +66,12 @@ function toggle() {
 
 export function createLegend(map) {
   const control = new Control({element: legend.get(0)});
+  const title = legend.find('h3');
   control.setMap(map);
   getLocationLayer().on('change:visible', updateLegend);
   legend.on('click', toggle);
+  title.on('keyup', event => {
+    if (event.key === 'Enter' || event.key === ' ')
+      title.trigger('click');
+  });
 }

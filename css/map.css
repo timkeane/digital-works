@@ -208,3 +208,7 @@ button#zoom-full {
 button#zoom-full:hover {
   background-image: url(../img/us-hover.png);
 }
+
+#map-container .ol-viewport {
+  background-color: #acdef2;
+}

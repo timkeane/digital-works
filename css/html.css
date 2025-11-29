@@ -4,7 +4,7 @@ html, body {
 }
 
 ::-webkit-scrollbar {
-  border: 1px solid var(--scrollbarBorder);
+  border: none;
   inline-size: 12px;
   block-size: 12px;
 }

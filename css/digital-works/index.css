@@ -13,8 +13,9 @@
   --modalBd: rgba(17,26,82,.5);
   --newChallenge: #fff000;
   --legendBg: #f2f2f2;
-  --scrollbarBg: rgba(0, 98, 204, 0.25);
-  --scrollbarBorder: rgba(0, 98, 204, 0.25);
+  --scrollbarBg: rgba(0, 98, 204, .125);
+  --scrollbarWidth: 1em;
+  --scrollbarBorder: rgba(0, 98, 204, .25);
   --checkFocus: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23111a52' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3l6-6'/%3e%3c/svg%3e");
 }
 

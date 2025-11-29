@@ -9,7 +9,8 @@
 
 #control-panel form strong {
   display: block;
-  margin-bottom: .25em
+  margin-bottom: .25em;
+  color: var(--cPrimary);
 }
 
 #control-panel form label {

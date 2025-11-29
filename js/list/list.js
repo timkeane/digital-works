@@ -11,6 +11,12 @@ function locationOnClick(feature, h4) {
     listHighlight();
     highlight(feature);
   });
+  h4.on('keypress', event => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      h4.trigger('click');
+    }
+  });
 }
 
 function appendToLocationList(locationList, feature, featureHtml, visible) {

@@ -26,7 +26,6 @@ function load() {
   showIntro();
   createLayout().then(layout => {
     const map = new Map({target: layout.map});
-    window.map=map;
     $('.ol-attribution button')
       .addClass('attribution')
       .one('click', () => {
@@ -41,9 +40,9 @@ function load() {
     addLayers(map).then(map => {
       createLocator(map);
       createLists(layout);
+      createZoomFull(map);
       createLegend(map);
       createControlPanel();
-      createZoomFull(map);
       map.once('postrender', () => {
         $(window).trigger('resize');
         $('button#zoom-full').trigger('click');

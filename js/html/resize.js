@@ -10,16 +10,15 @@ function tabContentHeight(event) {
   $('#tab-content').css('height', `${windowHeight - bannerHeight - navHeight}px`);
   $('#control-panel').css('height', `${windowHeight - bannerHeight - navHeight}px`);
   $('#map-container').css('height', `${windowHeight - bannerHeight - navHeight}px`);
-  $('button, *[role="button"]').attr('tabindex', 0);
+  $('button, *[role="button"]').not('.nav-link').attr('tabindex', 0);
 }
-
 
 export function forMobile() {
   if ($(window).width() < 575) {
     if ($('#show-view').is(':visible')) {
       $('#map').removeClass('active');
     }
-  }  
+  }
 }
 
 export function createResizeHandler() {
