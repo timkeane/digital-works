@@ -57,6 +57,4 @@ function load() {
   });
 }
 
-initI18n().then(() => {
-  load(false);
-});
+initI18n().then(() => load());
