@@ -52,7 +52,8 @@ function setDistance(location, feature) {
   const geom = feature.getGeometry();
   const featureCoord = geom.getCoordinates();
   const line = new LineString([location, featureCoord]);
-  const distance = line.getLength();
+  // TODO FIX WHEN ALL LOCATIONS HAVE COORDINATES
+  const distance = line.getLength() || 1000000000000000000000;
   feature.set('distance', distance);
 }
 
@@ -85,6 +86,7 @@ export function updateLocationList(event) {
   if (!event.distance) sortByState(features);
   features.forEach(feature => appendToLocationList(locationList, feature, fHtml, true));
   $('#locate button').removeClass('loading');
+  $('#location-list li').get(0).scrollIntoView({behavior: 'smooth'});
 }
 
 export function createLists(layout) {
