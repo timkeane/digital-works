@@ -52,5 +52,5 @@ li.list-group-item {
 }
 
 .list-group-item.highlight {
-  box-shadow: inset 0 0 0 .5em var(--cSecondary);
+  background-color: var(--cSecondary);
 }
