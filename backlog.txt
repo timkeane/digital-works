@@ -1,2 +1,2 @@
 proj type = community planning not in people stats
-legend min values from ss
+pop pager css

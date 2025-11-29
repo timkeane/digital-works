@@ -37,6 +37,10 @@ export function getStateLayer() {
   return getMap().get('state');
 }
 
+export function getStateName(id) {
+  return getStateLayer().getSource().getFeatureById(id).get('name');
+}
+
 export function getPopupOverlay() {
   return getMap().get('popupOverlay');
 }

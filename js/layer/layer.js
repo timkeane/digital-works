@@ -7,6 +7,7 @@ import {highlight, zoomToFeature} from './highlight';
 import $ from 'jquery';
 import {createPopup} from '../control/popup';
 import {forMobile} from '../html/resize';
+import {createFeatureTips} from '../control/tip';
 
 const env = import.meta.env;
 const styleUrl = `${env.VITE_BASEMAP_URL}?token=${env.VITE_ARC_TOKEN}`;
@@ -27,6 +28,7 @@ export default function addLayers(map) {
           map.set('location', locationLayer);
           map.on('singleclick', highlight);
           map.on('singleclick', listHighlight);
+          createFeatureTips(map);
           createPopup(map);
           resolve(map);
         }).catch(error => {

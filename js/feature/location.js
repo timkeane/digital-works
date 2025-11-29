@@ -1,17 +1,6 @@
 import $ from 'jquery';
 import {formatNumber} from '../util';
 
-function i18nAddress(session) {
-  const addr = session['Address'];
-  const city = session['City'];
-  const state = session['State'];
-  const zip = session['Zip Code'];
-  if ($('html').attr('dir') === 'rtl') {
-    return `${zip} ${state}, ${city}${addr ? '<br>' : ''}${addr}`;
-  }
-  return `${addr}${addr ? '<br>' : ''}${city}, ${state} ${zip}`;
-}
-
 function getToAddress(session) {
   const addr = session['Address'];
   const city = session['City'];
@@ -40,6 +29,17 @@ function appendDirections(distance, feature) {
 function valueKey(value) {
   if (!value) return '';
   return value.replace(/\//g, '_').replace(/\-/g, '_').replace(/\(/g, '').replace(/\)/g, '').replace(/ /g, '_').toLowerCase()
+}
+
+export function i18nAddress(session) {
+  const addr = session['Address'];
+  const city = session['City'];
+  const state = session['State'];
+  const zip = session['Zip Code'];
+  if ($('html').attr('dir') === 'rtl') {
+    return `${zip} ${state}, ${city}${addr ? '<br>' : ''}${addr}`;
+  }
+  return `${addr}${addr ? '<br>' : ''}${city}, ${state} ${zip}`;
 }
 
 export default function html(feature, type) {
