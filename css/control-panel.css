@@ -1,6 +1,7 @@
 #control-panel {
   overflow-y: scroll;
   padding-bottom: .5em;
+  border-right: 1px solid var(--scrollbarBorder);
 }
 
 #control-panel p {

@@ -27,7 +27,8 @@ function setTime(event) {
 function setView(event) {
   const target = $(event.target);
   const view = target.val();
-  $('#locate')[view === 'chart' ? 'slideUp' : 'slideDown']();
+  const type = $('#map-state-radio').is(':checked') ? 'state' : 'location';
+  $('#locate')[type === 'state' ? 'slideUp' : 'slideDown']();
   $('#view-type label').removeClass('active');
   $(`label[for=${target.attr('id')}]`).addClass('active');
   $('#show-view').removeClass('detail').removeClass('map').removeClass('chart').addClass(view);
@@ -55,6 +56,8 @@ function setMap(event) {
   getLocationLayer().setVisible(type === 'location');
   getStateLayer().setStyle(type === 'state' ? countStyle : getBorderStyle());
   $('#animate')[type === 'location' ? 'slideDown' : 'slideUp']();
+  $('#time-frame')[type === 'location' ? 'slideDown' : 'slideUp']();
+  $('#locate')[type === 'location' ? 'slideDown' : 'slideUp']();
 }
 
 function setChart(event) {
@@ -79,9 +82,11 @@ function showControlPanel(event) {
   if ($(window).width() < 575) {
     $('#show-view').removeClass('detail').removeClass('map').removeClass('chart').addClass(view);
     $(`#${view}`).slideUp();
-    $(view === 'map' ? '#chart-type' : '#map-type').hide();
+    $(view === 'map' ? '#chart-type' : '#map-type').slideUp();
     $('#control-panel').slideDown();
   } else {
+    const type = $('#map-state-radio').is(':checked') ? 'state' : 'location';
+    $('#time-frame')[type === 'state' ? 'slideUp' : 'slideDown']();
     $('#view-type input:checked').trigger('change');
   }
 }
@@ -183,8 +188,10 @@ export default function createControlPanel() {
   $('.nav button').on('click', showStories);
   $('#animate').on('click', prepareAnimation);
   $('#location-tab').on('click', () => {
-    $('#show-view').attr('aria-label', 'Show details').attr('title', 'Show details');
-    $('#show-view').removeClass('map').removeClass('chart').addClass('detail')
+    $('#show-view').attr('data-i18n', 'control.panel.show;[aria-label]tab.details.show;[title]tab.details.show').localize();
+    $('#show-view').removeClass('map').removeClass('chart').addClass('detail');
+    $('#locate').slideDown();
+    $('#time-frame').slideDown();
   });
   $('#nav button').on('click', event => {
     if (event.target.id === 'location-tab') {

@@ -5,6 +5,7 @@ export const translation = {
   "banner.cn.alt": "Connected Nation",
   "tab.activities.name": "Actividades",
   "tab.details.name": "Detalles",
+  "tab.details.show": "Mostrar detalles",
   "tab.stats.name": "Estadísticas",
   "tab.stories.name": "Historias",
   "dialog.intro": "<p>Párrafo introductorio u otros tres. Párrafo introductorio u otros tres. Párrafo introductorio u otros tres. Párrafo introductorio u otros tres.</p><p>Párrafo introductorio u otros tres. Párrafo introductorio u otros tres. Párrafo introductorio u otros tres. Párrafo introductorio u otros tres.</p><p>Párrafo introductorio u otros tres. Párrafo introductorio u otros tres. Párrafo introductorio u otros tres. Párrafo introductorio u otros tres.</p>",
