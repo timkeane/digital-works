@@ -34,7 +34,53 @@ body.loading {
 }
 
 .btn.btn-primary:hover {
-  box-shadow: inset 0 0 0 2px var(--cPrimary);
+  box-shadow: inset 0 0 0 2px var(--cSecondary);
+}
+
+*:focus,
+*:active,
+*:focus-visible,
+.form-control:focus,
+.btn:focus-visible,
+h4:focus-visible,
+.nav-tabs .nav-link:focus,
+.nav-tabs .nav-link:focus-visible {
+  box-shadow: inset 0 0 0 3px #74a9cf;
+  outline: none !important;
+}
+
+.ol-control button:focus,
+.btn.active:focus,
+.btn.active:focus-visible {
+  color: inherit;
+  box-shadow: inset 0 0 0 2px #74a9cf !important;
+  border: 1px solid #74a9cf !important;
+  outline: none !important;
+}
+
+.btn.btn-primary.active:focus,
+.btn.btn-primary.active:focus-visible {
+  box-shadow: inset 0 0 0 2px #a6bddb !important;
+}
+
+.ol-control button:focus {
+  color: var(--cOnPrimary);
+}
+
+.nav-tabs .nav-link:focus,
+.nav-tabs .nav-link:focus-visible,
+.nav-tabs .nav-link.active:focus,
+.nav-tabs .nav-link.active:focus-visible {
+  color: inherit;
+  box-shadow: inset 0 0 0 3px #74a9cf !important;
+  border: 1px solid var(--cPrimary) !important;
+  border-bottom: none !important;
+  outline: none !important;
+}
+
+.nav-tabs .nav-link.active:focus,
+.nav-tabs .nav-link.active:focus-visible {
+  box-shadow: inset 0 0 0 3px #a6bddb !important;
 }
 
 @media only screen and (max-width: 575px) {

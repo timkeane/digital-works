@@ -4,7 +4,7 @@ import {getLocationLayer, getHeadCountByState, getHeadCountByLocation, formatNum
 import * as ss from 'simple-statistics';
 
 const html = `<div id="legend">
-  <h3></h3>
+  <h3 role="button"></h3>
   <ul class="buckets">
     <li class="low"><div class="bucket"><div class="point"></div></div><span></span></li>
     <li class="high"><div class="bucket"><div class="point"></div></div><span></span></li>

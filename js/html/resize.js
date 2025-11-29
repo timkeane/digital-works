@@ -10,6 +10,7 @@ function tabContentHeight(event) {
   $('#tab-content').css('height', `${windowHeight - bannerHeight - navHeight}px`);
   $('#control-panel').css('height', `${windowHeight - bannerHeight - navHeight}px`);
   $('#map-container').css('height', `${windowHeight - bannerHeight - navHeight}px`);
+  $('button, *[role="button"]').attr('tabindex', 0);
 }
 
 
