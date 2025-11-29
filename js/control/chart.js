@@ -70,7 +70,7 @@ function externalTip(context) {
     const position = context.chart.canvas.getBoundingClientRect();
     const title = getTitle(tooltipModel);
     const html = $(`<div><h3>${title}</h3></div>`)
-      .append(`<div><span class="field" data-i18n="[prepend]prop.name.number_of_people_trained">:</span> <span class="value">${people}</span></div>`);
+      .append(`<div><span class="field" data-i18n="[prepend]prop.name.number_trained">:</span> <span class="value">${people}</span></div>`);
     tip.html(html).localize().css({
       left: `${position.left + window.pageXOffset + tooltipModel.caretX}px`,
       top: `${position.top + window.pageYOffset + tooltipModel.caretY}px`
@@ -83,9 +83,9 @@ function createStateChart() {
   getSessions().forEach(session => {
     const state = session['State'];
     if (state) {
-      states[state] = states[state] || {'Number of People Trained': 0};
+      states[state] = states[state] || {'Number Trained': 0};
       states[state]['State'] = state;
-      states[state]['Number of People Trained'] = states[state]['Number of People Trained'] + (session['Number of People Trained'] * 1);
+      states[state]['Number Trained'] = states[state]['Number Trained'] + (session['Number Trained'] * 1);
     }
   });
 
@@ -97,7 +97,8 @@ function createStateChart() {
     data: {
       labels: Object.values(states).map(row => row['State']),
       datasets: [{
-        data: Object.values(states).map(row => row['Number of People Trained'])
+        hoverBackgroundColor: '#3399CC',
+        data: Object.values(states).map(row => row['Number Trained'])
       }]
     }
   });
@@ -108,9 +109,9 @@ function createTypeChart() {
   getSessions().forEach(session => {
     const type = session['Project Type'];
     if (type) {
-      types[type] = types[type] || {'Number of People Trained': 0};
+      types[type] = types[type] || {'Number Trained': 0};
       types[type]['Project Type'] = type;
-      types[type]['Number of People Trained'] = types[type]['Number of People Trained'] + (session['Number of People Trained'] * 1);
+      types[type]['Number Trained'] = types[type]['Number Trained'] + (session['Number Trained'] * 1);
     }
   });
 
@@ -122,7 +123,8 @@ function createTypeChart() {
     data: {
       labels: Object.values(types).map(row => row['Project Type']),
       datasets: [{
-        data: Object.values(types).map(row => row['Number of People Trained'])
+        hoverBackgroundColor: '#3399CC',
+        data: Object.values(types).map(row => row['Number Trained'])
       }]
     }
   });
@@ -133,9 +135,9 @@ function createYearChart() {
   getSessions().forEach(session => {
     const year = session['Year of Engagement'];
     if (year) {
-      years[year] = years[year] || {'Number of People Trained': 0};
+      years[year] = years[year] || {'Number Trained': 0};
       years[year]['Year of Engagement'] = year;
-      years[year]['Number of People Trained'] = years[year]['Number of People Trained'] + (session['Number of People Trained'] * 1);
+      years[year]['Number Trained'] = years[year]['Number Trained'] + (session['Number Trained'] * 1);
     }
   });
 
@@ -147,7 +149,8 @@ function createYearChart() {
     data: {
       labels: Object.values(years).map(row => row['Year of Engagement']),
       datasets: [{
-        data: Object.values(years).map(row => row['Number of People Trained'])
+        hoverBackgroundColor: '#3399CC',
+        data: Object.values(years).map(row => row['Number Trained'])
       }]
     }
   });

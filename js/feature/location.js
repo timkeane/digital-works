@@ -55,13 +55,13 @@ export default function html(feature, type) {
     const orgKey = valueKey(session['Organization Type']);
     const projKey = valueKey(session['Project Type']);
     const topicKey = valueKey(session['Training Topic']);
-    const people = session['Number of People Trained'];
+    const people = session['Number Trained'];
     const date = session['Training Date'];
     html.append(div);
     div.append(`<div><span class="field" data-i18n="[prepend]prop.name.organization">:</span> <span class="value">${org}</span></div>`)
       .append(`<div><span class="field" data-i18n="[prepend]prop.name.organization_type">:</span> <span class="value" data-i18n="type.value.${orgKey}"></span></div>`)
       .append(`<div><span class="field" data-i18n="[prepend]prop.name.project_type">:</span> <span class="value" data-i18n="type.value.${projKey}"></span></div>`)
-      .append(people ? `<div><span class="field" data-i18n="[prepend]prop.name.number_of_people_trained">:</span> <span class="value">${formatNumber(people)}</span></div>` : '')
+      .append(people ? `<div><span class="field" data-i18n="[prepend]prop.name.number_trained">:</span> <span class="value">${formatNumber(people)}</span></div>` : '')
       .append(`<div><span class="field" data-i18n="[prepend]prop.name.training_topic">:</span> <span class="value" data-i18n="type.value.${topicKey}"></span></div>`)
       .append(`<div><span class="field" data-i18n="[prepend]prop.name.training_date">:</span> <span class="value">${date}</span></div>`);
   });

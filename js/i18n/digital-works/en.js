@@ -100,7 +100,7 @@ export const translation = {
   "prop.name.organization": "Organization",
   "prop.name.organization_type": "Organization Type",
   "prop.name.project_type": "Project Type",
-  "prop.name.number_of_people_trained": "Number of People Trained",
+  "prop.name.number_trained": "Number of People Trained",
   "prop.name.training_date": "Training Date",
   "prop.name.training_topic": "Training Topic",
 

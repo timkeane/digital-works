@@ -112,7 +112,7 @@ function locationTip(feature) {
     const address = i18nAddress(feature.get('sessions')[0]);
     const people = getHeadCountByLocation()[feature.getId()];
     const html = $(`<div><h3>${address}</h3></div>`)
-      .append(people ? `<div><span class="field" data-i18n="[prepend]prop.name.number_of_people_trained">:</span> <span class="value">${formatNumber(people)}</span></div>` : '');
+      .append(people ? `<div><span class="field" data-i18n="[prepend]prop.name.number_trained">:</span> <span class="value">${formatNumber(people)}</span></div>` : '');
     return {html};
   }
 }
@@ -122,7 +122,7 @@ function stateTip(feature) {
     const state = feature.get('name');
     const people = getHeadCountByState(feature) || 0;
     const html = $(`<div><h3>${state}</h3></div>`)
-      .append(`<div><span class="field" data-i18n="[prepend]prop.name.number_of_people_trained">:</span> <span class="value">${formatNumber(people)}</span></div>`);
+      .append(`<div><span class="field" data-i18n="[prepend]prop.name.number_trained">:</span> <span class="value">${formatNumber(people)}</span></div>`);
     return {html};
   }
 }

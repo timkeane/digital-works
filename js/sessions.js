@@ -9,7 +9,7 @@ export function setSessions(features) {
     const sessions = feature.get('sessions');
     let people = 0;
     sessions.forEach(session => {
-      people = people + session['Number of People Trained'] * 1;
+      people = people + session['Number Trained'] * 1;
     });
     feature.set('people', people);
     headCount.location[feature.getId()] = people;
@@ -21,7 +21,7 @@ export function setSessions(features) {
   const states = {};
   sessions.forEach(session => {
     if (session[prop]) {
-      let number = session['Number of People Trained'];
+      let number = session['Number Trained'];
       number = number?.trim() ? parseInt(number) : 0;
       states[session[prop]] = states[session[prop]] || 0;
       states[session[prop]] = states[session[prop]] + number;
