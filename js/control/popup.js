@@ -3,7 +3,7 @@ import Overlay from 'ol/Overlay';
 import {getPopupOverlay, getLocationLayer} from '../util';
 
 const html = $(`<div id="popup" class="popup">
-  <a href="#" id="popup-closer" class="popup-closer" data-i18n="[aria-label]btn.close.name" rel="noopener"></a>
+  <a href="#" id="popup-closer" class="popup-closer" data-i18n="[aria-label]btn.close.name;[title]btn.close.name" rel="noopener"></a>
   <div id="popup-content">
   </div>
   <div id="popup-pager">
@@ -118,7 +118,7 @@ function panPopup() {
 }
 
 export function createPopup(map) {
-  $('body').append(html);
+  $('body').append(html).localize();
   const popup = $('#popup');
   const popupOverlay = new Overlay({
     element: popup.get(0),
