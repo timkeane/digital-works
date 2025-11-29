@@ -117,4 +117,33 @@ h4:focus-visible,
     display: block;
     max-width: 100px;
   }
+
+  div#modal.intro {
+    margin: 3em 2em 2em 2em !important;
+  }
+
+  #modal .modal-content {
+    max-height: 400px;
+  }
+
+  #dialog .modal-header h2 {
+    font-size: 1.125em;
+  }
+
+}
+
+@media only screen and (max-width: 445px) {
+  #dialog .modal-header {
+    padding: .55em .25em .55em .55em;
+  }
+  #dialog .modal-header h2 {
+    font-size: 1em;
+  }
+
+  #dialog .popup-closer {
+    position: absolute;
+    top: .25em;
+    right: .25em;
+  }
+
 }
