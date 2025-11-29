@@ -7,6 +7,8 @@ dotenv.config();
 dotenv.config({override: true, path: `.env.${process.env.APP_ENV}`});
 
 const state = process.env.VITE_APP_PATH;
+const sourcemap = process.env.APP_ENV === 'dev';
+const minify = process.env.APP_ENV === 'prd' ? 'terser' : undefined;
 
 export default defineConfig({
   base: '',
@@ -14,9 +16,9 @@ export default defineConfig({
     host: true,
   },
   build: {
-    sourcemap: true,
     outDir: './dist',
-    minify: 'terser'
+    sourcemap,
+    minify
   },
   plugins: [
     splitVendorChunkPlugin(),

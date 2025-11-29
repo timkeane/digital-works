@@ -10,12 +10,12 @@ import {forMobile} from '../html/resize';
 import {createFeatureTips} from '../control/tip';
 
 const env = import.meta.env;
-const styleUrl = `${env.VITE_BASEMAP_URL}?token=${env.VITE_ARC_TOKEN}&language=${getCurrentLanguage()}`;
 
 export default function addLayers(map) {
   $('#map-tab').on('click', zoomToFeature);
   return new Promise((resolve, reject) => {
     import('ol-mapbox-style').then(olms => {
+      const styleUrl = `${env.VITE_BASEMAP_URL}?token=${env.VITE_ARC_TOKEN}&language=${getCurrentLanguage()}`;
       return new Promise(() => {
         olms.apply(map, styleUrl).then(map => {
           const locationSource = locationLayer.getSource();
