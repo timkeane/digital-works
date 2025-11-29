@@ -120,7 +120,7 @@ function locationTip(feature) {
 function stateTip(feature) {
   if (!getLocationLayer().getVisible()) {
     const state = feature.get('name');
-    const people = getHeadCountByState(feature);
+    const people = getHeadCountByState(feature) || 0;
     const html = $(`<div><h3>${state}</h3></div>`)
       .append(`<div><span class="field" data-i18n="[prepend]prop.name.number_of_people_trained">:</span> <span class="value">${formatNumber(people)}</span></div>`);
     return {html};
