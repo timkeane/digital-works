@@ -277,3 +277,23 @@ body.future .session {
 body.future .session.future {
   display: block;
 }
+
+.feature-html a.directions {
+  display: none;
+}
+
+body.future .feature-html a.directions {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  background-image: url(../img/directions.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  display: block;
+  margin-inline-start: .5em;
+  float: right;
+}
+
+body.future .feature-html a.directions:hover {
+  background-image: url(../img/directions-hover.svg);
+}

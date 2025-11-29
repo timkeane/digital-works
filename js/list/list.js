@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import {getSelectedFeature, getLocationLayer, store} from '../util';
+import {getSelectedFeature, getLocationLayer, store, getLocationSource} from '../util';
 import {highlight} from '../layer/highlight';
 import {LineString} from 'ol/geom';
 
@@ -57,13 +57,15 @@ function setDistance(location, feature) {
 }
 
 export function sortByDistance(location) {
-  const features = getLocationLayer().getSource().getFeatures();
+  console.warn('sortByDistance');
+  
+  const features = getLocationSource().getFeatures();
   if (location) {
     features.sort((f0, f1) => {
       setDistance(location, f0);
       setDistance(location, f1);
       const dist0 = f0.get('distance');
-      const dist1 = f1.get('distance')
+      const dist1 = f1.get('distance');
       if (dist0 < dist1) {
         return -1;
       } else if (dist0 > dist1) {
@@ -99,18 +101,4 @@ export function createLists(layout) {
     const item = $('#locations').find('li.highlight');
       item.get(0)?.scrollIntoView({behavior: 'smooth'});
   });
-
-  // const content = $('#tab-content');
-  // content.on('scroll', event => {
-  //   const scrollTop = content.scrollTop();
-  //   if (locationTab.is(':visible')) {
-  //     const modifier = 200; 
-  //     const listHeight = locationList.height();
-  //     const currentScroll = scrollTop + content.height();
-  //     $('#location-tab').data('scroll-top', scrollTop);
-  //     if (currentScroll + modifier > listHeight) {
-  //       renderNextChunckOfFeatures(locationList);
-  //     }
-  //   }
-  // });
 }

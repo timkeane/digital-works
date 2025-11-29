@@ -18,8 +18,7 @@ const source = new Source({format, url});
 
 const layer = new Layer({
   source,
-  style,
-  minZoom: 0
+  style
 });
 
 layer.set('name', 'location');
