@@ -25,7 +25,7 @@ export default function(feature, resolution) {
   }
 
   return new Style({
-    stroke: new Stroke({width: 1, color: '#3399CC'}),
+    stroke: new Stroke({width: 1.25, color: '#111a52'}),
     fill: new Fill({color: colors[bucket] || 'transparent'})
   });
 }

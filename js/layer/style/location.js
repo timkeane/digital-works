@@ -21,13 +21,14 @@ export default function(feature, resolution) {
   if (getFuture() === feature.get('has-future')) {
     const zoom = getView().getZoomForResolution(resolution);
     const people = feature.get('people') || 1;
+    const width = feature.get('highlight') ? 4 : 1.25;
     let radius = zoom * people / 50;
     if (radius < 5) radius = 5;
     return new Style({
       zIndex: -people,
       image: new Circle({
         radius,
-        stroke: feature.get('highlight') ? new Stroke({width: 4, color: '#111a52'}) : new Stroke({color: '#fff'}),
+        stroke: new Stroke({width, color: '#111a52'}),
         fill: new Fill({color: '#3399CC'})
       })
     });

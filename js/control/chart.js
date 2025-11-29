@@ -6,7 +6,7 @@ import {getStateName} from '../util';
 const options =  {
   elements: {
     bar: {
-      backgroundColor: '#7cc3e9',
+      backgroundColor: '#acdef2',
       borderColor: '#111a52',
       borderWidth: 1,
       borderRadius: {topLeft: 4, topRight: 4},

@@ -1,7 +1,7 @@
 :root {
   --cPrimary: #111a52;
   --cOnPrimary: #fff;
-  --cSecondary: #7cc3e9;
+  --cSecondary: #acdef2;
   --cEmpty: rgba(124, 195, 233, 0.2);
   --cOnSecondary: #111;
   --popupBg: #fff;
@@ -38,6 +38,10 @@ body.loading {
 
 div#modal.intro {
   top: 5em;
+}
+
+.btn.btn-primary:hover {
+  box-shadow: inset 0 0 0 2px var(--cPrimary);
 }
 
 @media only screen and (max-width: 575px) {
