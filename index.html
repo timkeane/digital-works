@@ -106,7 +106,16 @@
         <div id="tab-content" class="tab-content">
           <div id="map" class="tab-pane fade show active" role="tabpanel">
             <div id="map-container" aria-hidden="true">
-              <h2 id="calendar">&nbsp;</h2>
+              <div id="calendar">
+                <h2 class="date">
+                  <span class="month">&nbsp;</span>
+                  <span class="year">&nbsp;</span>
+                </h2>
+                <h4 class="people">
+                  <span class="value"></span>
+                  <span data-i18n="prop.name.people_trained"></span>
+                </h4>
+              </div>
             </div>
           </div>
           <div id="locations" class="tab-pane fade" role="tabpanel" aria-labelledby="location-tab" aria-hidden="true">

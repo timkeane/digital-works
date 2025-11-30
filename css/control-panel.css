@@ -14,6 +14,7 @@
   color: var(--cPrimary);
 }
 
+#animate,
 #control-panel form label {
   display: block;
   margin-bottom: .25em;
@@ -80,13 +81,27 @@
   display: none;
   font-weight: bold;
   z-index: 200;
-  font-size: 2em;
   color: var(--cPrimary);
   padding: 3px 0;
 }
 
+#calendar h2,
+#calendar h4 {
+  display: block;
+  margin-block-start: 0;
+  margin: 0;
+}
+
+#calendar h4 {
+  padding-right: .25em;
+}
+
 #calendar span {
   display: inline-block;
+}
+
+#calendar h2 span {
+  font-size: 2em;
 }
 
 #calendar .month {
@@ -95,6 +110,12 @@
 
 #calendar .year {
   padding-left: .125em;
+}
+
+#calendar .people {
+  visibility: hidden;
+  font-size: 85%;
+  margin-top: -.25em;
 }
 
 #control-panel form button#animate {

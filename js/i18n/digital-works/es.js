@@ -23,6 +23,7 @@ export const translation = {
   "prop.name.organization_type": "Tipo de organización",
   "prop.name.project_type": "Tipo de proyecto",
   "prop.name.number_trained": "Número de personas capacitadas",
+  "prop.name.people_trained": "Personas capacitadas",
   "prop.name.training_date": "Fecha de capacitación",
   "prop.name.training_topic": "Tema de capacitación",
 

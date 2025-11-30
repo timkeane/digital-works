@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import {getBorderStyle, getStateLayer, getLocationLayer, setFuture, getLocationSource, getMap} from '../util';
+import {getBorderStyle, getStateLayer, getLocationLayer, setFuture, getLocationSource, getMap, formatNumber} from '../util';
 import {renderChart} from './chart';
 import countStyle from '../layer/style/state';
 import {updateLegend} from './legend';
@@ -127,21 +127,25 @@ function getMonths() {
   });
 }
 
-function displayMonth(month) {
+function displayMonth(month, people) {
+  const calendar = $('#calendar');
+  const count = formatNumber(people);
   const parts = month.split('-');
-  const yr = $(`<span class="year">${parts[0]}</span>`);
-  const mo = $(`<span class="month" data-i18n="month.${parts[1]}"></span>`);
-  $('#calendar').empty().append(mo).append(yr).localize();
+  calendar.find('span.month').attr('data-i18n', `month.${parts[1]}`).localize();
+  calendar.find('span.year').html(parts[0]);
+  calendar.find('span.value').html(count);
+  calendar.find('.people').css('visibility', 'visible');
 }
 
 function animate(layer, style, months) {
   const map = getMap();
   const features = getLocationSource().getFeatures();
+  let allThePeeps = 0;
   let i = 0;
   layer.setStyle(animateStyle);
   const interval = setInterval(() => {
     const month = months[i];
-    displayMonth(month);
+    displayMonth(month, allThePeeps);
     features.forEach(feature => {
       const sessions = feature.get('sessions');
       sessions.forEach(session => {
@@ -150,6 +154,8 @@ function animate(layer, style, months) {
         if (sessionMonth === month && people > 0) {
           const animate = feature.get('animate');
           feature.set('animate', animate + people);
+          allThePeeps = allThePeeps + people;
+          displayMonth(month, allThePeeps);
           map.renderSync();
         }
       });
@@ -168,7 +174,7 @@ function prepareAnimation(event) {
   const layer = getLocationLayer();
   const style = layer.getStyle();
   const features = getLocationSource().getFeatures();
-  $('#calendar').empty().show();
+  $('#calendar').fadeIn();
   layer.setStyle(blankStyle);
   features.forEach(feature => {
     feature.set('animate', 0);
