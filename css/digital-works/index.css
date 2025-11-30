@@ -118,6 +118,10 @@ h4:focus-visible,
     max-width: 100px;
   }
 
+  body.loading {
+    background-size: 75%;
+  }
+
   div#modal.intro {
     margin: 3em 2em 2em 2em !important;
   }
