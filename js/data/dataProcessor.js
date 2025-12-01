@@ -46,8 +46,10 @@ function manageTrainingDate(feature, session) {
   const isoDate = `${dateParts[2]}-${pad(dateParts[0])}-${pad(dateParts[1])}`;
   const future = isoDate > today;
   session['Training Date'] = isoDate;
-  session.future = future;
+  session['Year of Engagement'] = isoDate.split('-')[0];
+  session.future = future;  
   if (future) feature.set('has-future', true);
+  if (!future) feature.set('has-past', true);
 }
 
 function getPeople(session) {
@@ -73,6 +75,7 @@ function addSessionToFeatures(session) {
     feature.set('formatted_address', getDisplayAddress(session));
     feature.set('address', getAddress(session));
     feature.set('has-future', false);
+    feature.set('has-past', false);
     source.addFeature(feature);
   }
   const sessions = feature.get('sessions');

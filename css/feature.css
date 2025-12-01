@@ -134,6 +134,10 @@ body.future .feature-html.has-future {
   display: flex;
 }
 
+body:not(.future) .feature-html.no-past {
+  display: none;
+}
+
 body.future .session {
   display: none;
 }

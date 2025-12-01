@@ -106,7 +106,7 @@ function createStateChart() {
 
 function createTypeChart() {
   const types = {};
-  getSessions().forEach(session => {
+  data.sessions.forEach(session => {
     const type = session['Project Type'];
     if (type) {
       types[type] = types[type] || {'Number Trained': 0};
@@ -132,7 +132,7 @@ function createTypeChart() {
 
 function createYearChart() {
   const years = {};
-  getSessions().forEach(session => {
+  data.sessions.forEach(session => {
     const year = session['Year of Engagement'];
     if (year) {
       years[year] = years[year] || {'Number Trained': 0};
