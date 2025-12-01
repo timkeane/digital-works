@@ -64,8 +64,6 @@ function setDistance(location, feature) {
 }
 
 export function sortByDistance(location) {
-  console.warn('sortByDistance');
-  
   const features = getLocationSource().getFeatures();
   if (location) {
     features.sort((f0, f1) => {
@@ -86,13 +84,13 @@ export function sortByDistance(location) {
 
 export function updateLocationList(event) {
   const locationList = $('#location-list').empty();
-  const features = event.features; 
+  const features = event.target.getFeatures(); 
   const layer = getLocationLayer();
   const fHtml = layer.get('featureHtml');
   if (!event.distance) sortByState(features);
   features.forEach(feature => appendToLocationList(locationList, feature, fHtml, true));
   $('#locate button').removeClass('loading');
-  $('#location-list li').get(0).scrollIntoView({behavior: 'smooth'});
+  $('#location-list li').get(0)?.scrollIntoView({behavior: 'smooth'});
 }
 
 export function createLists(layout) {

@@ -1,7 +1,7 @@
 import Style from 'ol/style/Style';
 import Stroke from 'ol/style/Stroke';
 import Fill from 'ol/style/Fill';
-import {getHeadCountByState} from '../../util';
+import data from '../../data/data';
 import * as ss from 'simple-statistics';
 
 const colors = [
@@ -13,8 +13,8 @@ const colors = [
 ];
 
 export default function(feature, resolution) {
-  const buckets = ss.jenks(Object.values(getHeadCountByState()), 5);
-  const count = getHeadCountByState()[feature.getId()] || 0;
+  const buckets = ss.jenks(Object.values(data.headCount.state), 5);
+  const count = data.headCount.state[feature.getId()] || 0;
 
   let bucket = 0;
   while (bucket < 5) {

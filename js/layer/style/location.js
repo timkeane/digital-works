@@ -4,20 +4,7 @@ import Stroke from 'ol/style/Stroke';
 import Fill from 'ol/style/Fill';
 import {getFuture, getView} from '../../util';
 
-  // temporary until fix null island
-import Icon from 'ol/style/Icon';
-
-export default function(feature, resolution) {
-
-  // temporary until fix null island
-  if (feature.getGeometry().getCoordinates()[0] === 0) {
-    return new Style({
-      image: new Icon({src: 'img/null-island.png'}),
-      width: 150,
-      height: 150
-    });
-  }
-
+export default function(feature, resolution) {  
   if (getFuture() === feature.get('has-future')) {
     const zoom = getView().getZoomForResolution(resolution);
     const people = feature.get('people') || 1;

@@ -13,6 +13,7 @@ import {createChart} from './control/chart';
 import createZoomFull from './control/ZoomFull';
 import {createLegend} from './control/legend';
 import {showIntro} from './control/dialog';
+import loadData from './data/request';
 
 function removeRotate(map) {
   const controls = map.getControls().getArray();
@@ -26,23 +27,26 @@ function load() {
   showIntro();
   createLayout().then(layout => {
     const map = new Map({target: layout.map});
+
+    createLists(layout);
+    loadData();
     $('.ol-attribution button')
       .addClass('attribution')
       .one('click', () => {
         const cn = $('<a href="https://ConnectedNation.org" target="_blank" rel="noopeneer">Powered by ConnectedNation.org</a><br>');
         $('.ol-attribution li').prepend(cn).append(', The Noun Project');
-        
       });
 
     removeRotate(map);
     store('map', map);
 
     addLayers(map).then(map => {
+        
       createLocator(map);
-      createLists(layout);
       createZoomFull(map);
       createLegend(map);
       createControlPanel();
+
       map.once('postrender', () => {
         $(window).trigger('resize');
         $('button#zoom-full').trigger('click');

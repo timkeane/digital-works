@@ -1,6 +1,8 @@
 import $ from 'jquery';
 import Control from 'ol/control/Control';
-import {getLocationLayer, getHeadCountByState, getHeadCountByLocation, formatNumber, getFuture} from '../util';
+import data from '../data/data';
+import {getLocationLayer, getFuture, formatNumber} from '../util';
+
 import * as ss from 'simple-statistics';
 
 const html = `<div id="legend">
@@ -22,7 +24,7 @@ const legend =  $('#legend');
 
 export function updateLegend() {
   const layer = getLocationLayer().getVisible() ? 'location' : 'state';
-  const people = layer === 'location' ?  getHeadCountByLocation() : getHeadCountByState();
+  const people = layer === 'location' ?  data.headCount.location : data.headCount.state;
   const future = getFuture();
   legend.removeClass('location').removeClass('state').addClass(layer);
   if (people) {

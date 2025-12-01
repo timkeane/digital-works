@@ -3,6 +3,7 @@ import Source from 'ol/source/Vector';
 import Layer from 'ol/layer/Vector';
 import html from '../feature/state';
 import {Stroke, Style} from 'ol/style';
+import {store} from '../util';
 
 const url = './data/state.json';
 
@@ -21,5 +22,7 @@ const layer = new Layer({
 
 layer.set('name', 'state');
 layer.set('featureHtml', html);
+
+store('stateLayer', layer);
 
 export default layer;

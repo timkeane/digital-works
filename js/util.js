@@ -26,7 +26,7 @@ export function getView() {
 }
 
 export function getLocationLayer() {
-  return getMap().get('location');
+  return storage.locationLayer;
 }
 
 export function getLocationSource() {
@@ -34,7 +34,7 @@ export function getLocationSource() {
 }
 
 export function getStateLayer() {
-  return getMap().get('state');
+  return storage.stateLayer;
 }
 
 export function getStateName(id) {
@@ -60,25 +60,6 @@ export function getAppPath() {
 export function formatNumber(number) {
   const numberFormat = new Intl.NumberFormat(getCurrentLanguage(), {maximumFractionDigits: 1});
   return numberFormat.format(number);
-}
-
-export function getHeadCount() {
-  return storage.headCount;
-}
-
-export function setHeadCount(headCount) {
-  return storage.headCount = headCount;
-}
-
-export function getHeadCountByLocation() {
-  return storage.headCount.location;
-}
-
-export function getHeadCountByState(feature) {
-  if (feature) {
-    return storage.headCount.state[feature.getId()];
-  }
-  return storage.headCount.state;
 }
 
 export function getBorderStyle() {

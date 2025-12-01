@@ -1,7 +1,8 @@
 import $ from 'jquery';
 import Overlay from 'ol/Overlay';
-import {i18nAddress} from '../feature/location';
-import {formatNumber, getHeadCountByLocation, getHeadCountByState, getLocationLayer, getStateLayer} from '../util';
+import {getDisplayAddress} from '../data/dataProcessor';
+import {formatNumber, getLocationLayer, getStateLayer} from '../util';
+import data from '../data/data';
 
 let nextId = 0;
 function getNextId() {
@@ -109,8 +110,8 @@ FeatureTip.HTML = '<div class="feature-tip" role="tooltip"></div>';
 
 function locationTip(feature) {
   if (getLocationLayer().getVisible()) {
-    const address = i18nAddress(feature.get('sessions')[0]);
-    const people = getHeadCountByLocation()[feature.getId()];
+    const address = feature.get('formatted_address');
+    const people = data.headCount.location[feature.getId()];
     const html = $(`<div><h3>${address}</h3></div>`)
       .append(people ? `<div><span class="field" data-i18n="[prepend]prop.name.number_trained">:</span> <span class="value">${formatNumber(people)}</span></div>` : '');
     return {html};
@@ -120,7 +121,7 @@ function locationTip(feature) {
 function stateTip(feature) {
   if (!getLocationLayer().getVisible()) {
     const state = feature.get('name');
-    const people = getHeadCountByState(feature) || 0;
+    const people = data.headCount.state[feature.getId()] || 0;
     const html = $(`<div><h3>${state}</h3></div>`)
       .append(`<div><span class="field" data-i18n="[prepend]prop.name.number_trained">:</span> <span class="value">${formatNumber(people)}</span></div>`);
     return {html};

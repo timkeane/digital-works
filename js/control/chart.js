@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import Chart from 'chart.js/auto';
-import {getSessions} from '../data/sessions';
+import data from '../data/data';
 import {getStateName} from '../util';
 
 const options =  {
@@ -80,7 +80,7 @@ function externalTip(context) {
 
 function createStateChart() {
   const states = {};
-  getSessions().forEach(session => {
+  data.sessions.forEach(session => {
     const state = session['State'];
     if (state) {
       states[state] = states[state] || {'Number Trained': 0};

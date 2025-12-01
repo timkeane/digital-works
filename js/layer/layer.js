@@ -8,6 +8,7 @@ import $ from 'jquery';
 import {createPopup} from '../control/popup';
 import {forMobile} from '../html/resize';
 import {createFeatureTips} from '../control/tip';
+import {updateLegend} from '../control/legend';
 
 const env = import.meta.env;
 
@@ -21,11 +22,10 @@ export default function addLayers(map) {
           const locationSource = locationLayer.getSource();
           locationSource.on('featuresloadend', updateLocationList);
           locationSource.on('featuresloadend', forMobile);
-          store('borderStyle', stateLayer.getStyle());
+          locationSource.on('featuresloadend', updateLegend);
           map.addLayer(stateLayer);
           map.addLayer(locationLayer);
-          map.set('state', stateLayer);
-          map.set('location', locationLayer);
+          store('borderStyle', stateLayer.getStyle());
           map.on('singleclick', highlight);
           map.on('singleclick', listHighlight);
           createFeatureTips(map);

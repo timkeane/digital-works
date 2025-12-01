@@ -3,7 +3,7 @@ import {getBorderStyle, getStateLayer, getLocationLayer, setFuture, getLocationS
 import {renderChart} from './chart';
 import countStyle from '../layer/style/state';
 import {updateLegend} from './legend';
-import {getSessions} from '../data/sessions';
+import data from '../data/data';
 import blankStyle from '../layer/style/blank';
 import animateStyle from '../layer/style/animate';
 
@@ -112,8 +112,7 @@ function getSessionMonth(date) {
 function getMonths() {
   const months = {};
   const thisMonth = getSessionMonth(new Date().toISOString());
-  const sessions = getSessions();
-  sessions.forEach(session => {
+  data.sessions.forEach(session => {
     const month = getSessionMonth(session['Training Date']);
     if (month < thisMonth || month === thisMonth) months[month] = month;
   });

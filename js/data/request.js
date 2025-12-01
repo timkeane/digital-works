@@ -1,5 +1,5 @@
 import papa from 'papaparse';
-import complete from './manage';
+import {processData as complete} from './dataProcessor';
 
 const url = '/data/location.csv';
 

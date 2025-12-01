@@ -1,6 +1,7 @@
 import Control from 'ol/control/Control';
 import $ from 'jquery';
 import {createEmpty, extend} from 'ol/extent';
+import {getLocationSource} from '../util';
 
 const html = '<div class="zoom-full ol-unselectable ol-control"><button id="zoom-full" class="btn" data-i18n="[title]zoom.full;[aria-label]zoom.full"></button></div>';
 
@@ -13,8 +14,7 @@ class ZoomFull extends Control {
   }
 
   getLocationExtent() {
-    const layer = this.getMap().get('location');
-    const features = layer.getSource().getFeatures();
+    const features = getLocationSource().getFeatures();
     if (features.length > 0) {
       if (!this.trainingExtent) {
         this.trainingExtent = createEmpty();
