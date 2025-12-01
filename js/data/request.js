@@ -1,7 +1,7 @@
 import papa from 'papaparse';
 import complete from './manage';
 
-const url = '/data/locations.csv';
+const url = '/data/location.csv';
 
 const columns = [
   'ID',
@@ -20,7 +20,8 @@ const columns = [
 ];
 
 const config = {
-  quotes: false,
+  download: true,
+  quotes: true,
   quoteChar: '"',
   escapeChar: '"',
   delimiter: ",",

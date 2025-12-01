@@ -4,7 +4,8 @@
   "type": "module",
   "scripts": {
     "start": "APP_ENV=dev vite --host",
-    "build": "vite build",
+    "build": "APP_ENV=prd vite build",
+    "build:debug": "APP_ENV=dev vite build",
     "prebuild": "rm -rf ./dist",
     "postbuild": "node ./post-build.js",
     "test": "vitest run",
