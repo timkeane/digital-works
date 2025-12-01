@@ -160,13 +160,13 @@ function animate(layer, style, months) {
         }
       });
     });
-    if (i === months.length - 1) {
+    i = i + 1;
+    if (i === months.length) {
       clearInterval(interval);
       setTimeout(() => $('#calendar').fadeOut(), 3000);
       layer.setStyle(style);
     }
-    i = i + 1;
-  }, 10000 / months.length);
+  }, 500);
 }
 
 function prepareAnimation(event) {

@@ -1,6 +1,6 @@
 export const translation = {
   "app.title": "Digital Empowerment",
-  "app.type": "Connected Nation Digital Empowerment",
+  "app.long_title": "Connected Nation Digital Empowerment",
   "app.desc": "Connected Nation Digital Empowerment",
   "banner.cn.alt": "Connected Nation",
   "tab.activities.name": "Activities",
