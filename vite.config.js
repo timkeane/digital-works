@@ -40,7 +40,7 @@ const config = {
   }
 };
 
-console.info('Vite config:', {outDir, appPath, sourcemap, minify});
-console.info('Vite config:', JSON.stringify(config, null, 2));
+// console.info('Vite config:', {outDir, appPath, sourcemap, minify});
+// console.info('Vite config:', JSON.stringify(config, null, 2));
 
 export default defineConfig(config);
