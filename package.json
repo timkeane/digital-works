@@ -1,9 +1,9 @@
 {
   "name": "digital-works",
-  "version": "1.7.3",
+  "version": "1.7.4",
   "type": "module",
   "scripts": {
-    "start": "vite --host",
+    "start": "APP_ENV=dev vite --host",
     "build": "vite build",
     "prebuild": "rm -rf ./dist",
     "postbuild": "node ./post-build.js",
