@@ -3,7 +3,7 @@ import {getBorderStyle, getStateLayer, getLocationLayer, setFuture, getLocationS
 import {renderChart} from './chart';
 import countStyle from '../layer/style/state';
 import {updateLegend} from './legend';
-import {getSessions} from '../sessions';
+import {getSessions} from '../data/sessions';
 import blankStyle from '../layer/style/blank';
 import animateStyle from '../layer/style/animate';
 

@@ -2,7 +2,10 @@ import Id from './Id';
 import Papa from 'papaparse';
 import Point from 'ol/geom/Point';
 import Feature from 'ol/Feature';
-import {setSessions} from '../../sessions';
+import {setSessions} from '../../data/sessions';
+import request from '../../data/request';
+
+request();
 
 const papaConfig = {
   quotes: false,

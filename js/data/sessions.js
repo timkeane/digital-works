@@ -1,5 +1,5 @@
-import {getHeadCount, setHeadCount} from './util';
-import {updateLegend} from './control/legend';
+import {getHeadCount, setHeadCount} from '../util';
+import {updateLegend} from '../control/legend';
 
 const training = {sessions: []};
 

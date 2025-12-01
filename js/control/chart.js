@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import Chart from 'chart.js/auto';
-import {getSessions} from '../sessions';
+import {getSessions} from '../data/sessions';
 import {getStateName} from '../util';
 
 const options =  {

@@ -3,20 +3,23 @@ import {visualizer} from 'rollup-plugin-visualizer';
 import cp from 'vite-plugin-cp';
 import dotenv from 'dotenv';
 
-dotenv.config();
-dotenv.config({override: true, path: `.env.${process.env.APP_ENV}`});
+const env = process.env;
 
-const state = process.env.VITE_APP_PATH;
-const sourcemap = process.env.APP_ENV === 'dev';
-const minify = process.env.APP_ENV === 'prd' ? 'terser' : undefined;
+// dotenv.config();
+// dotenv.config({override: true, path: `.env.${env.APP_ENV}`});
 
-export default defineConfig({
+const outDir = './dist';
+const appPath = env.VITE_APP_PATH;
+const sourcemap = env.APP_ENV === 'dev';
+const minify = env.APP_ENV === 'dev' ? undefined : 'terser';
+
+const config = {
   base: '',
   server: {
     host: true,
   },
   build: {
-    outDir: './dist',
+    outDir,
     sourcemap,
     minify
   },
@@ -27,7 +30,7 @@ export default defineConfig({
       targets: [
         {src: 'img/*.*', dest: `./dist/img/`},
         {src: `./data/*`, dest: './dist/data'},
-        {src: `./img/${state}`, dest: `./dist/img/${state}`}
+        {src: `./img/${appPath}`, dest: `./dist/img/${appPath}`}
       ]
     })
   ],
@@ -35,4 +38,9 @@ export default defineConfig({
     setupFiles: ['/__tests__/setup.js'],
     environment: 'jsdom'
   }
-});
+};
+
+console.info('Vite config:', {outDir, appPath, sourcemap, minify});
+console.info('Vite config:', JSON.stringify(config, null, 2));
+
+export default defineConfig(config);
