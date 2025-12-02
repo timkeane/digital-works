@@ -8,10 +8,14 @@ import * as ss from 'simple-statistics';
 const html = `<div id="legend">
   <h3 role="button"></h3>
   <table><tbody>
-    <tr class="low">
+    <tr class="min">
       <td class="bucket"><div class="point"></div></td><td class="label"></td>
     </tr>
-    <tr class="high">
+    <tr class="avg">
+      <td class="bucket"><div class="point"></div></td>
+      <td class="label"></td>
+    </tr>
+    <tr class="max">
       <td class="bucket"><div class="point"></div></td>
       <td class="label"></td>
     </tr>
@@ -47,11 +51,15 @@ export function updateLegend() {
       legend.find(`.bucket-0 .from`).html(min);
     } else {
       const max = formatNumber(buckets[5]);
+      const avg = Math.round(ss.average(Object.values(people)));
       const maxWidth = buckets[5] / 25;
-      legend.find('.high .point').css({width: `${maxWidth}px`, height: `${maxWidth}px`});
-      legend.find('.low .label').html(`<span>${min} </span><span class="small">(min)</span>`);
+      const avgWidth = maxWidth / 2;
       legend.find('table .bucket').css('width', `${maxWidth + 13}px`);
-      legend.find('.high .label').html(`<span>${max} </span><span class="small">(max)</span>`);
+      legend.find('.max .label').html(`<span>${max} </span><span class="small">(max)</span>`);
+      legend.find('.max .point').css({width: `${maxWidth}px`, height: `${maxWidth}px`});
+      legend.find('.min .label').html(`<span>${min} </span><span class="small">(min)</span>`);
+      legend.find('.avg .label').html(`<span>${avg} </span><span class="small">(avg)</span>`);
+      legend.find('.avg .point').css({width: `${avgWidth}px`, height: `${avgWidth}px`});
     }
   }
 

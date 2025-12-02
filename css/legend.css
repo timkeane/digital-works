@@ -87,7 +87,7 @@
   width: 1px;
 }
 
-#legend.location .low .point {
+#legend.location .min .point {
   width: 10px;
   height: 10px;
 }
@@ -116,11 +116,12 @@
   text-align: right;
 }
 
-body.future #legend.location .high,
+body.future #legend.location .avg,
+body.future #legend.location .max,
 body.future #legend.location .label {
   display: none;
 }
 
-body.future #legend.location .low div.bucket {
+body.future #legend.location .min div.bucket {
   width: auto !important;
 }
