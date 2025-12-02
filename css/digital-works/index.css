@@ -19,7 +19,7 @@
 }
 
 body.loading {
-  background-image: url("..//img/digital-works/loading.avif");
+  background-image: url(/img/digital-works/loading.avif);
   background-color: var(--cOnPrimary);
 }
 
