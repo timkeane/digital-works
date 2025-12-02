@@ -2,8 +2,8 @@ import Feature from 'ol/Feature';
 import Point from 'ol/geom/Point';
 import data from './data';
 
+const today = (new Date()).toISOString().split('T')[0];
 const source = data.source;
-
 const months = {};
 
 function sortSessions(feature) {
@@ -62,7 +62,6 @@ function setPastMonths() {
 function manageTrainingDate(feature, session) {
   const date = session['Training Date'];
   const dateParts = date.split('/');
-  const today = (new Date()).toISOString().split('T')[0];
   const isoDate = `${dateParts[2]}-${pad(dateParts[0])}-${pad(dateParts[1])}`;
   const future = isoDate > today;
   const thisMonth = getMonth(today);
@@ -112,18 +111,31 @@ function addSessionToFeatures(session) {
   manageTrainingDate(feature, session);
 }
 
+function validSession(session) {
+  const type = session['Project Type'];
+  const people = parseInt(session['Number Trained']);
+  const date = parseInt(session['Training Date']);
+  const future = today < date;
+  console.info(future.toString(), {today, date});
+  const valid = future || (type?.trim().length && people && !isNaN(people) && people > 0);
+  if (valid) return true;
+  console.error('Bad row:', session);
+}
+
 function sessions(rows) {
   const location = data.headCount.location;
   const state = data.headCount.state;
   data.sessions = rows;
   rows.forEach(session => {
-    const locId = getLocationId(session);
-    const people = getPeople(session);
-    addSessionToFeatures(session);
-    location[locId] = location[locId] || 0;
-    location[locId] = location[locId] + people;
-    state[session.State] = state[session.State] || 0;
-    state[session.State] = state[session.State] + people;
+    if (validSession(session)) {
+      const locId = getLocationId(session);
+      const people = getPeople(session);
+      addSessionToFeatures(session);
+      location[locId] = location[locId] || 0;
+      location[locId] = location[locId] + people;
+      state[session.State] = state[session.State] || 0;
+      state[session.State] = state[session.State] + people;
+    }
   });
   source.getFeatures().forEach(feature => sortSessions(feature));
   setPastMonths();
