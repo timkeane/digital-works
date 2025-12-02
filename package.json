@@ -1,6 +1,6 @@
 {
   "name": "digital-works",
-  "version": "1.7.8",
+  "version": "1.7.9",
   "type": "module",
   "scripts": {
     "start": "APP_ENV=dev vite --host",

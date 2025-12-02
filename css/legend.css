@@ -29,7 +29,8 @@
   background-image: url(/img/up.svg);
 }
 
-#legend.minimized ul {
+#legend.minimized ul,
+#legend.location.minimized table {
   display: none;
 }
 
