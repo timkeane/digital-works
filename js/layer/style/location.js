@@ -6,7 +6,7 @@ import {getFuture, getView} from '../../util';
 
 export default function(feature, resolution) {  
   if (getFuture() === feature.get('has-future') && !feature.get('only-community-planning')) {
-    const zoom = getView().getZoomForResolution(resolution);
+    const zoom = getView().getZoomForResolution(resolution) || .32;
     const people = feature.get('people') || 1;
     const highlight = feature.get('highlight');
     const width = highlight ? 4 : 1.25;

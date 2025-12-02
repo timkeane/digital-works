@@ -7,9 +7,16 @@ import * as ss from 'simple-statistics';
 
 const html = `<div id="legend">
   <h3 role="button"></h3>
+  <table><tbody>
+    <tr class="low">
+      <td class="bucket"><div class="point"></div></td><td class="label"></td>
+    </tr>
+    <tr class="high">
+      <td class="bucket"><div class="point"></div></td>
+      <td class="label"></td>
+    </tr>
+  </tbody></table>
   <ul class="buckets">
-    <li class="low"><div class="bucket"><div class="point"></div></div><span></span></li>
-    <li class="high"><div class="bucket"><div class="point"></div></div><span></span></li>
     <li class="bucket bucket-0"><div></div><span class="from"></span> - <span class="to"></span></li>
     <li class="bucket bucket-1"><div></div><span class="from"></span> - <span class="to"></span></li>
     <li class="bucket bucket-2"><div></div><span class="from"></span> - <span class="to"></span></li>
@@ -39,18 +46,12 @@ export function updateLegend() {
       }
       legend.find(`.bucket-0 .from`).html(min);
     } else {
-
-      // TODO FIX WHEN NULL ISLAND IS FIXED
-      const max = 15 + (buckets[3] / 50);
-      // const max = buckets[5] / 100;
-
-      legend.find(`.high div.point`).css({width: `${max}px`, height: `${max}px`});
-      legend.find(`.low span`).html(min);
-      $('#legend.location div.bucket').css('width', `${max + 13}px`);
-
-      // TODO FIX WHEN NULL ISLAND IS FIXED
-      legend.find(`.high span`).html(formatNumber(buckets[3]));
-      // legend.find(`.high span`).html(formatNumber(buckets[5]));
+      const max = formatNumber(buckets[5]);
+      const maxWidth = buckets[5] / 25;
+      legend.find('.high .point').css({width: `${maxWidth}px`, height: `${maxWidth}px`});
+      legend.find('.low .label').html(`<span>${min} </span><span class="small">(min)</span>`);
+      legend.find('table .bucket').css('width', `${maxWidth + 13}px`);
+      legend.find('.high .label').html(`<span>${max} </span><span class="small">(max)</span>`);
     }
   }
 

@@ -24,7 +24,5 @@ export function forMobile() {
 export function createResizeHandler() {
   $(window).on('resize', tabContentHeight);
   $('#nav button').on('click', tabContentHeight);
-  
   setTimeout(() => tabContentHeight, 100);
-
 }

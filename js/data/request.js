@@ -1,7 +1,7 @@
 import papa from 'papaparse';
 import {processData as complete} from './dataProcessor';
 
-const url = '/data/location.csv';
+const url = './data/location.csv';
 
 const columns = [
   'ID',

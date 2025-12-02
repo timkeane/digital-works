@@ -127,7 +127,7 @@ if [ $deploy == "dev" ]
 then
   if [ "$invalidate_only" != "-i" ]
   then
-    npm run build
+    npm run build:debug
     aws s3 rm --recursive s3://$DEV_S3/$VITE_APP_PATH/
     aws s3 cp --recursive ./dist/ s3://$DEV_S3/$VITE_APP_PATH/
   fi
