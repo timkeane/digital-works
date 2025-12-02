@@ -2,6 +2,8 @@ import Feature from 'ol/Feature';
 import Point from 'ol/geom/Point';
 import data from './data';
 
+window.data=data;
+
 const today = (new Date()).toISOString().split('T')[0];
 const source = data.source;
 const months = {};
@@ -61,24 +63,27 @@ function setPastMonths() {
 
 function getIsoDate(dateString) {
   if (dateString?.length) {
-    const dateParts = dateString.split('/');
-    return `${dateParts[2]}-${pad(dateParts[0])}-${pad(dateParts[1])}`;
+    if (dateString.indexOf('/') > 0) {
+      const dateParts = dateString.split('/');
+      return `${dateParts[2]}-${pad(dateParts[0])}-${pad(dateParts[1])}`;
+    } else if (dateString.indexOf('-') === 4) {
+      return dateString;
+    }
   }
  return '';
 }
 
 function addToPastMonths(month, session) {
   const thisMonth = getMonth(today);
-  const type = session['Project Type'];
   const people = session['Number Trained'];
-  if (type !== 'Community Planning' && people > 0) {
+  if (!isCommunityPlanning(session) && people > 0) {
     if (month < thisMonth || month === thisMonth) months[month] = month;
   }
 }
 
 function manageTrainingDate(feature, session) {
   const date = getIsoDate(session['Training Date']);
-  const future = date > today;
+  const future = isFuture(session);
   const month = getMonth(date);
   session['Training Date'] = date;
   session['Year of Engagement'] = date.split('-')[0];
@@ -115,32 +120,16 @@ function addSessionToFeatures(session) {
     feature.set('has-past', false);
     feature.set('only-community-planning', true);
     source.addFeature(feature);
+    window.feature_count=window.feature_count||0;
+    window.feature_count=window.feature_count+1;
   }
   const sessions = feature.get('sessions');
   sessions.push(session);
   feature.set('sessions', sessions);
   feature.set('people', feature.get('people') + getPeople(session));
-  if (session['Projet Type'] !== 'Community Planning')
+  if (isCommunityPlanning(session))
     feature.set('only-community-planning', false);
   manageTrainingDate(feature, session);
-}
-
-function validSession(session) {
-  const type = session['Project Type'];
-  const people = parseInt(session['Number Trained']);
-  const date = getIsoDate(session['Training Date']);
-  const future = today < date;
-  const canbeZero = type === 'Community Planning';
-  const valid = future || 
-    (
-      type?.trim().length > 0 &&
-      (
-        canbeZero ||
-        (people && !isNaN(people) && people > 0)
-      )
-    );
-  if (valid) return true;
-  console.error('Bad row:', session);
 }
 
 function sessions(rows) {
@@ -149,6 +138,8 @@ function sessions(rows) {
   data.sessions = rows;
   rows.forEach(session => {
     if (validSession(session)) {
+      window.session_count=window.session_count||0;
+      window.session_count=window.session_count+1;
       const locId = getLocationId(session);
       const people = getPeople(session);
       addSessionToFeatures(session);
@@ -160,6 +151,27 @@ function sessions(rows) {
   });
   source.getFeatures().forEach(feature => sortSessions(feature));
   setPastMonths();
+}
+
+export function isFuture(session) {
+  return today < getIsoDate(session['Training Date']);
+}
+
+export function isCommunityPlanning(session) {
+  return session['Project Type'] === 'Community Planning';
+}
+
+export function hasPeople(session) {
+  const people = parseInt(session['Number Trained']);
+  return people && !isNaN(people) && people > 0;
+}
+
+export function validSession(session) {
+  const type = session['Project Type'];
+  // const valid = isFuture(session) || (type?.trim().length > 0 && (isCommunityPlanning(session) || hasPeople(session)));
+  const valid = isFuture(session) || (isCommunityPlanning(session) || hasPeople(session));
+  if (valid) return true;
+  console.error('Bad row:', session);
 }
 
 export function processData(response) {

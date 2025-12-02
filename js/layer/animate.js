@@ -4,6 +4,7 @@ import animateStyle from './style/animate';
 import layer from './location';
 import {formatNumber, getMap} from '../util';
 import $ from 'jquery';
+import { isCommunityPlanning, isFuture, validSession } from '../data/dataProcessor';
 
 const calendar = $('#calendar');
 
@@ -31,7 +32,12 @@ function runAnimation(layer, style) {
         const sessionMonth = session.month; 
         const type = parseInt(session['Project Type']);
         const people = parseInt(session['Number Trained']);
-        if (type !== 'Community Planning' && sessionMonth === month && people > 0) {
+        if (
+          validSession(session) &&
+          !isFuture(session) &&
+          !isCommunityPlanning(session) && 
+          sessionMonth === month && people > 0
+        ) {
           const animate = feature.get('animate');
           feature.set('animate', animate + people);
           allThePeeps = allThePeeps + people;

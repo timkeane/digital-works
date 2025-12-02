@@ -2,6 +2,7 @@ import $ from 'jquery';
 import Chart from 'chart.js/auto';
 import data from '../data/data';
 import {getStateName} from '../util';
+import {validSession, isFuture, isCommunityPlanning} from '../data/dataProcessor';
 
 const options =  {
   elements: {
@@ -82,7 +83,8 @@ function createStateChart() {
   const states = {};
   data.sessions.forEach(session => {
     const state = session['State'];
-    if (state) {
+    const type = session['Project Type'];
+    if (validSession(session) && !isFuture(session) && !isCommunityPlanning(session) && state) {
       states[state] = states[state] || {'Number Trained': 0};
       states[state]['State'] = state;
       states[state]['Number Trained'] = states[state]['Number Trained'] + (session['Number Trained'] * 1);
@@ -108,7 +110,7 @@ function createTypeChart() {
   const types = {};
   data.sessions.forEach(session => {
     const type = session['Project Type'];
-    if (type && type !== 'Community Planning') {
+    if (validSession(session) && !isFuture(session) && !isCommunityPlanning(session)) {
       types[type] = types[type] || {'Number Trained': 0};
       types[type]['Project Type'] = type;
       types[type]['Number Trained'] = types[type]['Number Trained'] + (session['Number Trained'] * 1);
@@ -134,7 +136,8 @@ function createYearChart() {
   const years = {};
   data.sessions.forEach(session => {
     const year = session['Year of Engagement'];
-    if (year) {
+    const type = session['Project Type'];
+    if (validSession(session) && !isFuture(session) && !isCommunityPlanning(session) && year) {
       years[year] = years[year] || {'Number Trained': 0};
       years[year]['Year of Engagement'] = year;
       years[year]['Number Trained'] = years[year]['Number Trained'] + (session['Number Trained'] * 1);
