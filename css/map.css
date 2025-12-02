@@ -157,7 +157,7 @@ div.zoom-full {
 }
 
 button#zoom-full {
-  background-image: url(../img/us.png);
+  background-image: url(/img/us.png);
   background-size: 20px;
   background-position: center center;
   background-repeat: no-repeat;
@@ -166,7 +166,7 @@ button#zoom-full {
 }
 
 button#zoom-full:hover {
-  background-image: url(../img/us-hover.png);
+  background-image: url(/img/us-hover.png);
 }
 
 #map-container .ol-viewport {

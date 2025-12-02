@@ -153,7 +153,7 @@ body.future .feature-html a.directions {
   width: 24px;
   height: 24px;
   cursor: pointer;
-  background-image: url(../img/directions.svg);
+  background-image: url(/img/directions.svg);
   background-position: center;
   background-repeat: no-repeat;
   display: block;
@@ -162,7 +162,7 @@ body.future .feature-html a.directions {
 }
 
 body.future .feature-html a.directions:hover {
-  background-image: url(../img/directions-hover.svg);
+  background-image: url(/img/directions-hover.svg);
 }
 
 .feature-tip {

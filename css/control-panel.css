@@ -49,27 +49,27 @@
 }
 
 #show-view.map {
-  background-image: url('../img/us-hover.png');
+  background-image: url('/img/us-hover.png');
 }
 
 #show-view.map:active {
-  background-image: url('../img/us.png');
+  background-image: url('/img/us.png');
 }
 
 #show-view.chart {
-  background-image: url('../img/chart.svg');
+  background-image: url('/img/chart.svg');
 }
 
 #show-view.chart:active {
-  background-image: url('../img/chart-hover.svg');
+  background-image: url('/img/chart-hover.svg');
 }
 
 #show-view.detail {
-  background-image: url('../img/detail.svg');
+  background-image: url('/img/detail.svg');
 }
 
 #show-view.detail:active {
-  background-image: url('../img/detail-hover.svg');
+  background-image: url('/img/detail-hover.svg');
 }
 
 #calendar {

@@ -19,14 +19,14 @@
   background-repeat: no-repeat;
   background-position: calc(100% - .125em) 0;
   background-size: 1.25em;
-  background-image: url(../img/down.svg);
+  background-image: url(/img/down.svg);
   padding: .25em 2em .25em .5em;
   width: 100%;
   display: block;
 }
 
 #legend.minimized h3 {
-  background-image: url(../img/up.svg);
+  background-image: url(/img/up.svg);
 }
 
 #legend.minimized ul {
