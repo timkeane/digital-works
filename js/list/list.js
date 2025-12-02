@@ -84,7 +84,7 @@ export function sortByDistance(location) {
 
 export function updateLocationList(event) {
   const locationList = $('#location-list').empty();
-  const features = event.target.getFeatures(); 
+  const features = event.features || event.target.getFeatures(); 
   const layer = getLocationLayer();
   const fHtml = layer.get('featureHtml');
   if (!event.distance) sortByState(features);
