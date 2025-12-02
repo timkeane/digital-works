@@ -4,22 +4,9 @@ import Stroke from 'ol/style/Stroke';
 import Fill from 'ol/style/Fill';
 import {getFuture, getView} from '../../util';
 
-  // temporary until fix null island
-import Icon from 'ol/style/Icon';
-
-export default function(feature, resolution) {
-
-  // temporary until fix null island
-  if (feature.getGeometry().getCoordinates()[0] === 0) {
-    return new Style({
-      image: new Icon({src: 'img/null-island.png'}),
-      width: 150,
-      height: 150
-    });
-  }
-
-  if (getFuture() === feature.get('has-future')) {
-    const zoom = getView().getZoomForResolution(resolution);
+export default function(feature, resolution) {  
+  if (getFuture() === feature.get('has-future') && !feature.get('only-community-planning')) {
+    const zoom = getView().getZoomForResolution(resolution) || .32;
     const people = feature.get('animate') || 1;
     const highlight = feature.get('highlight');
     const width = highlight ? 4 : 1.25;

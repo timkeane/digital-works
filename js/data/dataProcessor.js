@@ -59,18 +59,32 @@ function setPastMonths() {
   data.pastMonths = pastMonths;
 }
 
-function manageTrainingDate(feature, session) {
-  const date = session['Training Date'];
-  const dateParts = date.split('/');
-  const isoDate = `${dateParts[2]}-${pad(dateParts[0])}-${pad(dateParts[1])}`;
-  const future = isoDate > today;
+function getIsoDate(dateString) {
+  if (dateString?.length) {
+    const dateParts = dateString.split('/');
+    return `${dateParts[2]}-${pad(dateParts[0])}-${pad(dateParts[1])}`;
+  }
+ return '';
+}
+
+function addToPastMonths(month, session) {
   const thisMonth = getMonth(today);
-  const month = getMonth(isoDate);
-  if (month < thisMonth || month === thisMonth) months[month] = month;
-  session['Training Date'] = isoDate;
-  session['Year of Engagement'] = isoDate.split('-')[0];
+  const type = session['Project Type'];
+  const people = session['Number Trained'];
+  if (type !== 'Community Planning' && people > 0) {
+    if (month < thisMonth || month === thisMonth) months[month] = month;
+  }
+}
+
+function manageTrainingDate(feature, session) {
+  const date = getIsoDate(session['Training Date']);
+  const future = date > today;
+  const month = getMonth(date);
+  session['Training Date'] = date;
+  session['Year of Engagement'] = date.split('-')[0];
   session.future = future;
   session.month = month;
+  addToPastMonths(month, session);
   if (future) feature.set('has-future', true);
   if (!future) feature.set('has-past', true);
 }
@@ -114,10 +128,17 @@ function addSessionToFeatures(session) {
 function validSession(session) {
   const type = session['Project Type'];
   const people = parseInt(session['Number Trained']);
-  const date = parseInt(session['Training Date']);
+  const date = getIsoDate(session['Training Date']);
   const future = today < date;
-  console.info(future.toString(), {today, date});
-  const valid = future || (type?.trim().length && people && !isNaN(people) && people > 0);
+  const canbeZero = type === 'Community Planning';
+  const valid = future || 
+    (
+      type?.trim().length > 0 &&
+      (
+        canbeZero ||
+        (people && !isNaN(people) && people > 0)
+      )
+    );
   if (valid) return true;
   console.error('Bad row:', session);
 }
@@ -139,14 +160,6 @@ function sessions(rows) {
   });
   source.getFeatures().forEach(feature => sortSessions(feature));
   setPastMonths();
-}
-
-export function getMonths() {
-  const thisMonth = getMonth(new Date().toISOString());
-  data.sessions.forEach(session => {
-    const month = getMonth(session['Training Date']);
-    if (month < thisMonth || month === thisMonth) months[month] = month;
-  });
 }
 
 export function processData(response) {

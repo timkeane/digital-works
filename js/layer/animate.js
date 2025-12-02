@@ -29,8 +29,9 @@ function runAnimation(layer, style) {
       const sessions = feature.get('sessions');
       sessions.forEach(session => {
         const sessionMonth = session.month; 
+        const type = parseInt(session['Project Type']);
         const people = parseInt(session['Number Trained']);
-        if (sessionMonth === month && people > 0) {
+        if (type !== 'Community Planning' && sessionMonth === month && people > 0) {
           const animate = feature.get('animate');
           feature.set('animate', animate + people);
           allThePeeps = allThePeeps + people;
