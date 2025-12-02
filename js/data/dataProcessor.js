@@ -2,8 +2,6 @@ import Feature from 'ol/Feature';
 import Point from 'ol/geom/Point';
 import data from './data';
 
-window.data=data;
-
 const today = (new Date()).toISOString().split('T')[0];
 const source = data.source;
 const months = {};
@@ -120,14 +118,12 @@ function addSessionToFeatures(session) {
     feature.set('has-past', false);
     feature.set('only-community-planning', true);
     source.addFeature(feature);
-    window.feature_count=window.feature_count||0;
-    window.feature_count=window.feature_count+1;
   }
   const sessions = feature.get('sessions');
   sessions.push(session);
   feature.set('sessions', sessions);
   feature.set('people', feature.get('people') + getPeople(session));
-  if (isCommunityPlanning(session))
+  if (!isCommunityPlanning(session))
     feature.set('only-community-planning', false);
   manageTrainingDate(feature, session);
 }
@@ -138,8 +134,6 @@ function sessions(rows) {
   data.sessions = rows;
   rows.forEach(session => {
     if (validSession(session)) {
-      window.session_count=window.session_count||0;
-      window.session_count=window.session_count+1;
       const locId = getLocationId(session);
       const people = getPeople(session);
       addSessionToFeatures(session);
