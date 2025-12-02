@@ -108,7 +108,7 @@ function createTypeChart() {
   const types = {};
   data.sessions.forEach(session => {
     const type = session['Project Type'];
-    if (type) {
+    if (type && type !== 'Community Planning') {
       types[type] = types[type] || {'Number Trained': 0};
       types[type]['Project Type'] = type;
       types[type]['Number Trained'] = types[type]['Number Trained'] + (session['Number Trained'] * 1);

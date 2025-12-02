@@ -4,6 +4,8 @@ import data from './data';
 
 const source = data.source;
 
+const months = {};
+
 function sortSessions(feature) {
   const sessions = feature.get('sessions');
   sessions.sort((s0, s1) => {
@@ -39,15 +41,37 @@ function pad(num) {
   return num.length === 1 ? `0${num}` : num;
 }
 
+function getMonth(date) {
+  if (date?.length >= 10) {
+    return date.substring(0, date.lastIndexOf('-'));
+  }
+}
+
+function setPastMonths() {
+  const pastMonths = Object.values(months).sort((m0, m1) => {
+    if (m0 < m1) {
+      return -1;
+    } else if (m0 > m1) {
+      return 1;
+    }
+    return 0;
+  });
+  data.pastMonths = pastMonths;
+}
+
 function manageTrainingDate(feature, session) {
   const date = session['Training Date'];
   const dateParts = date.split('/');
   const today = (new Date()).toISOString().split('T')[0];
   const isoDate = `${dateParts[2]}-${pad(dateParts[0])}-${pad(dateParts[1])}`;
   const future = isoDate > today;
+  const thisMonth = getMonth(today);
+  const month = getMonth(isoDate);
+  if (month < thisMonth || month === thisMonth) months[month] = month;
   session['Training Date'] = isoDate;
   session['Year of Engagement'] = isoDate.split('-')[0];
-  session.future = future;  
+  session.future = future;
+  session.month = month;
   if (future) feature.set('has-future', true);
   if (!future) feature.set('has-past', true);
 }
@@ -76,12 +100,15 @@ function addSessionToFeatures(session) {
     feature.set('address', getAddress(session));
     feature.set('has-future', false);
     feature.set('has-past', false);
+    feature.set('only-community-planning', true);
     source.addFeature(feature);
   }
   const sessions = feature.get('sessions');
   sessions.push(session);
   feature.set('sessions', sessions);
   feature.set('people', feature.get('people') + getPeople(session));
+  if (session['Projet Type'] !== 'Community Planning')
+    feature.set('only-community-planning', false);
   manageTrainingDate(feature, session);
 }
 
@@ -99,6 +126,15 @@ function sessions(rows) {
     state[session.State] = state[session.State] + people;
   });
   source.getFeatures().forEach(feature => sortSessions(feature));
+  setPastMonths();
+}
+
+export function getMonths() {
+  const thisMonth = getMonth(new Date().toISOString());
+  data.sessions.forEach(session => {
+    const month = getMonth(session['Training Date']);
+    if (month < thisMonth || month === thisMonth) months[month] = month;
+  });
 }
 
 export function processData(response) {

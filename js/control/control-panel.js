@@ -1,11 +1,9 @@
 import $ from 'jquery';
-import {getBorderStyle, getStateLayer, getLocationLayer, setFuture, getLocationSource, getMap, formatNumber} from '../util';
+import {getBorderStyle, getStateLayer, getLocationLayer, setFuture, formatNumber} from '../util';
 import {renderChart} from './chart';
 import countStyle from '../layer/style/state';
 import {updateLegend} from './legend';
-import data from '../data/data';
-import blankStyle from '../layer/style/blank';
-import animateStyle from '../layer/style/animate';
+import animate from '../layer/animate';
 
 const storyUrl = 'https://storymaps.arcgis.com/stories/c222fb7619ea49c5a4db939b77dee4e5';
 const statsUrl = 'https://app.powerbi.com/view?r=eyJrIjoiMTMyZmRhNzMtNWY5NC00OTlmLTgxNjEtZjA1OTFlNWIxZTE2IiwidCI6IjVhMjNkMTNlLTBhM2UtNDI5MS04ZDMzLTM5N2Y2YTEwZjEwYiJ9';
@@ -102,85 +100,10 @@ function showStories(event) {
   $('#tab-content')[external ? 'addClass' : 'removeClass']('external');
 }
 
-
-function getSessionMonth(date) {
-  if (date?.length >= 10) {
-    return date.substring(0, date.lastIndexOf('-'));
-  }
-}
-
-function getMonths() {
-  const months = {};
-  const thisMonth = getSessionMonth(new Date().toISOString());
-  data.sessions.forEach(session => {
-    const month = getSessionMonth(session['Training Date']);
-    if (month < thisMonth || month === thisMonth) months[month] = month;
-  });
-  return Object.values(months).sort((y0, y1) => {
-    if (y0 < y1) {
-      return -1;
-    } else if (y0 > y1) {
-      return 1;
-    }
-    return 0;
-  });
-}
-
-function displayMonth(month, people) {
-  const calendar = $('#calendar');
-  const count = formatNumber(people);
-  const parts = month.split('-');
-  calendar.find('span.month').attr('data-i18n', `month.${parts[1]}`).localize();
-  calendar.find('span.year').html(parts[0]);
-  calendar.find('span.value').html(count);
-  calendar.find('.people').css('visibility', 'visible');
-}
-
-function animate(layer, style, months) {
-  const map = getMap();
-  const features = getLocationSource().getFeatures();
-  let allThePeeps = 0;
-  let i = 0;
-  layer.setStyle(animateStyle);
-  const interval = setInterval(() => {
-    const month = months[i];
-    displayMonth(month, allThePeeps);
-    features.forEach(feature => {
-      const sessions = feature.get('sessions');
-      sessions.forEach(session => {
-        const sessionMonth = getSessionMonth(session['Training Date']); 
-        const people = parseInt(session['Number Trained']);
-        if (sessionMonth === month && people > 0) {
-          const animate = feature.get('animate');
-          feature.set('animate', animate + people);
-          allThePeeps = allThePeeps + people;
-          displayMonth(month, allThePeeps);
-          map.renderSync();
-        }
-      });
-    });
-    i = i + 1;
-    if (i === months.length) {
-      clearInterval(interval);
-      setTimeout(() => $('#calendar').fadeOut(), 3000);
-      layer.setStyle(style);
-    }
-  }, 500);
-}
-
-function prepareAnimation(event) {
+function showAnimation(event) {
   event.preventDefault();
-  const layer = getLocationLayer();
-  const style = layer.getStyle();
-  const features = getLocationSource().getFeatures();
-  $('#calendar').fadeIn();
-  layer.setStyle(blankStyle);
-  features.forEach(feature => {
-    feature.set('animate', 0);
-  });
-  setTimeout(() => {
-    animate(layer, style, getMonths());
-  }, 2000)
+  animate();
+  if ($(window).width() < 575) $('#show-view').trigger('click');
 }
 
 export default function createControlPanel() {
@@ -191,7 +114,7 @@ export default function createControlPanel() {
   $('#show-view').on('click', showView);
   $('#map-tab').on('click', showControlPanel);
   $('.nav button').on('click', showStories);
-  $('#animate').on('click', prepareAnimation);
+  $('#animate').on('click', showAnimation);
   $('#location-tab').on('click', () => {
     $('#show-view').attr('data-i18n', 'control.panel.show;[aria-label]tab.details.show;[title]tab.details.show').localize();
     $('#show-view').removeClass('map').removeClass('chart').addClass('detail');

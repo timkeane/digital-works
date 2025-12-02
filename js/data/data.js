@@ -2,6 +2,7 @@ import Source from 'ol/source/Vector';
 
 export default {
   source: new Source({}),
+  pastMonths: [],
   sessions: [],
   headCount: {
     state: {},
