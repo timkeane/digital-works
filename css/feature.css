@@ -165,6 +165,14 @@ body.future .feature-html a.directions:hover {
   background-image: url(/img/directions-hover.svg);
 }
 
+.feature-html .total {
+  margin-left: 1em;
+}
+
+#popup-content .feature-html .total {
+  margin-left: .5em;
+}
+
 .feature-tip {
   border-radius: .25em;
   padding: .5em;

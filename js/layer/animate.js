@@ -49,7 +49,7 @@ function runAnimation(layer, style) {
     i = i + 1;
     if (i === data.pastMonths.length) {
       clearInterval(interval);
-      setTimeout(() => calendar.fadeOut(), 3000);
+      setTimeout(() => calendar.fadeOut(), 3500);
       layer.setStyle(style);
     }
   }, 500);
@@ -65,5 +65,5 @@ export default function animate() {
   });
   setTimeout(() => {
     runAnimation(layer, style);
-  }, 2000)
+  }, 500)
 }

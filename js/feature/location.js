@@ -27,12 +27,13 @@ export default function html(feature, type) {
   const hasFuture = feature.get('has-future') ? 'has-future' : 'no-future';
   const noPast = !feature.get('has-past') ? 'no-past' : '';
   const sessions = feature.get('sessions');
-  const html = $(`<div class="feature-html location ${hasFuture} ${noPast}"><h4 role="button">${feature.get('formatted_address')}</h4></div>`);
+  const html = $(`<div data-id="${feature.getId()}" class="feature-html location ${hasFuture} ${noPast}"><h4 role="button">${feature.get('formatted_address')}</h4></div>`)
+    .append(`<div class="total"><span class="field" data-i18n="prop.name.total_trained"></span>: <span class="value">${formatNumber(feature.get('people'))}</span></div>`);
   appendDistance(html, feature);
   sessions.forEach((session, i) => {
     const future = session['future'] ? 'future' : '';
     const css = `${i === 0 ? 'first' : 'more'} ${future}`;
-    const div = $(`<div class="session ${type} ${css}"></div>`);
+    const div = $(`<div data-id="${session.ID}" class="session ${type} ${css}"></div>`);
     const org = session['Organization'];
     const orgKey = valueKey(session['Organization Type']);
     const projKey = valueKey(session['Project Type']);
