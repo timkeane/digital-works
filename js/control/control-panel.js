@@ -74,6 +74,8 @@ function setControlPanelCss(view) {
   }
   if (primaryView === 'external') {
     showExternal(subView);
+    $('#map').removeClass('active');
+    $('#chart').removeClass('active');
     $('#control-panel').slideUp();
     $('#tab-col').addClass('external');
     $('#tab-content').addClass('external');
@@ -97,7 +99,7 @@ function setControlPanelCss(view) {
     $('#view-type').slideDown();
     $('#map-type').slideDown();
     $('#chart-type').slideUp();
-    $('#animate')[future ? 'slideUp' : 'slideDown']();
+    $('#animate')[future || subView === 'state' ? 'slideUp' : 'slideDown']();
     $('#map').addClass('active');
     $('#chart').removeClass('active');
     $('#view-type label').removeClass('active');
