@@ -101,7 +101,7 @@ function getLocationId(session) {
   return `${session.Longitude || '0'}@${session.Latitude || '0'}`;
 }
 
-function addSessionToFeatures(session) {
+function addToFeatures(session) {
   const locId = getLocationId(session);
   let feature = source.getFeatureById(locId);
   if (!feature) {
@@ -128,6 +128,12 @@ function addSessionToFeatures(session) {
   manageTrainingDate(feature, session);
 }
 
+function addToCommunityPlanning(session) {
+  if (isCommunityPlanning(session)) {
+    data.communityPlanning.push(session);
+  }
+}
+
 function sessions(rows) {
   const location = data.headCount.location;
   const state = data.headCount.state;
@@ -136,11 +142,12 @@ function sessions(rows) {
     if (validSession(session)) {
       const locId = getLocationId(session);
       const people = getPeople(session);
-      addSessionToFeatures(session);
       location[locId] = location[locId] || 0;
       location[locId] = location[locId] + people;
       state[session.State] = state[session.State] || 0;
       state[session.State] = state[session.State] + people;
+      addToCommunityPlanning(session);
+      addToFeatures(session);
     }
   });
   source.getFeatures().forEach(feature => sortSessions(feature));

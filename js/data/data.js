@@ -4,6 +4,7 @@ export default {
   source: new Source({}),
   pastMonths: [],
   sessions: [],
+  communityPlanning: [],
   headCount: {
     state: {},
     location: {}
