@@ -5,8 +5,8 @@ import countStyle from '../layer/style/state';
 import {updateLegend} from './legend';
 import animate from '../layer/animate';
 
-const storyUrl = 'https://storymaps.arcgis.com/stories/c222fb7619ea49c5a4db939b77dee4e5';
-const statsUrl = 'https://app.powerbi.com/view?r=eyJrIjoiMTMyZmRhNzMtNWY5NC00OTlmLTgxNjEtZjA1OTFlNWIxZTE2IiwidCI6IjVhMjNkMTNlLTBhM2UtNDI5MS04ZDMzLTM5N2Y2YTEwZjEwYiJ9';
+const storyUrl = import.meta.env.VITE_STORIES_URL;
+const statsUrl = import.meta.env.VITE_STATS_URL;
 
 const timeForm = $('#time-type').get(0);
 const viewForm = $('#view-type').get(0);
