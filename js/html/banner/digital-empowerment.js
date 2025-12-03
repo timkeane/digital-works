@@ -5,5 +5,6 @@ export default `<div>
   </div>
   <h1>
     <span data-i18n="app.title"></span>
+    <span data-i18n="app.short_title" class="short"></span>
   </h1>
 </div>`;
