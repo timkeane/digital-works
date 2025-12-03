@@ -32,10 +32,6 @@
   height: 0;
 }
 
-#chart-type {
-  display: none;
-}
-
 #map:not(.active) {
   display: none !important;
 }
@@ -54,14 +50,6 @@
 
 #show-view.map:active {
   background-image: url('/img/us.png');
-}
-
-#show-view.chart {
-  background-image: url('/img/chart.svg');
-}
-
-#show-view.chart:active {
-  background-image: url('/img/chart-hover.svg');
 }
 
 #show-view.detail {

@@ -195,8 +195,3 @@ body.future .feature-html a.directions:hover {
 .feature-tip span {
   font-size: .75em;
 }
-
-.chart-tip.feature-tip {
-  position: absolute;
-  display: none;
-}

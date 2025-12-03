@@ -1,6 +1,5 @@
 import $ from 'jquery';
 import {getBorderStyle, getStateLayer, getLocationLayer, setFuture, getFuture} from '../util';
-import {renderChart} from './chart';
 import countStyle from '../layer/style/state';
 import {updateLegend} from './legend';
 import animate from '../layer/animate';
@@ -9,9 +8,7 @@ const storyUrl = import.meta.env.VITE_STORIES_URL;
 const statsUrl = import.meta.env.VITE_STATS_URL;
 
 const timeForm = $('#time-type').get(0);
-const viewForm = $('#view-type').get(0);
 const mapForm = $('#map-type').get(0);
-const chartForm = $('#chart-type').get(0);
 const locationLayer = getLocationLayer();
 const stateLayer = getStateLayer();
 
@@ -37,8 +34,7 @@ function getSelectedView() {
   if ($('#location-tab').hasClass('active')) return `detail${future ? ':future' : ''}`;
   if ($('#stats-tab').hasClass('active')) return 'external:stats';
   if ($('#stories-tab').hasClass('active')) return 'external:stories';
-  if (viewForm.choice.value === 'map') return `map:${mapForm.choice.value}`;
-  return `chart:${chartForm.choice.value}`;
+  return `map:${mapForm.choice.value}`;
 }
 
 function displayLocationMap() {
@@ -56,10 +52,6 @@ function displayStateMap() {
   updateLegend();
 }
 
-function displayChart(type) {
-  renderChart(type);
-}
-
 function setControlPanelCss(view) {
   const primaryView = view.split(':')[0];
   const subView = view.split(':')[1];
@@ -75,7 +67,6 @@ function setControlPanelCss(view) {
   if (primaryView === 'external') {
     showExternal(subView);
     $('#map').removeClass('active');
-    $('#chart').removeClass('active');
     $('#control-panel').slideUp();
     $('#tab-col').addClass('external');
     $('#tab-content').addClass('external');
@@ -87,38 +78,18 @@ function setControlPanelCss(view) {
   if (primaryView === 'detail') {
     $('#locate').slideDown();
     $('#time-type').slideDown();
-    $('#view-type').slideUp();
     $('#map-type').slideUp();
-    $('#chart-type').slideUp();
     $('#animate').slideUp();
     return;
   }
   if (primaryView === 'map') {
     $('#locate').slideDown();
     $('#time-type').slideDown();
-    $('#view-type').slideDown();
     $('#map-type').slideDown();
-    $('#chart-type').slideUp();
     $('#animate')[future || subView === 'state' ? 'slideUp' : 'slideDown']();
     $('#map').addClass('active');
-    $('#chart').removeClass('active');
-    $('#view-type label').removeClass('active');
-    $('#view-type label[for="map-view"]').addClass('active');
     $('#map-type label').removeClass('active');
     $(`#map-type label[for="${subView}-map"]`).addClass('active');
-  } else if (primaryView === 'chart') {
-    $('#locate').slideUp();
-    $('#time-type').slideUp();
-    $('#view-type').slideDown();
-    $('#map-type').slideUp();
-    $('#chart-type').slideDown();
-    $('#animate').slideUp();
-    $('#map').removeClass('active');
-    $('#chart').addClass('active');
-    $('#view-type label').removeClass('active');
-    $('#view-type label[for="chart-view"]').addClass('active');
-    $('#chart-type label').removeClass('active');
-    $(`#chart-type label[for="${subView}-chart"]`).addClass('active');
   }
 }
 
@@ -129,7 +100,6 @@ function showView() {
     const viewParts = view.split(':');
     if (view === 'map:location') displayLocationMap();
     else if (view === 'map:state') displayStateMap();
-    else if (viewParts[0] === 'chart') displayChart(viewParts[1]);
   }
   if (view === 'external') showExternal(view);
 }

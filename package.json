@@ -1,6 +1,6 @@
 {
   "name": "digital-empowerment",
-  "version": "1.9.1",
+  "version": "1.9.2",
   "type": "module",
   "scripts": {
     "start": "APP_ENV=dev vite --host",
@@ -13,7 +13,6 @@
     "knip": "knip"
   },
   "dependencies": {
-    "chart.js": "^4.5.1",
     "i18next": "23.7.7",
     "jquery": "^3.7.1",
     "jquery-i18next": "^1.2.1",

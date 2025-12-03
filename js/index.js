@@ -9,7 +9,6 @@ import {store} from './util';
 import {createLocator} from './control/locate';
 import {createLists} from './list/list';
 import createControlPanel from './control/control-panel';
-import {createChart} from './control/chart';
 import createZoomFull from './control/ZoomFull';
 import {createLegend} from './control/legend';
 import {showIntro} from './control/dialog';
@@ -51,7 +50,6 @@ function load() {
         $(window).trigger('resize');
         $('button#zoom-full').trigger('click');
         $('#search').trigger('focus');
-        createChart();
         $('body').removeClass('loading');
         $(window).trigger('resize');
       });
