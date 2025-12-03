@@ -139,6 +139,7 @@ export default function createControlPanel() {
   $('#nav button.nav-link').on('click', showView);
   $('#map-tab').on('click', showControlPanel);
   $('#control-panel form').on('submit', event => event.preventDefault());
+  $('#animate').on('click', animate);
 }
 
 
