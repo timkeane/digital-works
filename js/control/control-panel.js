@@ -126,11 +126,10 @@ function showView() {
   const view = getSelectedView();
   setControlPanelCss(view);
   if (view !== 'detail') {
+    const viewParts = view.split(':');
     if (view === 'map:location') displayLocationMap();
     else if (view === 'map:state') displayStateMap();
-    else if (view === 'chart:state') displayChart('state');
-    else if (view === 'chart:year') displayChart('year');
-    else if (view === 'chart:type') displayChart('type');
+    else if (viewParts[0] === 'chart') displayChart(viewParts[1]);
   }
   if (view === 'external') showExternal(view);
 }

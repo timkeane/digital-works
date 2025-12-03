@@ -106,7 +106,7 @@ function createStateChart() {
   });
 }
 
-function createTypeChart() {
+function createProjectChart() {
   const types = {};
   data.sessions.forEach(session => {
     const type = session['Project Type'];
@@ -124,6 +124,32 @@ function createTypeChart() {
     options,
     data: {
       labels: Object.values(types).map(row => row['Project Type']),
+      datasets: [{
+        hoverBackgroundColor: '#3399CC',
+        data: Object.values(types).map(row => row['Number Trained'])
+      }]
+    }
+  });
+}
+
+function createTopicChart() {
+  const types = {};
+  data.sessions.forEach(session => {
+    const type = session['Training Topic'];
+    if (validSession(session) && !isFuture(session) && !isCommunityPlanning(session)) {
+      types[type] = types[type] || {'Number Trained': 0};
+      types[type]['Training Topic'] = type;
+      types[type]['Number Trained'] = types[type]['Number Trained'] + (session['Number Trained'] * 1);
+    }
+  });
+
+  options.plugins.title.text = 'Number of people trained by training topic';
+
+  chart = new Chart(canvas, {
+    type: 'bar',
+    options,
+    data: {
+      labels: Object.values(types).map(row => row['Training Topic']),
       datasets: [{
         hoverBackgroundColor: '#3399CC',
         data: Object.values(types).map(row => row['Number Trained'])
@@ -162,8 +188,9 @@ function createYearChart() {
 export function renderChart(type) {
   chart?.destroy();
   if (type === 'state') createStateChart();
-  if (type === 'type') createTypeChart();
+  if (type === 'proj') createProjectChart();
   if (type === 'year') createYearChart();
+  if (type === 'topic') createTopicChart();
 }
 
 export function createChart() {}

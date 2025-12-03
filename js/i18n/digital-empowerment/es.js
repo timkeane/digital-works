@@ -76,6 +76,7 @@ export const translation = {
   "control.panel.chart_type": "Gráfico de actividad por:",
   "control.panel.year": "Año",
   "control.panel.proj": "Tipo de proyecto",
+  "control.panel.topic": "Tema de formación",
   "control.panel.show": "Mostrar",
   "control.panel.show_map": "Mostrar mapa",
   "control.panel.show_chart": "Mostrar gráfico",
