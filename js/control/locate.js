@@ -171,7 +171,7 @@ export function createLocator(map) {
   const possible = div.find('#possible');
 
   form.append(div.prepend(input)).localize();
-  form.insertBefore($('#time-frame'));
+  form.insertBefore($('#time-type'));
 
   $(document).on('click', () => $('#possible').slideUp());
   possible.on('keyup', event => {

@@ -61,43 +61,43 @@
     <div class="row">
       <div id="control-panel" class="col-sm col-sm-3">
         <p data-i18n="control.panel.msg"></p>
-        <form id="time-frame">
+        <form id="time-type">
           <strong data-i18n="control.panel.time"></strong>
           <div class="form-group btn-group-toggle" data-toggle="buttons">
-            <label class="btn btn-primary active" for="past-radio" data-i18n="control.panel.past" role="button"></label>
-            <input id="past-radio" type="radio" name="options" value="past" autocomplete="off" checked>
-            <label class="btn btn-primary" for="future-radio" data-i18n="control.panel.future" role="button"></label>
-            <input id="future-radio" type="radio" name="options"  value="future" autocomplete="off">
+            <label class="btn btn-primary active" for="past-sessions" data-i18n="control.panel.past" role="button"></label>
+            <input id="past-sessions" type="radio" name="choice" value="past" autocomplete="off" checked>
+            <label class="btn btn-primary" for="future-sessions" data-i18n="control.panel.future" role="button"></label>
+            <input id="future-sessions" type="radio" name="choice"  value="future" autocomplete="off">
           </div>
         </form>
         <form id="view-type">
           <strong data-i18n="control.panel.view_type"></strong>
           <div class="form-group btn-group-toggle" data-toggle="buttons">
-            <label class="btn btn-primary active" for="map-radio" data-i18n="control.panel.map" role="button"></label>
-            <input id="map-radio" type="radio" name="options" value="map" autocomplete="off" checked>
-            <label class="btn btn-primary" for="chart-radio" data-i18n="control.panel.chart" role="button"></label>
-            <input id="chart-radio" type="radio" name="options" value="chart" autocomplete="off">
+            <label class="btn btn-primary active" for="map-view" data-i18n="control.panel.map" role="button"></label>
+            <input id="map-view" type="radio" name="choice" value="map" autocomplete="off" checked>
+            <label class="btn btn-primary" for="chart-view" data-i18n="control.panel.chart" role="button"></label>
+            <input id="chart-view" type="radio" name="choice" value="chart" autocomplete="off">
           </div>
         </form>
         <form id="map-type">
           <strong data-i18n="control.panel.map_type"></strong>
           <div class="form-group btn-group-toggle" data-toggle="buttons">
-            <label class="btn btn-primary active" for="location-radio" data-i18n="control.panel.location" role="button"></label>
-            <input id="location-radio" type="radio" name="options" value="location" autocomplete="off" checked>
-            <label class="btn btn-primary" for="map-state-radio" data-i18n="control.panel.state" role="button"></label>
-            <input id="map-state-radio" type="radio" name="options" value="state" autocomplete="off">
+            <label class="btn btn-primary active" for="location-map" data-i18n="control.panel.location" role="button"></label>
+            <input id="location-map" type="radio" name="choice" value="location" autocomplete="off" checked>
+            <label class="btn btn-primary" for="state-map" data-i18n="control.panel.state" role="button"></label>
+            <input id="state-map" type="radio" name="choice" value="state" autocomplete="off">
             <button id="animate" class="btn btn-primary" data-i18n="map.animate"></button>
           </div>
         </form>
         <form id="chart-type">
          <strong data-i18n="control.panel.chart_type"></strong>
           <div class="form-group btn-group-toggle" data-toggle="buttons">
-            <label class="btn btn-primary active" for="chart-state-raido" data-i18n="control.panel.state" role="button"></label>
-            <input id="chart-state-raido" type="radio" name="options" value="state" autocomplete="off" checked>
-            <label class="btn btn-primary" for="year-radio" data-i18n="control.panel.year" role="button"></label>
-            <input id="year-radio" type="radio" name="options" value="year" autocomplete="off">
-            <label class="btn btn-primary" for="type-radio" data-i18n="control.panel.proj" role="button"></label>
-            <input id="type-radio" type="radio" name="options" value="type" autocomplete="off">
+            <label class="btn btn-primary active" for="state-chart" data-i18n="control.panel.state" role="button"></label>
+            <input id="state-chart" type="radio" name="choice" value="state" autocomplete="off" checked>
+            <label class="btn btn-primary" for="year-chart" data-i18n="control.panel.year" role="button"></label>
+            <input id="year-chart" type="radio" name="choice" value="year" autocomplete="off">
+            <label class="btn btn-primary" for="type-chart" data-i18n="control.panel.proj" role="button"></label>
+            <input id="type-chart" type="radio" name="choice" value="type" autocomplete="off">
           </div>
         </form>
         <form><button id="show-view" class="btn btn-primary map" data-i18n="control.panel.show;[aria-label]control.panel.show_map;[title]control.panel.show_map"></button></form>
@@ -123,7 +123,7 @@
           <div id="chart" class="tab-pane fade" role="tabpanel" aria-hidden="true">
             <canvas></canvas>
             <div class="chart-tip feature-tip"></div>    </div>
-          <iframe id="external" class="tab-pane fade" role="tabpanel" aria-hidden="true" src="https://storymaps.arcgis.com/stories/c222fb7619ea49c5a4db939b77dee4e5"></iframe>
+          <iframe id="external" class="tab-pane fade" role="tabpanel" aria-hidden="true"></iframe>
         </div>
       </div>
     </div>
