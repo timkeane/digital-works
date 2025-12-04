@@ -17,6 +17,9 @@
 #                              #
 ################################
 
+echo "!!!!!!!"
+echo $APP_ENV
+exit
 source $HOME/bead-env/bead.env
 source $HOME/bead-env/aws_sesssion_creds.env
 

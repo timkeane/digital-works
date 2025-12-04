@@ -1,0 +1,2 @@
+hide control panel for request training
+populate select boxes for request training
