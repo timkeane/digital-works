@@ -9,9 +9,15 @@ echo $(git push origin main)
 echo $(git push origin main $version)
 if [ $2 == "dev" ]
 then
- echo $(APP_ENV=dev ./deploy.sh)
+  echo
+  echo "Running dev deployment...
+  echo
+  echo $(APP_ENV=dev ./deploy.sh)
 fi
 if [ $2 == "prd" ]
 then
- echo $(APP_ENV=prd ./deploy.sh)
+  echo
+  echo "Running prd deployment...
+  echo
+  echo $(APP_ENV=prd ./deploy.sh)
 fi
