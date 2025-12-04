@@ -32,6 +32,35 @@
   height: 0;
 }
 
+#state-filter {
+  display: none;
+}
+
+#state {
+  background: var(--cSecondary);
+  color: var(--cOnSecondary);
+  font-weight: bold;
+  text-align: center;
+  background-image: url(/img/down.svg);
+  background-repeat: no-repeat;
+  background-position: calc(100% - .125em) center;
+  background-size: 1.25em;
+}
+
+#state.active {
+  background: var(--cPrimary);
+  color: var(--cOnPrimary);
+  background-image: url(/img/down-active.svg);
+  background-repeat: no-repeat;
+  background-position: calc(100% - .125em) center;
+  background-size: 1.25em;
+}
+
+#state option{
+  display: block;
+  width: 100%;
+}
+
 #map:not(.active) {
   display: none !important;
 }

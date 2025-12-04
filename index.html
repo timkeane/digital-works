@@ -80,6 +80,14 @@
             <button id="animate" class="btn btn-primary" data-i18n="map.animate"></button>
           </div>
         </form>
+        <form id="state-filter">
+          <strong data-i18n="control.panel.state_filter"></strong>
+          <div class="form-group">
+            <select id="state" class="form-select">
+              <option value="all" data-i18n="state.all"></option>
+            </select>
+          </div>
+        </form>
         <form>
           <button id="show-view" class="btn btn-primary map" data-i18n="control.panel.show;[aria-label]control.panel.show_map;[title]control.panel.show_map"></button>
         </form>
@@ -95,12 +103,18 @@
                 </h2>
                 <h4 class="people">
                   <span class="value"></span>
-                  <span data-i18n="prop.name.people_trained"></span>
+                  <span data-i18n="prop.name.number_trained"></span>
                 </h4>
               </div>
             </div>
           </div>
           <div id="locations" class="tab-pane fade" role="tabpanel" aria-labelledby="location-tab" aria-hidden="true">
+            <div class="no-result">
+              <h4>
+                <span data-i18n="filter.none"></span>
+                <span class="state"></span>
+              </h4>
+            </div>
           </div>
           <iframe id="external" class="tab-pane fade" role="tabpanel" aria-hidden="true"></iframe>
         </div>

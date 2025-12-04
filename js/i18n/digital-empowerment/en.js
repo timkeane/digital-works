@@ -20,14 +20,13 @@ export const translation = {
   "btn.ok.name": "OK",
   "btn.close.name": "Close",
 
-  "prop.name.organization": "Organization",
-  "prop.name.organization_type": "Organization Type",
-  "prop.name.project_type": "Project Type",
-  "prop.name.number_trained": "Number of People Trained",
-  "prop.name.total_trained": "Total People Trained",
-  "prop.name.people_trained": "People Trained",
-  "prop.name.training_date": "Training Date",
-  "prop.name.training_topic": "Training Topic",
+  "prop.name.organization": "Organization:",
+  "prop.name.organization_type": "Organization Type:",
+  "prop.name.project_type": "Project Type:",
+  "prop.name.number_trained": "People Trained:",
+  "prop.name.total_trained": "Total People Trained:",
+  "prop.name.training_date": "Training Date:",
+  "prop.name.training_topic": "Training Topic:",
 
   "type.value.non-profit": "Non-Profit",
   "type.value.school": "School",
@@ -72,6 +71,9 @@ export const translation = {
   "control.panel.view_type": "View activity as:",
   "control.panel.map": "Map",
   "control.panel.map_type": "Map activity by:",
+  "control.panel.state_filter": "View by state:",
+  "state.all": "All States",
+  "filter.none": "No training sessions for",
   "control.panel.location": "Location",
   "control.panel.state": "State Impact",
   "control.panel.year": "Year",
@@ -98,7 +100,7 @@ export const translation = {
   "month.10": "October",
   "month.11": "November",
   "month.12": "December",
-  
+
   "translate": "Translate",
   "translate.en": "English",
   "translate.es": "Español"

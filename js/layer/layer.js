@@ -9,6 +9,7 @@ import {createPopup} from '../control/popup';
 import {forMobile} from '../html/resize';
 import {createFeatureTips} from '../control/tip';
 import {updateLegend} from '../control/legend';
+import {populateStateFilter} from '../control/control-panel';
 
 const env = import.meta.env;
 
@@ -23,6 +24,7 @@ export default function addLayers(map) {
           locationSource.on('featuresloadend', updateLocationList);
           locationSource.on('featuresloadend', forMobile);
           locationSource.on('featuresloadend', updateLegend);
+          stateLayer.getSource().on('featuresloadend', populateStateFilter);
           map.addLayer(stateLayer);
           map.addLayer(locationLayer);
           store('borderStyle', stateLayer.getStyle());

@@ -41,3 +41,12 @@ li.list-group-item {
 .list-group-item.highlight {
   background-color: var(--cSecondary);
 }
+
+.no-result {
+  padding: 1em;
+  text-align: center;
+  display: none;
+}
+.no-result * {
+  font-weight: bold;
+}

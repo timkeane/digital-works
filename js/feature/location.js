@@ -28,7 +28,7 @@ export default function html(feature, type) {
   const noPast = !feature.get('has-past') ? 'no-past' : '';
   const sessions = feature.get('sessions');
   const html = $(`<div data-id="${feature.getId()}" class="feature-html location ${hasFuture} ${noPast}"><h4 role="button">${feature.get('formatted_address')}</h4></div>`)
-    .append(`<div class="total"><span class="field" data-i18n="prop.name.total_trained"></span>: <span class="value">${formatNumber(feature.get('people'))}</span></div>`);
+    .append(`<div class="total"><span class="field" data-i18n="prop.name.total_trained"></span> <span class="value">${formatNumber(feature.get('people'))}</span></div>`);
   appendDistance(html, feature);
   sessions.forEach((session, i) => {
     const future = session['future'] ? 'future' : '';
@@ -40,13 +40,13 @@ export default function html(feature, type) {
     const topicKey = valueKey(session['Training Topic']);
     const people = session['Number Trained'];
     const date = session['Training Date'];
-    html.append(div);
-    div.append(`<div><span class="field" data-i18n="prop.name.organization"></span>: <span class="value">${org}</span></div>`)
-      .append(`<div><span class="field" data-i18n="prop.name.organization_type"></span>: <span class="value" data-i18n="type.value.${orgKey}"></span></div>`)
-      .append(`<div><span class="field" data-i18n="prop.name.project_type"></span>: <span class="value" data-i18n="type.value.${projKey}"></span></div>`)
-      .append(people ? `<div><span class="field" data-i18n="prop.name.number_trained"></span>: <span class="value">${formatNumber(people)}</span></div>` : '')
-      .append(`<div><span class="field" data-i18n="prop.name.training_topic"></span>: <span class="value" data-i18n="type.value.${topicKey}"></span></div>`)
-      .append(`<div><span class="field" data-i18n="prop.name.training_date"></span>: <span class="value">${date}</span></div>`);
+    html.append(div).addClass(session['State']);
+    div.append(`<div><span class="field" data-i18n="prop.name.organization"></span> <span class="value">${org}</span></div>`)
+      .append(`<div><span class="field" data-i18n="prop.name.organization_type"></span> <span class="value" data-i18n="type.value.${orgKey}"></span></div>`)
+      .append(`<div><span class="field" data-i18n="prop.name.project_type"></span> <span class="value" data-i18n="type.value.${projKey}"></span></div>`)
+      .append(people ? `<div><span class="field" data-i18n="prop.name.number_trained"></span> <span class="value">${formatNumber(people)}</span></div>` : '')
+      .append(`<div><span class="field" data-i18n="prop.name.training_topic"></span> <span class="value" data-i18n="type.value.${topicKey}"></span></div>`)
+      .append(`<div><span class="field" data-i18n="prop.name.training_date"></span> <span class="value">${date}</span></div>`);
   });
   return html.localize();
 }

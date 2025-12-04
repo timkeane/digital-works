@@ -80,6 +80,7 @@ function setControlPanelCss(view) {
     $('#time-type').slideDown();
     $('#map-type').slideUp();
     $('#animate').slideUp();
+    $('#state-filter').slideDown();
     return;
   }
   if (primaryView === 'map') {
@@ -87,6 +88,7 @@ function setControlPanelCss(view) {
     $('#time-type').slideDown();
     $('#map-type').slideDown();
     $('#animate')[future || subView === 'state' ? 'slideUp' : 'slideDown']();
+    $('#state-filter').slideUp();
     $('#map').addClass('active');
     $('#map-type label').removeClass('active');
     $(`#map-type label[for="${subView}-map"]`).addClass('active');
@@ -103,6 +105,41 @@ function showView() {
   }
   if (view === 'external') showExternal(view);
 }
+window.$=$
+function filterState(event) {
+  const filter = $('#state');
+  const state = filter.val();
+  console.info({filter,state})
+  filter.find('option').each((i, option) => {
+    $('location-list').removeClass(option.value);
+  });
+  $('#location-list .feature-html').each((i, html) => {
+    $(html).removeClass('hide');
+    if (state !== 'all') $(html).not(`.${state}`).addClass('hide');
+  });
+  filter[state === 'all' ? 'removeClass' : 'addClass']('active');
+  $('#locations .no-result').hide();
+  if ($('#location-list .feature-html').not('.hide').length === 0) {
+    $('#locations .no-result').show().find('.state').html($(`#state option[value="${state}"]`).html());
+  }
+}
+
+export function populateStateFilter() {
+  const features = stateLayer.getSource().getFeatures()
+  features.sort((f0, f1) => {
+    const s0 = f0.get('name');
+    const s1 = f1.get('name');
+    if (s0 < s1) {
+      return -1;
+    } else if (s0 > s1) {
+      return 1;
+    }
+    return 0;
+  });
+  features.forEach(feature => {
+    $('#state').append(`<option value="${feature.getId()}">${feature.get('name')}</option>`)
+  });
+}
 
 export default function createControlPanel() {
   $('#control-panel form input[name="choice"]').on('change', showView);
@@ -110,6 +147,7 @@ export default function createControlPanel() {
   $('#map-tab').on('click', showControlPanel);
   $('#control-panel form').on('submit', event => event.preventDefault());
   $('#animate').on('click', animate);
+  $('#state').on('change', filterState);
 }
 
 
