@@ -1,5 +1,6 @@
 version=$(node ./bump-version.js)
-git add .
+echo "Version bumped to: $version"
+echo $(git add .)
 git commit -m "$1"
 git tag $version
 git push origin main
