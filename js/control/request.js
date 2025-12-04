@@ -8,8 +8,9 @@ export default function() {
     const subject = encodeURIComponent($('#request h2').html());
     const type = `${$('label[for="request-type"]').html()} ${$('#request-type').val()}`;
     const topic = `${$('label[for="request-topic"]').html()} ${$('#request-topic').val()}`;
-    const note = `${$('label[for="request-note"]').html()}\n${$('#request-note').val()}`;
-    const body = encodeURIComponent(`\n${type}\n${topic}\n\n${note}\n\n`);
+    const text = $('#request-note').val();
+    const note = text ? `${$('label[for="request-note"]').html()}\n${text}\n\n` : '';
+    const body = encodeURIComponent(`\n${type}\n${topic}\n\n${note}`);
     mailto.attr('href', `mailto:${to}?subject=${(subject)}&cc=${cc}&body=${body}`);
   });
 }
