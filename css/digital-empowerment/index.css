@@ -170,6 +170,11 @@ h4:focus-visible,
   }
 
 }
+@media only screen and (max-width: 450px) {
+  .nav-item.request {
+    position: relative !important;
+  }
+}
 
 @media only screen and (max-width: 435px) {
   #banner {

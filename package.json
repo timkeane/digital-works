@@ -1,6 +1,6 @@
 {
   "name": "digital-empowerment",
-  "version": "1.9.7",
+  "version": "1.9.8",
   "type": "module",
   "scripts": {
     "start": "APP_ENV=dev vite --host",
