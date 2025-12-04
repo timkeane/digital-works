@@ -5,7 +5,6 @@ function tabContentHeight(event) {
   const windowHeight = $(window).outerHeight(true);
   const bannerHeight = $('#banner').outerHeight(true);
   const navHeight = $('#nav').outerHeight(true);
-  const more = $(window).width() < 575 ? 16 : 0;
   $('#tab-content, #tab-col')[isMapTab ? 'addClass' : 'removeClass']('map-active');
   $('#tab-content').css('height', `${windowHeight - bannerHeight - navHeight}px`);
   $('#control-panel').css('height', `${windowHeight - bannerHeight - navHeight}px`);

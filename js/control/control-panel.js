@@ -14,18 +14,18 @@ const stateLayer = getStateLayer();
 
 function showControlPanel(event) {
   if ($(window).width() < 575) {
+    const css = event.target.id === 'map-tab' ? 'map' : 'detail';
+    $('#show-view').removeClass('map').removeClass('detail');
+    $('#show-view').addClass(css);
     $('#control-panel').slideDown();
+  } else {
+    showView();
   }
 }
 
 function showExternal(view) {
   const type = view.split(':')[0];
   $('#external').attr('src', type === 'stories' ? storyUrl : statsUrl);
-}
-
-function showAnimation(event) {
-  animate();
-  if ($(window).width() < 575) $('#show-view').trigger('click');
 }
 
 function getSelectedView() {
@@ -65,30 +65,33 @@ function setControlPanelCss(view) {
     $('body').removeClass('future');
     $('#time-type label[for="past-sessions"]').addClass('active');
   }
+  if ($(window).width() < 575 || primaryView === 'external') {
+    $('#control-panel').slideUp();
+  } else {
+    $('#control-panel').slideDown();
+  }
   if (primaryView === 'request') {
     $('#map').removeClass('active');
     $('#request').addClass('active');
-    $('#control-panel').slideDown();
     $('#tab-col').removeClass('external');
     $('#tab-content').removeClass('external');
+    return;
   } else {
-    $('#control-panel').slideDown();
     $('#tab-col').removeClass('external');
     $('#tab-content').removeClass('external');
   }
   if (primaryView === 'external') {
     showExternal(subView);
     $('#map').removeClass('active');
-    $('#control-panel').slideUp();
     $('#tab-col').addClass('external');
     $('#tab-content').addClass('external');
+    return;
   } else {
-    $('#control-panel').slideDown();
     $('#tab-col').removeClass('external');
     $('#tab-content').removeClass('external');
   }
   if (primaryView === 'detail') {
-    $('#locate').slideDown();
+     $('#locate').slideDown();
     $('#time-type').slideDown();
     $('#map-type').slideUp();
     $('#animate').slideUp();
@@ -118,11 +121,10 @@ function showView() {
   if (view === 'external') showExternal(view);
   if (view === 'request') showRequest();
 }
-window.$=$
+
 function filterState(event) {
   const filter = $('#state');
   const state = filter.val();
-  console.info({filter,state})
   filter.find('option').each((i, option) => {
     $('location-list').removeClass(option.value);
   });
@@ -155,12 +157,10 @@ export function populateStateFilter() {
 }
 
 export default function createControlPanel() {
-  $('#control-panel form input[name="choice"]').on('change', showView);
-  $('#nav button.nav-link').on('click', showView);
-  $('#map-tab').on('click', showControlPanel);
   $('#control-panel form').on('submit', event => event.preventDefault());
+  $('#map-tab, #location-tab').on('click', showControlPanel);
+  $('#control-panel form input[name="choice"]').on('change', showView);
+  $('#show-view, #request-tab, #stats-tab, #stories-tab').on('click', showView);
   $('#animate').on('click', animate);
   $('#state').on('change', filterState);
 }
-
-
