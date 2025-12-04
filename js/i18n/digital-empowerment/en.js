@@ -103,6 +103,15 @@ export const translation = {
   "month.11": "November",
   "month.12": "December",
 
+  "request.title": "Request Connected Nation Digital Empowerment Training",
+  "request.type": "Project Type:",
+  "request.topic": "Training Topic:",
+  "request.email.to": "To:",
+  "request.email.cc": "CC:",
+  "request.email.cc.placeholder": "Enter CC addresses separated by spaces",
+  "request.note": "Note:",
+  "request.send": "Send Training Request",
+  "request.unkown": "Not sure",
   "translate": "Translate",
   "translate.en": "English",
   "translate.es": "Español"

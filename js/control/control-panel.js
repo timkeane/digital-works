@@ -3,6 +3,7 @@ import {getBorderStyle, getStateLayer, getLocationLayer, setFuture, getFuture} f
 import countStyle from '../layer/style/state';
 import {updateLegend} from './legend';
 import animate from '../layer/animate';
+import createTrainingRequest from './request';
 
 const storyUrl = import.meta.env.VITE_STORIES_URL;
 const statsUrl = import.meta.env.VITE_STATS_URL;
@@ -119,7 +120,6 @@ function showView() {
     else if (view === 'map:state') displayStateMap();
   }
   if (view === 'external') showExternal(view);
-  if (view === 'request') showRequest();
 }
 
 function filterState(event) {
@@ -163,4 +163,5 @@ export default function createControlPanel() {
   $('#show-view, #request-tab, #stats-tab, #stories-tab').on('click', showView);
   $('#animate').on('click', animate);
   $('#state').on('change', filterState);
+  createTrainingRequest();
 }

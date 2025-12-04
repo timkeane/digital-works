@@ -1,0 +1,20 @@
+ .col-sm #request form {
+  margin-block: .5em;
+}
+
+#request h2 {
+  color: var(--cPrimary);
+}
+
+#request ul {
+  padding: .5em 0;
+}
+
+#request li {
+  list-style: none;
+  padding-bottom: .5em;
+}
+
+#request label {
+  font-weight: 600;
+}

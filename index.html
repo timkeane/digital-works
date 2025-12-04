@@ -98,7 +98,38 @@
       <div id="tab-col" class="col-sm col-sm-9">
         <div id="tab-content" class="tab-content">
           <div id="request" class="tab-pane fade show" role="tabpanel">
-            <h2>Instructions...</h2>
+            <h2 data-i18n="request.title"></h2>
+            <form>
+              <ul class="form-group">
+                <li>
+                  <label for="to-email" data-i18n="request.email.to"></label>
+                  <input id="to-email" class="form-control" value="request-training@connectednation.org" readonly>
+                </li>
+                <li>
+                  <label for="cc-email" data-i18n="request.email.cc"></label>
+                  <input id="cc-email" class="form-control" data-i18n="[placeholder]request.email.cc.placeholder">
+                </li>
+                <li>
+                  <label for="request-type" data-i18n="request.type"></label>
+                  <select id="request-type" class="form-select">
+                    <option data-i18n="request.unkown"></option>
+                  </select>
+                </li>
+                <li>
+                  <label for="request-topic" data-i18n="request.topic"></label>
+                  <select id="request-topic" class="form-select">
+                    <option data-i18n="request.unkown"></option>
+                  </select>
+                </li>
+                <li>
+                  <label for="request-note" data-i18n="request.note"></label>
+                  <textarea id="request-note" class="form-control"></textarea>
+                </li>
+                <li>
+                  <a class="btn btn-primary" data-i18n="request.send" rel="noopener"></a>
+                </li>
+              </ul>
+            </form>
           </div>
           <div id="map" class="tab-pane fade show active" role="tabpanel">
             <div id="map-container">
