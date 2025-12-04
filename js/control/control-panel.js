@@ -34,6 +34,7 @@ function getSelectedView() {
   if ($('#location-tab').hasClass('active')) return `detail${future ? ':future' : ''}`;
   if ($('#stats-tab').hasClass('active')) return 'external:stats';
   if ($('#stories-tab').hasClass('active')) return 'external:stories';
+  if ($('#request-tab').hasClass('active')) return 'request';
   return `map:${mapForm.choice.value}`;
 }
 
@@ -63,6 +64,17 @@ function setControlPanelCss(view) {
   } else {
     $('body').removeClass('future');
     $('#time-type label[for="past-sessions"]').addClass('active');
+  }
+  if (primaryView === 'request') {
+    $('#map').removeClass('active');
+    $('#request').addClass('active');
+    $('#control-panel').slideDown();
+    $('#tab-col').removeClass('external');
+    $('#tab-content').removeClass('external');
+  } else {
+    $('#control-panel').slideDown();
+    $('#tab-col').removeClass('external');
+    $('#tab-content').removeClass('external');
   }
   if (primaryView === 'external') {
     showExternal(subView);
@@ -104,6 +116,7 @@ function showView() {
     else if (view === 'map:state') displayStateMap();
   }
   if (view === 'external') showExternal(view);
+  if (view === 'request') showRequest();
 }
 window.$=$
 function filterState(event) {

@@ -83,6 +83,19 @@ a.dropdown-item:hover {
   flex-direction: unset !important;
 }
 
+.nav-item.request {
+  position: absolute;
+  right: 0;
+}
+
+#request {
+  padding: 1em;
+}
+
+#request h2 {
+  font-weight: bold;
+}
+
 body.intro .modal-backdrop {
   backdrop-filter: none;
   background: none;
