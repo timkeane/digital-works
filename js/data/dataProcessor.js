@@ -169,7 +169,6 @@ export function hasPeople(session) {
 
 export function validSession(session) {
   const type = session['Project Type'];
-  // const valid = isFuture(session) || (type?.trim().length > 0 && (isCommunityPlanning(session) || hasPeople(session)));
   const valid = isFuture(session) || (isCommunityPlanning(session) || hasPeople(session));
   if (valid) return true;
   console.error('Bad row:', session);
