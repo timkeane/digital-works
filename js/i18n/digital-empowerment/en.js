@@ -28,7 +28,7 @@ export const translation = {
   "prop.name.training_date": "Training Date:",
   "prop.name.training_topic": "Training Topic:",
 
-  "type.value.non-profit": "Non-Profit",
+  "type.value.non_profit": "Non-Profit",
   "type.value.school": "School",
   "type.value.senior_center": "Senior Center",
   "type.value.community_center": "Community Center",

@@ -27,7 +27,7 @@ export const translation = {
   "prop.name.training_date": "Fecha de capacitación",
   "prop.name.training_topic": "Tema de capacitación",
 
-  "type.value.non-profit": "Sin fines de lucro",
+  "type.value.non_profit": "Sin fines de lucro",
   "type.value.school": "Escuela",
   "type.value.senior_center": "Centro para personas mayores",
   "type.value.community_center": "Centro comunitario",
@@ -43,7 +43,7 @@ export const translation = {
   "type.value.club": "Club",
   "type.value.housing_shelter": "Refugio de vivienda",
   "type.value.hospital": "Hospital",
-  "type.value.school-affiliated_club": "Club afiliado a la escuela",
+  "type.value.school_affiliated_club": "Club afiliado a la escuela",
   "type.value.food_bank": "Banco de alimentos",
 
   "type.value.cn_wosted_workshops": "Talleres organizados por CN",
