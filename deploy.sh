@@ -17,6 +17,13 @@
 #                              #
 ################################
 
+echo "APP_ENV=$APP_ENV"
+
+if [ "$APP_ENV" == "" ] 
+then
+  exit
+fi
+
 source $HOME/bead-env/bead.env
 source $HOME/bead-env/aws_sesssion_creds.env
 
