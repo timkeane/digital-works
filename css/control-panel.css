@@ -45,6 +45,7 @@
   background-repeat: no-repeat;
   background-position: calc(100% - .125em) center;
   background-size: 1.25em;
+  padding: 6px 0;
 }
 
 #state.active {
@@ -54,11 +55,6 @@
   background-repeat: no-repeat;
   background-position: calc(100% - .125em) center;
   background-size: 1.25em;
-}
-
-#state option{
-  display: block;
-  width: 100%;
 }
 
 #map:not(.active) {
