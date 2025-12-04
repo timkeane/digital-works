@@ -44,7 +44,7 @@ export const translation = {
   "type.value.club": "Club",
   "type.value.housing_shelter": "Housing Shelter",
   "type.value.hospital":  "Hospital",
-  "type.value.school-affiliated_club": "School-Affiliated Club",
+  "type.value.school_affiliated_club": "School-Affiliated Club",
   "type.value.food_bank": "Food Bank",
 
   "type.value.cn_wosted_workshops": "CN-Hosted Workshops",

@@ -166,6 +166,7 @@ body.future .feature-html a.directions:hover {
 }
 
 .feature-html .total {
+  margin-top: .25em;
   margin-left: 1em;
 }
 
