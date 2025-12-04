@@ -17,7 +17,9 @@
 #                              #
 ################################
 
+echo ""
 echo "APP_ENV=$APP_ENV"
+echo ""
 
 if [ "$APP_ENV" == "" ] 
 then
