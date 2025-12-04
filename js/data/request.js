@@ -1,34 +1,18 @@
 import papa from 'papaparse';
 import {processData as complete} from './dataProcessor';
+import data from './data';
 
 const url = './data/location.csv';
-
-const columns = [
-  'ID',
-  'Organization',
-  'Organization Type',
-  'Training Date'
-  ,'Address'
-  ,'City'
-  ,'State'
-  ,'Zip Code'
-  ,'Longitude'
-  ,'Latitude'
-  ,'Number Trained',
-  'Project Type',
-  'Taining Topic'
-];
 
 const config = {
   download: true,
   quotes: true,
   quoteChar: '"',
-  escapeChar: '"',
-  delimiter: ",",
+  delimiter: ',',
   header: true,
-  newline: "\n",
+  newline: '\n',
   skipEmptyLines: true,
-  columns: ['ID','Organization','Organization Type','Training Date','Address','City','State','Zip Code','Longitude','Latitude','Number of People Trained','Project Type','Taining Topic'],
+  columns: data.columns,
   complete,
   error
 };

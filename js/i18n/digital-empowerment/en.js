@@ -9,7 +9,7 @@ export const translation = {
   "tab.details.show": "Show details",
   "tab.stats.name": "Stats",
   "tab.stories.name": "Stories",
-  "dialog.intro": "<p>Introductory paragraph or three. Introductory paragraph or three. Introductory paragraph or three. Introductory paragraph or three.</p><p>Introductory paragraph or three. Introductory paragraph or three. Introductory paragraph or three. Introductory paragraph or three.</p><p>Introductory paragraph or three. Introductory paragraph or three. Introductory paragraph or three. Introductory paragraph or three.</p>",
+  "dialog.intro": "<p><strong>Goal:</strong> Advance a human-centered digital future by equipping individuals and communities with the mindset, skills, and access they need to thrive.</p><p>At Connected Nation, we envision a future where every person has the opportunity, digital skills, access, and confidence to safely succeed in an increasingly digital world. Through meaningful partnerships and community-driven programs, we empower people to use technology in ways that enrich their lives and open doors to new possibilities.</p><p>Explore where we have been across the country, meet the partners who connect us with the constituents we serve, and discover where we are headed next as we continue expanding digital skills training.</p>",
   "dialog.intro.title": "Digital Empowerment in Action",
   "dialog.not_found": "not found.",
   "popup.pager.previous": "Previous",
@@ -27,6 +27,7 @@ export const translation = {
   "prop.name.total_trained": "Total People Trained:",
   "prop.name.training_date": "Training Date:",
   "prop.name.training_topic": "Training Topic:",
+  "prop.name.resource_1": "More information",
 
   "type.value.non_profit": "Non-Profit",
   "type.value.school": "School",

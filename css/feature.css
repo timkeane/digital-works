@@ -23,7 +23,7 @@ li .feature-html .session {
 
 li .feature-html h4:hover {
   text-decoration: underline;
-  color: var(--cPrimary);
+  color: #0a58ca;
   cursor: pointer;
 }
 
@@ -199,4 +199,14 @@ body.future .feature-html a.directions:hover {
 
 .feature-html.hide {
   display: none;
+}
+
+.feature-html div.more {
+  display: block;
+}
+
+.feature-html div.more a:hover,
+.feature-html div.more a:active,
+.feature-html div.more a:visited {
+  color: #0a58ca;
 }

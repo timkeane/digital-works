@@ -40,13 +40,15 @@ export default function html(feature, type) {
     const topicKey = valueKey(session['Training Topic']);
     const people = session['Number Trained'];
     const date = session['Training Date'];
+    const url = session['Resource 1'];
     html.append(div).addClass(session['State']);
     div.append(org ? `<div><span class="field" data-i18n="prop.name.organization"></span> <span class="value">${org}</span></div>` : '')
       .append(orgKey ? `<div><span class="field" data-i18n="prop.name.organization_type"></span> <span class="value" data-i18n="type.value.${orgKey}"></span></div>` : '')
       .append(projKey ? `<div><span class="field" data-i18n="prop.name.project_type"></span> <span class="value" data-i18n="type.value.${projKey}"></span></div>` : '')
       .append(people ? `<div><span class="field" data-i18n="prop.name.number_trained"></span> <span class="value">${formatNumber(people)}</span></div>` : '')
       .append(topicKey ?`<div><span class="field" data-i18n="prop.name.training_topic"></span> <span class="value" data-i18n="type.value.${topicKey}"></span></div>` : '')
-      .append(date ? `<div><span class="field" data-i18n="prop.name.training_date"></span> <span class="value">${date}</span></div>` : '');
+      .append(date ? `<div><span class="field" data-i18n="prop.name.training_date"></span> <span class="value">${date}</span></div>` : '')
+      .append(url ? `<div class="more"><a href="${url}" data-i18n="prop.name.resource_1" rel="noopener" target="_blank"></a></div>` : '');
   });
   return html.localize();
 }

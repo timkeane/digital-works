@@ -8,7 +8,23 @@ export default {
   headCount: {
     state: {},
     location: {}
-  }
+  },
+  columns: [
+    'ID',
+    'Organization',
+    'Organization Type',
+    'Training Date'
+    ,'Address'
+    ,'City'
+    ,'State'
+    ,'Zip Code'
+    ,'Longitude'
+    ,'Latitude'
+    ,'Number Trained',
+    'Project Type',
+    'Taining Topic',
+    'Resource 1'
+  ]
 };
 
 export function getHeadCountByLocation() {

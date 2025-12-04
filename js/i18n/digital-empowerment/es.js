@@ -8,8 +8,7 @@ export const translation = {
   "tab.details.show": "Mostrar detalles",
   "tab.stats.name": "Estadísticas",
   "tab.stories.name": "Historias",
-  "dialog.intro": "<p>Párrafo introductorio u otros tres. Párrafo introductorio u otros tres. Párrafo introductorio u otros tres. Párrafo introductorio u otros tres.</p><p>Párrafo introductorio u otros tres. Párrafo introductorio u otros tres. Párrafo introductorio u otros tres. Párrafo introductorio u otros tres.</p><p>Párrafo introductorio u otros tres. Párrafo introductorio u otros tres. Párrafo introductorio u otros tres. Párrafo introductorio u otros tres.</p>",
-  "dialog.intro.title": "Empoderamiento Digital en Acción",
+  "dialog.intro": "<p><strong>Objetivo:</strong> Impulsar un futuro digital centrado en las personas, brindando a individuos y comunidades la mentalidad, las habilidades y el acceso que necesitan para prosperar.</p><p>En Connected Nation, visualizamos un futuro donde cada persona tenga la oportunidad, las habilidades digitales, el acceso y la confianza para tener éxito de forma segura en un mundo cada vez más digital. A través de alianzas significativas y programas impulsados ​​por la comunidad, empoderamos a las personas para que utilicen la tecnología de maneras que enriquezcan sus vidas y abran las puertas a nuevas posibilidades.</p><p>Descubra nuestra trayectoria en todo el país, conozca a los socios que nos conectan con las comunidades a las que servimos y descubra hacia dónde nos dirigimos a medida que continuamos ampliando la capacitación en habilidades digitales.</p>",  "dialog.intro.title": "Empoderamiento Digital en Acción",
   "dialog.not_found": "no encontrado.",
   "popup.pager.previous": "Anterior",
   "popup.pager.of": "de",
@@ -26,6 +25,7 @@ export const translation = {
   "prop.name.total_trained": "Total de personas capacitadas",
   "prop.name.training_date": "Fecha de capacitación",
   "prop.name.training_topic": "Tema de capacitación",
+  "prop.name.resource_1": "Más información",
 
   "type.value.non_profit": "Sin fines de lucro",
   "type.value.school": "Escuela",
