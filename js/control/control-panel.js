@@ -97,6 +97,7 @@ function setControlPanelCss(view) {
     $('#map-type').slideUp();
     $('#animate').slideUp();
     $('#state-filter').slideDown();
+    noResults();
     return;
   }
   if (primaryView === 'map') {
@@ -115,7 +116,6 @@ function showView() {
   const view = getSelectedView();
   setControlPanelCss(view);
   if (view !== 'detail') {
-    const viewParts = view.split(':');
     if (view === 'map:location') displayLocationMap();
     else if (view === 'map:state') displayStateMap();
   }
@@ -133,9 +133,17 @@ function filterState(event) {
     if (state !== 'all') $(html).not(`.${state}`).addClass('hide');
   });
   filter[state === 'all' ? 'removeClass' : 'addClass']('active');
+  noResults()
+}
+
+function noResults() {
   $('#locations .no-result').hide();
-  if ($('#location-list .feature-html').not('.hide').length === 0) {
-    $('#locations .no-result').show().find('.state').html($(`#state option[value="${state}"]`).html());
+  if (!$('#location-list .feature-html').is(':visible')) {
+    const state = $('#state').val();
+    const message = $('#locations .no-result');
+    message.find('.message').attr('data-i18n', getFuture() ? 'future.filter.none' : 'past.filter.none');
+    message.find('.state').html($(`#state option[value="${state}"]`).html());
+    message.localize().show();
   }
 }
 

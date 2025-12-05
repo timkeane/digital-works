@@ -46,7 +46,7 @@ export const translation = {
   "type.value.school_affiliated_club": "Club afiliado a la escuela",
   "type.value.food_bank": "Banco de alimentos",
 
-  "type.value.cn_wosted_workshops": "Talleres organizados por CN",
+  "type.value.cn_hosted_workshops": "Talleres organizados por CN",
   "type.value.teens_teach_tech": "Adolescentes enseñan tecnología",
   "type.value.community_organization_led_programs": "Programas dirigidos por organizaciones comunitarias",
   "type.value.community_lanning": "Planificación comunitaria",

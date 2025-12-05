@@ -14,6 +14,7 @@
   --newChallenge: #fff000;
   --legendBg: #f2f2f2;
   --scrollbarBg: rgba(0, 98, 204, .125);
+  --scrollbarBgDark: rgba(0, 98, 204, .175);
   --scrollbarWidth: 1em;
   --scrollbarBorder: rgba(0, 98, 204, .25);
 }

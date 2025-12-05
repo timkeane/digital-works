@@ -21,6 +21,7 @@ export const translation = {
   "btn.ok.name": "OK",
   "btn.close.name": "Close",
 
+  "training.sessions": "Training sessions:",
   "prop.name.organization": "Organization:",
   "prop.name.organization_type": "Organization Type:",
   "prop.name.project_type": "Project Type:",
@@ -49,7 +50,7 @@ export const translation = {
   "type.value.school_affiliated_club": "School-Affiliated Club",
   "type.value.food_bank": "Food Bank",
 
-  "type.value.cn_wosted_workshops": "CN-Hosted Workshops",
+  "type.value.cn_hosted_workshops": "CN-Hosted Workshops",
   "type.value.teens_teach_tech": "Teens Teach Tech",
   "type.value.community_organization_led_programs": "Community Organization–Led Programs",
   "type.value.community_lanning": "Community Planning",
@@ -75,7 +76,8 @@ export const translation = {
   "control.panel.map_type": "Map activity by:",
   "control.panel.state_filter": "View by state:",
   "state.all": "All states",
-  "filter.none": "No training sessions for",
+  "past.filter.none": "No completed training sessions for",
+  "future.filter.none": "No upcoming training sessions for",
   "control.panel.location": "All locations",
   "control.panel.state": "State",
   "control.panel.year": "Year",

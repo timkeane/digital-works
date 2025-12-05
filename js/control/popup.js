@@ -92,6 +92,7 @@ function getFeatureHtmls(event) {
       htmlFeatures.push(featureHtml(feature, 'popup'));
       features.push(feature);
     }, {hitTolerance: 5, layerFilter});
+    $('#popup')[getLocationLayer().getVisible() ? 'removeClass' : 'addClass']('state');
     showPopup(map, event.coordinate, features, htmlFeatures);
   }
 }

@@ -3,12 +3,15 @@
   padding: 10px 6px;
   inset-block-end: 12px;
   inset-inline-start: -50px;
-  min-inline-size: 280px;
   display: flex;
   flex-flow: row wrap;
   gap: 0 0.25rem;
   width: 320px;
   opacity: 0;
+}
+
+#popup.state {
+  width: 200px;
 }
 
 #popup h4 {
@@ -24,7 +27,7 @@
 }
 
 #popup-content {
-  max-height: 300px;
+  max-height: 325px;
   overflow-y: auto;
 }
 
@@ -147,10 +150,6 @@
 
 #popup-standby {
   display: none;
-}
-
-#popup-content .field {
-  font-weight: bold;
 }
 
 #popup .feature-html div.distance {

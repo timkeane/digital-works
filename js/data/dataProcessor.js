@@ -117,7 +117,6 @@ function addToFeatures(session) {
     feature.set('has-future', false);
     feature.set('has-past', false);
     feature.set('only-community-planning', true);
-    source.addFeature(feature);
   }
   const sessions = feature.get('sessions');
   sessions.push(session);
@@ -126,12 +125,30 @@ function addToFeatures(session) {
   if (!isCommunityPlanning(session))
     feature.set('only-community-planning', false);
   manageTrainingDate(feature, session);
+  groupSessionsByOrg(feature);
+  source.addFeature(feature);
 }
 
 function addToCommunityPlanning(session) {
   if (isCommunityPlanning(session)) {
     data.communityPlanning.push(session);
   }
+}
+
+function groupSessionsByOrg(feature) {
+  const sessions = feature.get('sessions');
+  const orgs = {};
+  sessions.forEach(session => {
+    const org = session.Organization;
+    const future = isFuture(session);
+    orgs[org] = orgs[org] || {sessions: [], people: 0, hasFuture: false, hasPast: false};
+    orgs[org].sessions.push(session);
+    orgs[org].type = session['Organization Type'] || orgs[org].type;
+    orgs[org].people = orgs[org].people + (parseInt(session['Number Trained']) || 0);
+    if (future) orgs[org].hasFuture = true;
+    if (!future) orgs[org].hasPast = true;
+  });
+  feature.set('grouped', orgs);
 }
 
 function sessions(rows) {
@@ -171,7 +188,7 @@ export function validSession(session) {
   const type = session['Project Type'];
   const valid = isFuture(session) || (isCommunityPlanning(session) || hasPeople(session));
   if (valid) return true;
-  console.error('Bad row:', session);
+  // console.error('Bad row:', session);
 }
 
 export function processData(response) {

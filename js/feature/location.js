@@ -1,6 +1,7 @@
 import $ from 'jquery';
 import {formatNumber} from '../util';
 
+window.$=$
 function appendDistance(html, feature) {
   const meters = feature.get('distance');
   const miles = meters / 1609.34;
@@ -24,31 +25,43 @@ function valueKey(value) {
 }
 
 export default function html(feature, type) {
-  const hasFuture = feature.get('has-future') ? 'has-future' : 'no-future';
-  const noPast = !feature.get('has-past') ? 'no-past' : '';
-  const sessions = feature.get('sessions');
-  const html = $(`<div data-id="${feature.getId()}" class="feature-html location ${hasFuture} ${noPast}"><h4 role="button">${feature.get('formatted_address')}</h4></div>`)
-    .append(`<div class="total"><span class="field" data-i18n="prop.name.total_trained"></span> <span class="value">${formatNumber(feature.get('people'))}</span></div>`);
+  const locationHasFuture = feature.get('has-future') ? 'has-future' : 'no-future';
+  const locationNoPast = !feature.get('has-past') ? 'no-past' : '';
+  const grouped = feature.get('grouped');
+  const html = $(`<div data-id="${feature.getId()}" class="feature-html location ${locationHasFuture} ${locationNoPast} ${feature.get('sessions')[0]['State']}">`);
+  let firstOrg = true;
   appendDistance(html, feature);
-  sessions.forEach((session, i) => {
-    const future = session['future'] ? 'future' : '';
-    const css = `${i === 0 ? 'first' : 'more'} ${future}`;
-    const div = $(`<div data-id="${session.ID}" class="session ${type} ${css}"></div>`);
-    const org = session['Organization'];
-    const orgKey = valueKey(session['Organization Type']);
-    const projKey = valueKey(session['Project Type']);
-    const topicKey = valueKey(session['Training Topic']);
-    const people = session['Number Trained'];
-    const date = session['Training Date'];
-    const url = session['Resource 1'];
-    html.append(div).addClass(session['State']);
-    div.append(org ? `<div><span class="field" data-i18n="prop.name.organization"></span> <span class="value">${org}</span></div>` : '')
-      .append(orgKey ? `<div><span class="field" data-i18n="prop.name.organization_type"></span> <span class="value" data-i18n="type.value.${orgKey}"></span></div>` : '')
-      .append(projKey ? `<div><span class="field" data-i18n="prop.name.project_type"></span> <span class="value" data-i18n="type.value.${projKey}"></span></div>` : '')
-      .append(people ? `<div><span class="field" data-i18n="prop.name.number_trained"></span> <span class="value">${formatNumber(people)}</span></div>` : '')
-      .append(topicKey ?`<div><span class="field" data-i18n="prop.name.training_topic"></span> <span class="value" data-i18n="type.value.${topicKey}"></span></div>` : '')
-      .append(date ? `<div><span class="field" data-i18n="prop.name.training_date"></span> <span class="value">${date}</span></div>` : '')
-      .append(url ? `<div class="more"><a href="${url}" data-i18n="prop.name.resource_1" rel="noopener" target="_blank"></a></div>` : '');
+  Object.entries(grouped).forEach(sessionsByOrg => {
+    const org = sessionsByOrg[0];
+    const orgHasFuture = sessionsByOrg[1].hasFuture ? 'has-future' : 'no-future';
+    const orgNoPast = !sessionsByOrg[1].hasPast ? 'no-past' : '';
+    const sessions = sessionsByOrg[1].sessions;
+    const peopleByOrg = sessionsByOrg[1].people;
+    const orgKey = valueKey(sessionsByOrg[1].type);
+    const notFirst = firstOrg ? '' : 'not-first';
+    const orgHtml = $(`<div class="feature-org ${orgHasFuture} ${orgNoPast} ${notFirst}"><h4 role="button">${org}<br>${feature.get('formatted_address')}</h4></div>`)
+      .append(
+        $('<div class="rollup"></div>')
+          .append(orgKey ? `<div class="prop org-type"><span class="field" data-i18n="prop.name.organization_type"></span> <span class="value" data-i18n="type.value.${orgKey}"></span></div>` : '')
+          .append(peopleByOrg ? `<div class="prop total"><span class="field" data-i18n="prop.name.total_trained"></span> <span class="value">${formatNumber(peopleByOrg)}</span></div>` : '')
+        ).append('<h5 data-i18n="training.sessions"></h5>')
+    const sessionsHtml = $('<div class="session-group"></div>');
+    firstOrg = false;
+    sessions.forEach((session, i) => {
+      const future = session['future'] ? 'future' : '';
+      const div = $(`<div data-id="${session.ID}" class="session ${future}"></div>`);
+      const projKey = valueKey(session['Project Type']);
+      const topicKey = valueKey(session['Training Topic']);
+      const people = session['Number Trained'];
+      const date = session['Training Date'];
+      div.append(date ? `<div class="prop"><span class="field" data-i18n="prop.name.training_date"></span> <span class="value">${date}</span></div>` : '')
+        .append(people ? `<div class="prop"><span class="field" data-i18n="prop.name.number_trained"></span> <span class="value">${formatNumber(people)}</span></div>` : '')
+        .append('<br>')
+        .append(projKey ? `<div class="prop"><span class="field" data-i18n="prop.name.project_type"></span> <span class="value" data-i18n="type.value.${projKey}"></span></div>` : '')
+        .append(topicKey ?`<div class="prop"><span class="field" data-i18n="prop.name.training_topic"></span> <span class="value" data-i18n="type.value.${topicKey}"></span></div>` : '');
+      orgHtml.append(sessionsHtml.append(div));
+    });
+    html.append(orgHtml);
   });
   return html.localize();
 }
