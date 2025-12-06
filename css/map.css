@@ -180,6 +180,7 @@ button#zoom-full:hover {
   top: 0;
   bottom: 0;
   display: none;
+  cursor: not-allowed;
 }
 
 body.animate #block-event {
