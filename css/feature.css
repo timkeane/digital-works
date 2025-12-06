@@ -30,7 +30,7 @@ li .feature-html h4:hover {
   font-weight: bold;
 }
 
-body.future .prop.total {
+body.future .prop.people {
   display: none;
 }
 
@@ -199,8 +199,4 @@ body.future .feature-html a.directions:hover {
 
 .feature-tip span {
   font-size: .75em;
-}
-
-body.future .feature-tip span {
-  display: none;
 }

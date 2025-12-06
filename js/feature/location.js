@@ -41,7 +41,7 @@ export default function html(feature, type) {
       .append(
         $('<div class="rollup"></div>')
           .append(orgKey ? `<div class="prop org-type"><span class="field" data-i18n="prop.name.organization_type"></span> <span class="value" data-i18n="type.value.${orgKey}"></span></div>` : '')
-          .append(peopleByOrg ? `<div class="prop total"><span class="field" data-i18n="prop.name.total_trained"></span> <span class="value">${formatNumber(peopleByOrg)}</span></div>` : '')
+          .append(peopleByOrg ? `<div class="prop people"><span class="field" data-i18n="prop.name.total_trained"></span> <span class="value">${formatNumber(peopleByOrg)}</span></div>` : '')
         ).append('<h5 data-i18n="training.sessions"></h5>')
     const sessionsHtml = $('<div class="session-group"></div>');
     sessions.forEach((session, i) => {
@@ -52,7 +52,7 @@ export default function html(feature, type) {
       const people = session['Number Trained'];
       const date = session['Training Date'];
       div.append(date ? `<div class="prop"><span class="field" data-i18n="prop.name.training_date"></span> <span class="value">${date}</span></div>` : '')
-        .append(people ? `<div class="prop"><span class="field" data-i18n="prop.name.number_trained"></span> <span class="value">${formatNumber(people)}</span></div>` : '')
+        .append(people ? `<div class="prop people"><span class="field" data-i18n="prop.name.number_trained"></span> <span class="value">${formatNumber(people)}</span></div>` : '')
         .append('<br>')
         .append(projKey ? `<div class="prop"><span class="field" data-i18n="prop.name.project_type"></span> <span class="value" data-i18n="type.value.${projKey}"></span></div>` : '')
         .append(topicKey ?`<div class="prop"><span class="field" data-i18n="prop.name.training_topic"></span> <span class="value" data-i18n="type.value.${topicKey}"></span></div>` : '');
