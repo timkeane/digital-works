@@ -172,3 +172,16 @@ button#zoom-full:hover {
 #map-container .ol-viewport {
   background-color: #acdef2;
 }
+
+#block-event {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: none;
+}
+
+body.animate #block-event {
+  display: block;
+}

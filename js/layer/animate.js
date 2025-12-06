@@ -1,10 +1,10 @@
+import $ from 'jquery';
 import data from '../data/data';
 import blankStyle from './style/blank';
 import animateStyle from './style/animate';
 import layer from './location';
 import {formatNumber, getMap} from '../util';
-import $ from 'jquery';
-import { isCommunityPlanning, isFuture, validSession } from '../data/dataProcessor';
+import {isCommunityPlanning, isFuture, validSession} from '../data/dataProcessor';
 
 const calendar = $('#calendar');
 
@@ -49,13 +49,17 @@ function runAnimation(layer, style) {
     i = i + 1;
     if (i === data.pastMonths.length) {
       clearInterval(interval);
-      setTimeout(() => calendar.fadeOut(), 3500);
+      setTimeout(() => {
+        calendar.fadeOut();
+        $('body').removeClass('animate');
+      }, 3500);
       layer.setStyle(style);
     }
   }, 500);
 }
 
 export default function animate() {
+  $('body').addClass('animate');
   const style = layer.getStyle();
   const features = data.source.getFeatures();
   calendar.fadeIn();
@@ -65,5 +69,5 @@ export default function animate() {
   });
   setTimeout(() => {
     runAnimation(layer, style);
-  }, 500)
+  }, 500);
 }
