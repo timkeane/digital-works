@@ -112,7 +112,7 @@ function locationTip(feature) {
   if (getLocationLayer().getVisible()) {
     const address = feature.get('formatted_address');
     const people = data.headCount.location[feature.getId()];
-    const html = $(`<div><h3>${address}</h3></div>`)
+    const html = $(`<div class="location"><h3>${address}</h3></div>`)
       .append(people ? `<div><span class="field" data-i18n="prop.name.number_trained"></span> <span class="value">${formatNumber(people)}</span></div>` : '');
     return {html};
   }
@@ -122,7 +122,7 @@ function stateTip(feature) {
   if (!getLocationLayer().getVisible()) {
     const state = feature.get('name');
     const people = data.headCount.state[feature.getId()] || 0;
-    const html = $(`<div><h3>${state}</h3></div>`)
+    const html = $(`<div class="state"><h3>${state}</h3></div>`)
       .append(`<div><span class="field" data-i18n="prop.name.number_trained"></span> <span class="value">${formatNumber(people)}</span></div>`);
     return {html};
   }

@@ -201,3 +201,6 @@ body.future .feature-html a.directions:hover {
   font-size: .75em;
 }
 
+body.future .feature-tip span {
+  display: none;
+}
