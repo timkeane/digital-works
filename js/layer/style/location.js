@@ -4,8 +4,18 @@ import Stroke from 'ol/style/Stroke';
 import Fill from 'ol/style/Fill';
 import {getFuture, getView} from '../../util';
 
-export default function(feature, resolution) {  
-  if (getFuture() === feature.get('has-future') && !feature.get('only-community-planning')) {
+function render(feature) {
+  const future = getFuture();
+  const onlyPlanning = feature.get('only-community-planning');
+  if (future) {
+    return feature.get('has-future') && !onlyPlanning;
+  } else {
+    return feature.get('has-past') && !onlyPlanning;
+  }
+
+}
+export default function(feature, resolution) {
+  if (render(feature)) {
     const zoom = getView().getZoomForResolution(resolution) || .32;
     const people = feature.get('people');
     const highlight = feature.get('highlight');

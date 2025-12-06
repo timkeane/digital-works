@@ -135,12 +135,38 @@ function addToCommunityPlanning(session) {
   }
 }
 
+function cleanOrgName(org) {
+  return org
+    .replace(/The International Girls Academy/, 'International Girls Academy')
+    .replace(/Alliance for Arlington Senior Programs/, 'Alliance for Arlington Seniors Program')
+    .replace(/Lazarus Project House 1/, 'Lazarus Project - House 1')
+    .replace(/Lazarus House - Project 1/, 'Lazarus Project - House 1')
+    .replace(/windor Forest Golden Age Center/, 'Windor Forest Golden Age Center')
+    .replace(/Summit County Community Senior Center/, 'Summit County Community & Senior Center')
+    .replace(/Senior Citizens of Campbell County, Inc./, 'Senior Citizens of Campbell County')
+    .replace(/Campbell County Senior Citizen Center/, 'Campbell County Senior Center')
+    .replace(/Campbell County Senior Citizen/, 'Campbell County Senior Center')
+    .replace(/Bourbon Co Senior Citizens Center/, 'Bourbon County Senior Center')
+    .replace(/Exhilarating Inc./, 'Exhilarating Inc')
+    .replace(/Little Hands, Big Hearts Little People's Service Organization, Inc./, "Little Hands, Big Hearts Little People's Service Organization")
+    .replace(/Rancho Campana HS/, 'Rancho Campana High School')
+    .replace(/\(ACUTAS\)/, 'ACUTAS')
+    .replace(/New Manchester High school FBLA/, 'New Manchester High School FBLA')
+    .replace(/Thomas A Edison Career Technical Education High School JROTC/, 'Thomas A. Edison Career Technical Education High School JROTC')
+    .replace(/Bastrop County Cares - Bastrop/, 'Bastrop County Cares')
+    .replace(/Rowan County Senior Citizens Center/, 'Rowan County Senior Citizen Center')
+    .replace(/Duvall Commitment House -Female Center/, 'Duvall Commitment House - Female Center')
+    .replace(/Jackson County Jail- Men Center/, 'Jackson County Jail - Men Center')
+    .trim();
+}
+
 function groupSessionsByOrg(feature) {
   const sessions = feature.get('sessions');
   const orgs = {};
   sessions.forEach(session => {
-    const org = session.Organization;
+    const org = cleanOrgName(session.Organization);
     const future = isFuture(session);
+    session.Organization = org;
     orgs[org] = orgs[org] || {sessions: [], people: 0, hasFuture: false, hasPast: false};
     orgs[org].sessions.push(session);
     orgs[org].type = session['Organization Type'] || orgs[org].type;

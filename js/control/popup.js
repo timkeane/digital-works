@@ -15,7 +15,6 @@ const html = $(`<div id="popup" class="popup">
     </div>
     <button class="btn btn-secondary next" data-incriment="1" data-i18n="[title]popup.pager.next;[aria-label]popup.pager.next"><span>›</span></button>
   </div>
-  <div id="popup-standby" aria-hidden="true"></div>
 </div>`);
 
 export function hidePopup() {
@@ -23,51 +22,45 @@ export function hidePopup() {
   $('#popup').css('opacity', 0).show();
 }
 
-function showPager(features, htmlFeatures) {
-  $('#popup-standby').empty()
-  for (let i = 1; i < htmlFeatures.length; i = i + 1) {
-    $('#popup-standby').append(htmlFeatures[i]);
-  }
-  const pager = $('#popup-pager')
-    .data('features', features)
-    .data('htmlFeatures', htmlFeatures);
-  if (htmlFeatures.length > 1) {
+function showPager(featureHtml) {
+  $('body').append(featureHtml);
+  const orgs = featureHtml.find('.feature-org:visible').hide();
+  $(orgs.get(0)).show();
+  const pager = $('#popup-pager').data('orgs', orgs);
+  if (orgs.length > 1) {
     pager.find('.at').html(1);
-    pager.find('.end').html(htmlFeatures.length);
+    pager.find('.end').html(orgs.length);
     pager.localize().css('display', 'inline-block');
   } else {
     pager.hide();
   }
 }
 
-function pageFeatures(event) {
-  const content = $('#popup-content');
+function pageOrgs(event) {
   const pager = $('#popup-pager');
   const button = $(event.currentTarget);
-  const htmlFeatures = pager.data('htmlFeatures');
+  const orgs = pager.data('orgs').hide();
   const at = pager.find('.at');
   const index = at.html() - 1;
   const incriment = parseInt(button.attr('data-incriment'));
-  $('#popup-standby').append(content.find('.feature-html'));
-  if (index + incriment < htmlFeatures.length && index + incriment > 0) {
+  if (index + incriment < orgs.length && index + incriment > 0) {
     at.html(index + incriment + 1);
-    content.append(htmlFeatures[index + incriment]);
+    $(orgs[index + incriment]).show();
   } else {
     at.html(1);
-    content.html(htmlFeatures[0]);
+    $(orgs.get(0)).show();
   }
   panPopup();
 }
 
-function showPopup(map, coordinate, features, htmlFeatures) {
+function showPopup(map, coordinate, feature, featureHtml) {
   const popup = $('#popup').attr('dir', $('html').attr('dir'));
   const popupOverlay = map.get('popupOverlay');
   const content = $('#popup-content');
-  if (htmlFeatures.length > 0) {
-    const featureHtml = htmlFeatures[0];
-    popup.attr('data-fid', features[0].getId());
+  if (featureHtml) {
+    popup.attr('data-fid', feature.getId());
+    showPager(featureHtml);
     content.html(featureHtml);
-    showPager(features, htmlFeatures);
     popupOverlay.setPosition(coordinate);
     popup.animate({opacity: 1});
     $('.popup-closer').one('click', event => {
@@ -91,9 +84,10 @@ function getFeatureHtmls(event) {
       const featureHtml = layer.get('featureHtml');
       htmlFeatures.push(featureHtml(feature, 'popup'));
       features.push(feature);
+      return true;
     }, {hitTolerance: 5, layerFilter});
     $('#popup')[getLocationLayer().getVisible() ? 'removeClass' : 'addClass']('state');
-    showPopup(map, event.coordinate, features, htmlFeatures);
+    showPopup(map, event.coordinate, features[0], htmlFeatures[0]);
   }
 }
 
@@ -110,7 +104,7 @@ function setActive(active) {
 
 function panPopup() {
   setTimeout(() => {
-    getPopupOverlay().panIntoView();
+    getPopupOverlay().panIntoView({margin: 0});
   }, 500);
 }
 
@@ -128,5 +122,5 @@ export function createPopup(map) {
   map.addOverlay(popupOverlay);
   map.set('popupOverlay', popupOverlay);
   map.on('singleclick', getFeatureHtmls);
-  $('#popup-pager .previous, #popup-pager .next').on('click', pageFeatures);
+  $('#popup-pager .previous, #popup-pager .next').on('click', pageOrgs);
 }

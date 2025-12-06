@@ -9,6 +9,7 @@
   font-size: 115%;
   font-weight: bold;
   display: block;
+  margin: 0;
 }
 
 li .feature-html h4:hover {
@@ -17,10 +18,20 @@ li .feature-html h4:hover {
   cursor: pointer;
 }
 
+.feature-html .address {
+  font-weight: 500;
+  line-height: 1em;
+  margin-bottom: .5em;
+}
+
 .feature-html.location h5 {
   display: block;
   margin: .5em 0 0 0;
   font-weight: bold;
+}
+
+body.future .prop.total {
+  display: none;
 }
 
 .popup .feature-html h4 {
@@ -35,7 +46,6 @@ li .feature-html h4:hover {
   margin-top: .5em;
   max-height: 200px;
   overflow-y: auto;
-  border: 1px solid var(--scrollbarBorder);
 }
 
 li .feature-html .session-group {
@@ -58,7 +68,7 @@ li .feature-html .session-group {
 }
 
 .feature-html .session {
-  border-top: 1px solid var(--scrollbarBorder);
+  border-top: 1px solid #fff;
   background-color: rgba(0, 98, 204, .15);
   padding: .5em;
 }
@@ -106,7 +116,7 @@ li .feature-html .session-group {
   width: 100%;
 }
 
-.feature-org.not-first {
+.feature-org:not(.org-0) {
   margin-top: .5em;
 }
 
@@ -131,6 +141,7 @@ body:not(.future) .feature-org.no-past {
 body.future .session {
   display: none;
 }
+
 body.future .session.future {
   display: block;
 }

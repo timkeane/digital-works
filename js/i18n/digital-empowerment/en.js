@@ -62,8 +62,7 @@ export const translation = {
   "type.value.video_conferencing": "Video Conferencing",
   "type.value.mobile_device_basics_ios": "Mobile Device Basics (iOS)",
   "type.value.mobile_device_basics_android": "Mobile Device Basics (Android)",
-  "type.value.open_lab_workshops": "Open Lab Workshops",
-  "type.value.type.value.open_lab_workshop": "Open Lab Workshop",
+  "type.value.open_lab_workshop": "Open Lab Workshop",
   "type.value.computer_basics": "Computer Basics",
   "type.value.video_conerencing": "Video Conerencing",
 

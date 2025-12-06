@@ -1,7 +1,6 @@
 import $ from 'jquery';
 import {formatNumber} from '../util';
 
-window.$=$
 function appendDistance(html, feature) {
   const meters = feature.get('distance');
   const miles = meters / 1609.34;
@@ -29,7 +28,7 @@ export default function html(feature, type) {
   const locationNoPast = !feature.get('has-past') ? 'no-past' : '';
   const grouped = feature.get('grouped');
   const html = $(`<div data-id="${feature.getId()}" class="feature-html location ${locationHasFuture} ${locationNoPast} ${feature.get('sessions')[0]['State']}">`);
-  let firstOrg = true;
+  let orgIdx = 0;
   appendDistance(html, feature);
   Object.entries(grouped).forEach(sessionsByOrg => {
     const org = sessionsByOrg[0];
@@ -38,18 +37,16 @@ export default function html(feature, type) {
     const sessions = sessionsByOrg[1].sessions;
     const peopleByOrg = sessionsByOrg[1].people;
     const orgKey = valueKey(sessionsByOrg[1].type);
-    const notFirst = firstOrg ? '' : 'not-first';
-    const orgHtml = $(`<div class="feature-org ${orgHasFuture} ${orgNoPast} ${notFirst}"><h4 role="button">${org}<br>${feature.get('formatted_address')}</h4></div>`)
+    const orgHtml = $(`<div class="feature-org ${orgHasFuture} ${orgNoPast} org-${orgIdx}"><h4 role="button">${org}</h4><div class="address">${feature.get('formatted_address')}</div></div>`)
       .append(
         $('<div class="rollup"></div>')
           .append(orgKey ? `<div class="prop org-type"><span class="field" data-i18n="prop.name.organization_type"></span> <span class="value" data-i18n="type.value.${orgKey}"></span></div>` : '')
           .append(peopleByOrg ? `<div class="prop total"><span class="field" data-i18n="prop.name.total_trained"></span> <span class="value">${formatNumber(peopleByOrg)}</span></div>` : '')
         ).append('<h5 data-i18n="training.sessions"></h5>')
     const sessionsHtml = $('<div class="session-group"></div>');
-    firstOrg = false;
     sessions.forEach((session, i) => {
       const future = session['future'] ? 'future' : '';
-      const div = $(`<div data-id="${session.ID}" class="session ${future}"></div>`);
+      const div = $(`<div data-id="${session.ID}" class="session session-${i} ${future}"></div>`);
       const projKey = valueKey(session['Project Type']);
       const topicKey = valueKey(session['Training Topic']);
       const people = session['Number Trained'];
@@ -62,6 +59,7 @@ export default function html(feature, type) {
       orgHtml.append(sessionsHtml.append(div));
     });
     html.append(orgHtml);
+    orgIdx = orgIdx + 1;
   });
   return html.localize();
 }
