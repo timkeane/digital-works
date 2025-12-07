@@ -5,7 +5,7 @@ import Fill from 'ol/style/Fill';
 import {getFuture, getView} from '../../util';
 
 export default function(feature, resolution) {  
-  if (getFuture() === feature.get('has-future') && !feature.get('only-community-planning')) {
+  if (!feature.get('has-future') && !feature.get('only-community-planning')) {
     const zoom = getView().getZoomForResolution(resolution) || .32;
     const people = feature.get('animate');
     const highlight = feature.get('highlight');

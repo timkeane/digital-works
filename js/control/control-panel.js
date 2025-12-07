@@ -169,6 +169,7 @@ export default function createControlPanel() {
   $('#map-tab, #location-tab').on('click', showControlPanel);
   $('#control-panel form input[name="choice"]').on('change', showView);
   $('#show-view, #request-tab, #stats-tab, #stories-tab').on('click', showView);
+  $('#animate').on('click', showView);
   $('#animate').on('click', animate);
   $('#state').on('change', filterState);
   createTrainingRequest();
