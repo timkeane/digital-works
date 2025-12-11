@@ -19,8 +19,9 @@
 
 echo ""
 echo "APP_ENV=$APP_ENV"
+echo "FORCE=$FORCE"
 echo ""
-
+exit
 if [ "$APP_ENV" == "" ] 
 then
   exit
@@ -91,7 +92,7 @@ else
   expires="1999"
 fi
 
-if [[ "$now" > "$expires" ]]
+if [[ "$now" > "$expires" ]] || [[ "$FORCE" = "true" ]]
 then
 
   echo ""
