@@ -136,6 +136,7 @@ function addToCommunityPlanning(session) {
 }
 
 function cleanOrgName(org) {
+  // return org.trim();
   return org
     .replace(/The International Girls Academy/, 'International Girls Academy')
     .replace(/Alliance for Arlington Senior Programs/, 'Alliance for Arlington Seniors Program')
