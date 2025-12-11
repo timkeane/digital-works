@@ -21,7 +21,7 @@ echo ""
 echo "APP_ENV=$APP_ENV"
 echo "FORCE=$FORCE"
 echo ""
-exit
+
 if [ "$APP_ENV" == "" ] 
 then
   exit
