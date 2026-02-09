@@ -7,7 +7,7 @@ export const translation = {
   "tab.map.name": "Mapa",
   "tab.details.name": "Detalles",
   "tab.details.show": "Mostrar detalles",
-  "tab.stats.name": "Resumen",
+  "tab.stats.name": "Descripción General",
   "tab.stories.name": "Historias",
   "tab.request.name": "Solicitar Capacitación",
 
