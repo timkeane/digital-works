@@ -29,7 +29,7 @@ export const translation = {
   "prop.name.total_trained": "Total People Trained:",
   "prop.name.training_date": "Training Date:",
   "prop.name.training_topic": "Training Topic:",
-  "prop.name.resource_1": "More information",
+  "prop.name.lang": "Language:",
 
   "type.value.non_profit": "Non-Profit",
   "type.value.school": "School",
@@ -56,6 +56,7 @@ export const translation = {
   "type.value.community_lanning": "Community Planning",
 
   "type.value.computer_basics_windows_10": "Computer Basics Windows 10",
+  "type.value.mobile_device_basics": "Mobile Device Basics",
   "type.value.internet_basics": "Internet Basics",
   "type.value.email_basics": "Email Basics",
   "type.value.cybersecurity": "Cybersecurity",
@@ -65,6 +66,11 @@ export const translation = {
   "type.value.open_lab_workshop": "Open Lab Workshop",
   "type.value.computer_basics": "Computer Basics",
   "type.value.video_conerencing": "Video Conerencing",
+
+  "type.value.english": "English",
+  "type.value.spanish": "Spanish",
+  "type.value.english_spanish": "English and Spanish",
+  "type.value.spanish_english": "Spanish and English",
 
   "control.panel.msg": "Explore Connected Nation's free workshops that began in 2022 to help people learn, work, and thrive in a digital world. View upcoming workshops.",
   "control.panel.time": "Training:",

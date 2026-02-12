@@ -136,6 +136,15 @@
   width: 100%;
 }
 
+body.future #map-type {
+  display: none;
+}
+
+body.state input#future-sessions,
+body.state label[for="future-sessions"] {
+  display: none !important;
+}
+
 @media only screen and (min-width: 575px) {
   #show-view {
     display: none;

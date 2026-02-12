@@ -1,5 +1,4 @@
-ID,Organization,Organization Type,Training Date,Address,City,State,Zip Code,Latitude,Longitude,Number Trained,Project Type,Training Topic,"Language
-"
+ID,Organization,Organization Type,Training Date,Address,City,State,Zip Code,Latitude,Longitude,Number Trained,Project Type,Training Topic,Language
 1,4-H Florida A&M University,School,7/18/2024,1500 Wahnish Way,Tallahassee,FL,32307,30.42886229,-84.28973952,10,Teens Teach Tech,Computer Basics,English
 2,4-H Florida A&M University,School,12/2/2023,1500 Wahnish Way,Tallahassee,FL,32307,30.42886229,-84.28973952,55,Teens Teach Tech,Internet Basics,English
 3,4-H Florida A&M University,School,11/10/2023,1500 Wahnish Way,Tallahassee,FL,32307,30.42886229,-84.28973952,53,Teens Teach Tech,Video Conferencing,English

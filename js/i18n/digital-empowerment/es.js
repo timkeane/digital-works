@@ -32,7 +32,7 @@ export const translation = {
   "prop.name.total_trained": "Total de personas capacitadas:",
   "prop.name.training_date": "Fecha de capacitación:",
   "prop.name.training_topic": "Tema de capacitación:",
-  "prop.name.resource_1": "Más información",
+  "prop.name.lang": "Idioma:",
 
   "type.value.non_profit": "Sin fines de lucro",
   "type.value.school": "Escuela",
@@ -59,6 +59,7 @@ export const translation = {
   "type.value.community_lanning": "Planificación comunitaria",
 
   "type.value.computer_basics_windows_10": "Conceptos básicos de computación Windows 10",
+  "type.value.mobile_device_basics": "Conceptos básicos de los dispositivos móviles",
   "type.value.internet_basics": "Conceptos básicos de Internet",
   "type.value.email_basics": "Conceptos básicos de correo electrónico",
   "type.value.cybersecurity": "Ciberseguridad",
@@ -68,6 +69,11 @@ export const translation = {
   "type.value.open_lab_workshop": "Taller de laboratorio abierto",
   "type.value.computer_basics": "Conceptos básicos de computación",
   "type.value.video_conerencing": "Videoconferencias",
+
+  "type.value.english": "Inglés",
+  "type.value.spanish": "Español",
+  "type.value.english_spanish": "English y Español",
+  "type.value.spanish_english": "Español y English",
 
   "control.panel.msg": "Explore los talleres gratuitos de Connected Nation que comenzaron en 2022 para ayudar a las personas a aprender, trabajar y prosperar en un mundo digital. Vea los próximos talleres.",
   "control.panel.time": "Capacitación:",

@@ -51,11 +51,13 @@ export default function html(feature, type) {
       const topicKey = valueKey(session['Training Topic']);
       const people = session['Number Trained'];
       const date = session['Training Date'];
+      const lang = session['Language']?.toLowerCase();
       div.append(date ? `<div class="prop"><span class="field" data-i18n="prop.name.training_date"></span> <span class="value">${date}</span></div>` : '')
         .append(people ? `<div class="prop people"><span class="field" data-i18n="prop.name.number_trained"></span> <span class="value">${formatNumber(people)}</span></div>` : '')
         .append('<br>')
         .append(projKey ? `<div class="prop"><span class="field" data-i18n="prop.name.project_type"></span> <span class="value" data-i18n="type.value.${projKey}"></span></div>` : '')
-        .append(topicKey ?`<div class="prop"><span class="field" data-i18n="prop.name.training_topic"></span> <span class="value" data-i18n="type.value.${topicKey}"></span></div>` : '');
+        .append(topicKey ? `<div class="prop"><span class="field" data-i18n="prop.name.training_topic"></span> <span class="value" data-i18n="type.value.${topicKey}"></span></div>` : '')
+        .append(lang ? `<div class="prop"><span class="field" data-i18n="prop.name.lang"></span> <span class="value" data-i18n="type.value.${lang}"></span></div>` : '');
       orgHtml.append(sessionsHtml.append(div));
     });
     html.append(orgHtml);

@@ -22,7 +22,8 @@ export default {
     ,'Latitude'
     ,'Number Trained',
     'Project Type',
-    'Taining Topic'
+    'Taining Topic',
+    'Language'
   ]
 };
 

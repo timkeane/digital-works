@@ -110,6 +110,12 @@ function setControlPanelCss(view) {
     $('#map-type label').removeClass('active');
     $(`#map-type label[for="${subView}-map"]`).addClass('active');
   }
+  if (subView === 'state') {
+    $('body').addClass('state');
+    $('#past-sessions').trigger('click');
+  } else {
+    $('body').removeClass('state');
+  }
 }
 
 function showView() {
