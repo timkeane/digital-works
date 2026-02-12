@@ -52,7 +52,7 @@ export function updateLegend() {
     } else {
       const max = formatNumber(buckets[5]);
       const avg = Math.round(ss.average(Object.values(people)));
-      const maxWidth = buckets[5] / 25;
+      const maxWidth = buckets[5] / 50;
       const avgWidth = maxWidth / 2;
       legend.find('table .bucket').css('width', `${maxWidth + 13}px`);
       legend.find('.max .label').html(`<span>${max} </span><span class="small">(max)</span>`);

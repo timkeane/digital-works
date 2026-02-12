@@ -14,6 +14,7 @@ function render(feature) {
   }
 
 }
+
 export default function(feature, resolution) {
   if (render(feature)) {
     const zoom = getView().getZoomForResolution(resolution) || .32;
@@ -21,7 +22,7 @@ export default function(feature, resolution) {
     const highlight = feature.get('highlight');
     const width = highlight ? 4 : 1.25;
     const color = highlight ? '#acdef2' : '#3399CC';
-    let radius = zoom * people / 100;
+    let radius = zoom * people / 200;
     if (radius < 5) radius = 5;
     return new Style({
       zIndex: -people,
