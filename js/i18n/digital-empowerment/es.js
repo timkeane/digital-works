@@ -72,8 +72,8 @@ export const translation = {
 
   "type.value.english": "Inglés",
   "type.value.spanish": "Español",
-  "type.value.english_spanish": "English y Español",
-  "type.value.spanish_english": "Español y English",
+  "type.value.english___spanish": "English y Español",
+  "type.value.spanish___english": "Español y English",
 
   "control.panel.msg": "Explore los talleres gratuitos de Connected Nation que comenzaron en 2022 para ayudar a las personas a aprender, trabajar y prosperar en un mundo digital. Vea los próximos talleres.",
   "control.panel.time": "Capacitación:",

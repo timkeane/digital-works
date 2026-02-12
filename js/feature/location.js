@@ -20,7 +20,7 @@ function appendDirections(distance, feature) {
 
 function valueKey(value) {
   if (!value) return '';
-  return value.replace(/\//g, '_').replace(/\-/g, '_').replace(/\(/g, '').replace(/\)/g, '').replace(/ /g, '_').toLowerCase()
+  return value.replace(/\&/g, '_').replace(/\//g, '_').replace(/\-/g, '_').replace(/\(/g, '').replace(/\)/g, '').replace(/ /g, '_').toLowerCase();
 }
 
 export default function html(feature, type) {

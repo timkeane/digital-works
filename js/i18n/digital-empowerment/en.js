@@ -69,8 +69,8 @@ export const translation = {
 
   "type.value.english": "English",
   "type.value.spanish": "Spanish",
-  "type.value.english_spanish": "English and Spanish",
-  "type.value.spanish_english": "Spanish and English",
+  "type.value.english___spanish": "English and Spanish",
+  "type.value.spanish___english": "Spanish and English",
 
   "control.panel.msg": "Explore Connected Nation's free workshops that began in 2022 to help people learn, work, and thrive in a digital world. View upcoming workshops.",
   "control.panel.time": "Training:",
