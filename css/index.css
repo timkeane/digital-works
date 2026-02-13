@@ -9,3 +9,7 @@
 @import url("./dialog.css");
 @import url("./control-panel.css");
 @import url("./request.css");
+
+#stories-tab {
+  display: none;
+}

@@ -1,7 +1,7 @@
 export const translation = {
   "app.title": "Digital Skills Training Across the Nation",
   "app.short_title": "Digital Skills Training",
-  "app.page_title": "Connected Nation - Dgital Skills Training Across the Nation",
+  "app.page_title": "Connected Nation - Digital Skills Training Across the Nation",
   "app.desc": "Explore Connected Nation's free workshops that began in 2022 to help people learn, work, and thrive in a digital world. View upcoming workshops.",
   "banner.cn.alt": "Connected Nation",
   "tab.map.name": "Map",
