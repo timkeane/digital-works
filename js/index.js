@@ -46,11 +46,10 @@ function load() {
 
       map.once('postrender', () => {
         $(window).trigger('resize');
-        $('button#zoom-full').trigger('click');
-        $('#stats-tab').trigger('click');
         $('body').removeClass('loading');
         $(window).trigger('resize');
       });
+      $('#map-tab').one('click', () => $('button#zoom-full').trigger('click'));
       spin();
     });
   });

@@ -2,7 +2,6 @@ import $ from 'jquery';
 import Control from 'ol/control/Control';
 import data from '../data/data';
 import {getLocationLayer, getFuture, formatNumber} from '../util';
-
 import * as ss from 'simple-statistics';
 
 const html = `<div id="legend">
@@ -30,8 +29,7 @@ const html = `<div id="legend">
 </div>`;
 
 $('body').append(html);
-
-const legend =  $('#legend');
+const legend = $('#legend');;
 
 export function updateLegend() {
   const layer = getLocationLayer().getVisible() ? 'location' : 'state';
@@ -66,7 +64,7 @@ export function updateLegend() {
   let i18n = 'state';
   if (layer === 'location') i18n = 'location';
   if (future) i18n = 'future';
-  legend.show();
+  if ($('#map-tab').hasClass('active')) legend.show();
   legend.find('h3').attr('data-i18n', `legend.title.${i18n}`).localize();
 }
 
@@ -76,13 +74,15 @@ function toggle() {
 }
 
 export function createLegend(map) {
-  const control = new Control({element: legend.get(0)});
-  const title = legend.find('h3');
-  control.setMap(map);
-  getLocationLayer().on('change:visible', updateLegend);
-  legend.on('click', toggle);
-  title.on('keyup', event => {
-    if (event.key === 'Enter' || event.key === ' ')
-      title.trigger('click');
-  });
+  setTimeout(() => {
+    const control = new Control({element: legend.get(0)});
+    const title = legend.find('h3');
+    control.setMap(map);
+    getLocationLayer().on('change:visible', updateLegend);
+    legend.on('click', toggle);
+    title.on('keyup', event => {
+      if (event.key === 'Enter' || event.key === ' ')
+        title.trigger('click');
+    });
+  }, 1000);
 }
