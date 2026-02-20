@@ -11,7 +11,6 @@ import {createLists} from './list/list';
 import createControlPanel from './control/control-panel';
 import createZoomFull from './control/ZoomFull';
 import {createLegend} from './control/legend';
-import {showIntro} from './control/dialog';
 import loadData from './data/request';
 
 function removeRotate(map) {
@@ -23,7 +22,6 @@ function removeRotate(map) {
 }
 
 function load() {
-  showIntro();
   createLayout().then(layout => {
     const map = new Map({target: layout.map});
 
@@ -49,7 +47,7 @@ function load() {
       map.once('postrender', () => {
         $(window).trigger('resize');
         $('button#zoom-full').trigger('click');
-        $('#search').trigger('focus');
+        $('#stats-tab').trigger('click');
         $('body').removeClass('loading');
         $(window).trigger('resize');
       });

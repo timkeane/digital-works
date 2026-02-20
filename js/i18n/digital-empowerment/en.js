@@ -7,7 +7,7 @@ export const translation = {
   "tab.map.name": "Map",
   "tab.details.name": "Details",
   "tab.details.show": "Show details",
-  "tab.stats.name": "Chart",
+  "tab.stats.name": "Dashboard",
   "tab.stories.name": "Stories",
   "tab.request.name": "Request Training",
   "dialog.intro": "<p><strong>Goal:</strong> Advance a human-centered digital future by equipping individuals and communities with the mindset, skills, and access they need to thrive.</p><p>At Connected Nation, we envision a future where every person has the opportunity, digital skills, access, and confidence to safely succeed in an increasingly digital world. Through meaningful partnerships and community-driven programs, we empower people to use technology in ways that enrich their lives and open doors to new possibilities.</p><p>Explore where we have been across the country, meet the partners who connect us with the constituents we serve, and discover where we are headed next as we continue expanding digital skills training.</p>",

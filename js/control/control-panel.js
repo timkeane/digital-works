@@ -179,4 +179,5 @@ export default function createControlPanel() {
   $('#animate').on('click', animate);
   $('#state').on('change', filterState);
   createTrainingRequest();
+  showView();
 }
