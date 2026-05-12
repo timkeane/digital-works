@@ -18,7 +18,18 @@
   cursor: pointer;
 }
 
+@font-face {
+    font-family: "Axiforma Book";
+    src: url("https://db.onlinewebfonts.com/t/a507f61827225f745ea2f61f084bd138.eot");
+    src: url("https://db.onlinewebfonts.com/t/a507f61827225f745ea2f61f084bd138.eot?#iefix")format("embedded-opentype"),
+    url("https://db.onlinewebfonts.com/t/a507f61827225f745ea2f61f084bd138.woff2")format("woff2"),
+    url("https://db.onlinewebfonts.com/t/a507f61827225f745ea2f61f084bd138.woff")format("woff"),
+    url("https://db.onlinewebfonts.com/t/a507f61827225f745ea2f61f084bd138.ttf")format("truetype"),
+    url("https://db.onlinewebfonts.com/t/a507f61827225f745ea2f61f084bd138.svg#Axiforma Book")format("svg");
+}
+
 .banner h1 {
+  font-family: 'Axiforma Book', var(--bs-body-font-family);
   margin: 0px;
   color: var(--cPrimary);
   font-size: 2.25rem;
