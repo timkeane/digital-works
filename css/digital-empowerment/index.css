@@ -20,8 +20,9 @@
 }
 
 body.loading {
-  background-image: url(/img/digital-empowerment/loading.avif);
+  background-image: url(/img/digital-empowerment/logo25.png);
   background-color: var(--cOnPrimary);
+  background-size: 60%;
 }
 
 .banner .logoState {
