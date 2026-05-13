@@ -150,7 +150,7 @@ then
     aws s3 rm --recursive s3://$PRD_S3/$VITE_APP_PATH/
     aws s3 cp --recursive ./dist/ s3://$PRD_S3/$VITE_APP_PATH/
   fi
-  aws cloudfront create-invalidation --distribution-id $PRD_CLOUDFRONT --paths "/minnesota/selection*"
+  aws cloudfront create-invalidation --distribution-id $PRD_CLOUDFRONT --paths "/$VITE_APP_PATH*"
 else
   echo "Invalid deployment target"
 fi
