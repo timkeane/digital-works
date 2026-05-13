@@ -128,10 +128,6 @@ h4:focus-visible,
     display: block;
   }
 
-  body.loading {
-    background-size: 75%;
-  }
-
   div#modal.intro {
     margin: 3em 2em 2em 2em !important;
   }
