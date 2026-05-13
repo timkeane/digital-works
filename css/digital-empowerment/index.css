@@ -85,14 +85,19 @@ h4:focus-visible,
   box-shadow: inset 0 0 0 3px #a6bddb !important;
 }
 
+#banner h1 {
+  text-align: center;
+  width: calc(100% - 170px);
+}
+
 #banner h1 span.short {
   display: none;
 }
 
 @media only screen and (max-width: 920px) {
-  #banner .logoState img {
+  /* #banner .logoState img {
     width: 8rem;
-  }
+  } */
 
   #banner h1 {
     font-size: 1.5em;
@@ -140,16 +145,16 @@ h4:focus-visible,
 
 }
 
-@media only screen and (max-width: 635px) {
+/* @media only screen and (max-width: 635px) {
   #banner h1 {
     max-width: 200px;
   }
-}
+} */
 
 @media only screen and (max-width: 475px) {
-  #banner h1 {
+  /* #banner h1 {
     font-size: 1em;
-  }
+  } */
 
   .banner .dropdown button {
     padding: inherit 0 !important;
@@ -198,14 +203,14 @@ h4:focus-visible,
   }
 
   #banner h1 {
-    font-size: .85em;
-    max-width: 150px;
+    font-size: 1.2em;
+    /* max-width: 150px; */
     margin-top: 2px;
   }
 
-  #banner .logoState img {
+  /* #banner .logoState img {
     width: 6rem;
-  }
+  } */
 
   .banner .dropdown {
     margin-top: -2px;
@@ -213,9 +218,9 @@ h4:focus-visible,
 }
 
 @media only screen and (max-width: 370px) {
-  #banner h1 {
+  /* #banner h1 {
     max-width: 120px;
-  }
+  } */
   
   #banner h1 span {
     display: none;
