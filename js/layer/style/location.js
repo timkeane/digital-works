@@ -21,8 +21,8 @@ export default function(feature, resolution) {
     const people = feature.get('people');
     const highlight = feature.get('highlight');
     const width = highlight ? 4 : 1.25;
-    const color = highlight ? '#acdef2' : '#3399CC';
-    let radius = zoom * people / 200;
+    const color = highlight ? 'rgba(172, 222, 242, .6)' : 'rgba(51, 153, 204, .6)';
+    let radius = zoom * people / 400;
     if (radius < 5) radius = 5;
     return new Style({
       zIndex: -people,
