@@ -14,8 +14,11 @@ export default function() {
     import(`./banner/${getAppPath()}.js`).then(html => {
       const banner = $(html.default).attr('id', 'banner').addClass('banner');
       $('body').prepend(banner.localize());
-      banner.find('h1, div').on('click', () => {
+      banner.find('h1').on('click', () => {
         document.location = `./index.html?locale=${$('html').prop('lang')}`;
+      });
+      banner.find('img').on('click', () => {
+        document.location = 'https://connectednation.org';
       });
       createResizeHandler();
       setTabAction();
