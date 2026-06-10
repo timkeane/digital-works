@@ -23,6 +23,8 @@ export const translation = {
   "feature.value.distance": "millas desde su ubicación",
   "btn.ok.name": "OK",
   "btn.close.name": "Cerrar",
+  
+  "banner.cn.alt": "¡Connected Nation celebra 25 años de servicio en 2026!",
 
   "training.sessions": "Sesiones de capacitación:",
   "prop.name.organization": "Organización:",

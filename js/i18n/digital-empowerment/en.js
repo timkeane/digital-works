@@ -21,6 +21,8 @@ export const translation = {
   "btn.ok.name": "OK",
   "btn.close.name": "Close",
 
+  "banner.cn.alt": "Connected Nation celebrates 25 years of service in 2026!",
+  
   "training.sessions": "Training sessions:",
   "prop.name.organization": "Organization:",
   "prop.name.organization_type": "Organization Type:",
